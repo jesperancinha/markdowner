@@ -65,3 +65,16 @@
 [![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/string-array-paradigms.svg)](#)
 [![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/string-array-paradigms.svg)](#)
 [![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/string-array-paradigms.svg)](#)
+---
+---
+[![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Coffee%20Paradigms&color=informational)](https://github.com/jesperancinha/coffee-paradigms)
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4619967a56c24086b00a7e0344aebaa8)](https://www.codacy.com/app/jofisaes/coffee-paradigms?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/coffee-paradigms&amp;utm_campaign=Badge_Grade)
+[![codebeat badge](https://codebeat.co/badges/0d45f066-b81a-4cb8-ae72-d3f6daf5b736)](https://codebeat.co/projects/github-com-jesperancinha-coffee-paradigms-master)
+[![CircleCI](https://circleci.com/gh/jesperancinha/coffee-paradigms.svg?style=svg)](https://circleci.com/gh/jesperancinha/coffee-paradigms)
+[![Build Status](https://travis-ci.org/jesperancinha/coffee-paradigms.svg?branch=master)](https://travis-ci.org/jesperancinha/coffee-paradigms)
+[![BCH compliance](https://bettercodehub.com/edge/badge/jesperancinha/coffee-paradigms?branch=master)](https://bettercodehub.com/)
+
+[![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/coffee-paradigms.svg)](#)
+[![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/coffee-paradigms.svg)](#)
+[![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/coffee-paradigms.svg)](#)
