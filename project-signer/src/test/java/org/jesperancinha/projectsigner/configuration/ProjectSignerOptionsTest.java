@@ -1,9 +1,9 @@
 package org.jesperancinha.projectsigner.configuration;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.Test;
 import picocli.CommandLine;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class ProjectSignerOptionsTest {
 

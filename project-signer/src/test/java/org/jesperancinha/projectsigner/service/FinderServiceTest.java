@@ -24,12 +24,12 @@ class FinderServiceTest {
     private FinderService finderService;
 
     @TempDir
-    public static Path sharedTempDir;
+    public static Path tempDirectory;
 
     @BeforeEach
     public void setUp() throws IOException {
         final URL resource = getClass().getResource("/.");
-        copyFolder(Path.of(resource.getPath()), sharedTempDir);
+        copyFolder(Path.of(resource.getPath()), tempDirectory);
     }
 
     private void copyFolder(Path src, Path dest) throws IOException {
@@ -48,6 +48,6 @@ class FinderServiceTest {
 
     @Test
     void testIterateThroughFilesAndFolders() throws IOException {
-        finderService.iterateThroughFilesAndFolders(sharedTempDir);
+        finderService.iterateThroughFilesAndFolders(tempDirectory);
     }
 }

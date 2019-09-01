@@ -13,7 +13,7 @@ import picocli.CommandLine.Parameters;
 @AllArgsConstructor
 public class ProjectSignerOptions {
 
-    @Option(names = {"-t", "--template-location"}, paramLabel = "Template location", description = "Location of the signin template")
+    @Option(names = {"-t", "--template-location"}, paramLabel = "Template location", description = "Location of the signin template", required = true)
     private String templateLocation;
 
     @Parameters(paramLabel = "Start tags", description = "Start of paragraph replace. This will remove all paragraphs with these names. It only applies to rules with '#' title markdown notation")

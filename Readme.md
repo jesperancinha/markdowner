@@ -25,7 +25,8 @@ This command line runner will complete several boiler plate tasks:
 *   All indicated paragraph which start on a certain tag will be removed - We consider a whole paragraph according to the '#' notation of the markdown.
 *   Once all Readme.md files have been created or updated, we will finally add the template signature AS IS to the footer of all found cases.
 
-Once you finally run the above command, please make sure to double check the given signature before committing and pushig to your repos.
+All tags are case sensitive, which means you do need to add extra tags in case you have issues with word casing.
+Once you finally run the above command, please make sure to double check the given signature before committing and pushing to your repos.
 
 ## Status
 
