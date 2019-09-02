@@ -1,5 +1,7 @@
 package org.jesperancinha.projectsigner.model;
 
+import static org.jesperancinha.projectsigner.utils.StandardUtils.sanitizeTag;
+
 import lombok.AllArgsConstructor;
 
 import java.util.HashMap;
@@ -27,9 +29,6 @@ public class Paragraphs {
             return this;
         }
 
-        private String sanitizeTag(String tag) {
-            return tag.replace("#", "").trim();
-        }
 
         public Paragraphs build() {
             return new Paragraphs(allParagraphs);
