@@ -1,18 +1,23 @@
 package org.jesperancinha.projectsigner.model;
 
-import static org.jesperancinha.projectsigner.utils.StandardUtils.sanitizeTag;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-@AllArgsConstructor
+import static lombok.AccessLevel.PRIVATE;
+import static org.jesperancinha.projectsigner.utils.StandardUtils.sanitizeTag;
+
 @Getter
+@AllArgsConstructor(access = PRIVATE)
 public class Paragraphs {
 
     private final Map<String, Paragraph> allParagraphs;
+
+    private final List<String> tags;
 
     public int getParagraphCount() {
         return allParagraphs.size();
@@ -26,14 +31,17 @@ public class Paragraphs {
 
         private final Map<String, Paragraph> allParagraphs = new HashMap<>();
 
+        private final List<String> tags = new ArrayList<>();
+
         public ParagraphsBuilder withTagParagraph(String tag, String paragraph) {
-            allParagraphs.put(sanitizeTag(tag), (Paragraph.builder().tag(tag).text(paragraph)).build());
+            final String sanitizedTag = sanitizeTag(tag);
+            allParagraphs.put(sanitizedTag, (Paragraph.builder().tag(tag).text(paragraph)).build());
+            tags.add(sanitizedTag);
             return this;
         }
 
-
         public Paragraphs build() {
-            return new Paragraphs(allParagraphs);
+            return new Paragraphs(allParagraphs, tags);
 
         }
     }
