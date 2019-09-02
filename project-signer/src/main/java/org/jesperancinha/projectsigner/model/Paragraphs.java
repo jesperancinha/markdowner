@@ -3,11 +3,13 @@ package org.jesperancinha.projectsigner.model;
 import static org.jesperancinha.projectsigner.utils.StandardUtils.sanitizeTag;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @AllArgsConstructor
+@Getter
 public class Paragraphs {
 
     private final Map<String, Paragraph> allParagraphs;

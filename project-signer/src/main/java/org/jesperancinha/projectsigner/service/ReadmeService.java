@@ -19,7 +19,6 @@ import java.util.List;
 public class ReadmeService {
 
     public String readDataSprippedOfTags(final InputStream templateInputStream, String... tags) throws IOException {
-
         final StringBuilder sb = new StringBuilder();
         try (BufferedReader br = new BufferedReader(new InputStreamReader(templateInputStream))) {
 
@@ -28,19 +27,7 @@ public class ReadmeService {
             int currentMinHashTags = 0;
             while ((line = br.readLine()) != null) {
                 if (line.startsWith("#")) {
-                    if (allTags.contains(sanitizeTag(line))) {
-                        int hashCount = counHashTags(line);
-                        if (hashCount <= currentMinHashTags) {
-                            currentMinHashTags = 0;
-                        } else {
-                            currentMinHashTags = hashCount;
-                        }
-                    } else {
-                        int hashCount = counHashTags(line);
-                        if (hashCount <= currentMinHashTags) {
-                            currentMinHashTags = 0;
-                        }
-                    }
+                    currentMinHashTags = calculateCurrentMinHashTags(line, currentMinHashTags, allTags);
                 }
                 if (currentMinHashTags == 0 && (!line.startsWith("#") || !allTags.contains(sanitizeTag(line)))) {
                     sb.append(line);
@@ -49,5 +36,22 @@ public class ReadmeService {
             }
         }
         return sb.toString();
+    }
+
+    private int calculateCurrentMinHashTags(String line, int currentMinHashTags, List<String> allTags) {
+        if (allTags.contains(sanitizeTag(line))) {
+            int hashCount = counHashTags(line);
+            if (hashCount <= currentMinHashTags) {
+                currentMinHashTags = 0;
+            } else {
+                currentMinHashTags = hashCount;
+            }
+        } else {
+            int hashCount = counHashTags(line);
+            if (hashCount <= currentMinHashTags) {
+                currentMinHashTags = 0;
+            }
+        }
+        return currentMinHashTags;
     }
 }

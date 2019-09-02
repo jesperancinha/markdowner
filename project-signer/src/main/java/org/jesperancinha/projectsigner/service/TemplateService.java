@@ -27,6 +27,7 @@ public class TemplateService {
                     currentTag = line;
                 } else {
                     sb.append(line);
+                    sb.append(System.lineSeparator());
                 }
             }
             createParagraphLine(paragraphsBuilder, currentTag, sb);
