@@ -1,35 +1,36 @@
 package org.jesperancinha.projectsigner.filter;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jesperancinha.projectsigner.model.PackageInfo;
 import org.jesperancinha.projectsigner.model.ProjectType;
 
 import java.nio.file.Path;
+import java.util.Objects;
 
 @Slf4j
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
 public class FileFilterChain {
 
-    private FileFilterChain nextFileFilterChain;
+    private final FileFilterChain nextFileFilterChain;
 
-    private ProjectFilter<Path> projectFilter;
+    private final ProjectFilter<Path> projectFilter;
 
-    private ProjectType projectType;
+    private final ProjectType projectType;
 
     public PackageInfo findHighest(PackageInfo packageInfo, Path path) {
 
-        if (packageInfo.getProjectType() == projectType) {
+        if (Objects.nonNull(packageInfo) && packageInfo.getProjectType() == projectType) {
             return packageInfo;
         }
 
         if (projectFilter.test(path)) {
-//            return PackageInfo.builder().projectName()
+            return PackageInfo.builder().projectName(projectFilter.lastProjectName()).projectType(projectType).build();
         }
-        return null;
+
+        if (Objects.nonNull(nextFileFilterChain)) {
+            return nextFileFilterChain.findHighest(packageInfo, path);
+        }
+        return packageInfo;
     }
 }

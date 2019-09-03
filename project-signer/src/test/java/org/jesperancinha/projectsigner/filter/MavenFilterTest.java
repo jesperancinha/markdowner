@@ -16,7 +16,7 @@ public class MavenFilterTest {
         boolean result = mavenFilter.test(resource);
 
         assertThat(result).isTrue();
-        assertThat(mavenFilter.lastProjectName()).isEqualTo("ProjectMaven");
+        assertThat(mavenFilter.lastProjectName()).isEqualTo("This is a test project");
 
     }
 

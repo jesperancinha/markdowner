@@ -2,13 +2,11 @@ package org.jesperancinha.projectsigner.service;
 
 import org.jesperancinha.projectsigner.filter.FileFilterChain;
 import org.jesperancinha.projectsigner.inteface.NamingService;
+import org.jesperancinha.projectsigner.model.PackageInfo;
 import org.jesperancinha.projectsigner.model.ProjectType;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -30,21 +28,20 @@ public class NamingServiceImpl implements NamingService {
             return new FileInputStream(readmeFile);
         }
 
-        ProjectType projectType = findProjectType(path);
+        PackageInfo packageInfo = findProjectType(path);
 
-        return null;
+        return new ByteArrayInputStream("# ".concat(packageInfo.getProjectName()).getBytes());
     }
 
-    private ProjectType findProjectType(Path path) throws IOException {
-        File directory = path.toFile();
-        ProjectType highestLevel = ProjectType.SBT;
+    private PackageInfo findProjectType(Path path) throws IOException {
+        PackageInfo highestLevel = null;
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(path)) {
             for (Path newPath : stream) {
-                if (!Files.isDirectory(path)) {
-//                    highestLevel =  fileFilterChain.findHighest(highestLevel, path);
+                if (!Files.isDirectory(newPath)) {
+                    highestLevel =  fileFilterChain.findHighest(highestLevel, newPath);
                 }
             }
         }
-        return ProjectType.MAVEN;
+        return highestLevel;
     }
 }
