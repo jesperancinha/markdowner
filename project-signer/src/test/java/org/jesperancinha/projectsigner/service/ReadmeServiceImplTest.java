@@ -1,25 +1,26 @@
 package org.jesperancinha.projectsigner.service;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import lombok.extern.slf4j.Slf4j;
+import org.jesperancinha.projectsigner.inteface.ReadmeService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.io.IOException;
 import java.io.InputStream;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @Slf4j
-@ExtendWith(MockitoExtension.class)
-class ReadmeServiceTest {
+@ExtendWith(SpringExtension.class)
+class ReadmeServiceImplTest {
 
     private static final String DIRECTORY_0_README_MD = "/directory1/Readme.md";
     private static final String DIRECTORY_1_README_MD = "/directory1/subDirectory1/Readme.md";
 
     @InjectMocks
-    private ReadmeService readmeService;
+    private ReadmeService readmeService = new ReadmeServiceImpl();
 
     @Test
     void testReadDataSprippedOfTagsFile0Label1() throws IOException {

@@ -1,5 +1,6 @@
 package org.jesperancinha.projectsigner.service;
 
+import org.jesperancinha.projectsigner.inteface.TemplateService;
 import org.jesperancinha.projectsigner.model.Paragraphs;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
@@ -10,15 +11,16 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 @Service
-public class TemplateService {
+public class TemplateServiceImpl implements TemplateService {
 
+    @Override
     public Paragraphs findAllParagraphs(final InputStream templateInputStream) throws IOException {
 
         Paragraphs.ParagraphsBuilder paragraphsBuilder = new Paragraphs.ParagraphsBuilder();
         try (BufferedReader br = new BufferedReader(new InputStreamReader(templateInputStream))) {
 
             final StringBuilder sb = new StringBuilder();
-            String line = null;
+            String line;
             String currentTag = null;
             while ((line = br.readLine()) != null) {
                 if (line.startsWith("#")) {

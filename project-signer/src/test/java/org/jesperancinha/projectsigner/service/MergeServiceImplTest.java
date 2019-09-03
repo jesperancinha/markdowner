@@ -1,5 +1,6 @@
 package org.jesperancinha.projectsigner.service;
 
+import org.jesperancinha.projectsigner.inteface.MergeService;
 import org.jesperancinha.projectsigner.model.Paragraphs;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -9,10 +10,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(MockitoExtension.class)
-public class MergeServiceTest {
+public class MergeServiceImplTest {
 
     @InjectMocks
-    private MergeService mergeService;
+    private MergeService mergeService = new MergeServiceImpl();
 
     @Test
     public void mergeDocumentWithFooterTemplate() {

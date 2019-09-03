@@ -1,10 +1,6 @@
 package org.jesperancinha.projectsigner.service;
 
-import static java.lang.System.lineSeparator;
-import static org.jesperancinha.projectsigner.utils.StandardUtils.counHashTags;
-import static org.jesperancinha.projectsigner.utils.StandardUtils.sanitizeTag;
-
-import lombok.extern.slf4j.Slf4j;
+import org.jesperancinha.projectsigner.inteface.ReadmeService;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
@@ -14,16 +10,20 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
 
-@Slf4j
-@Service
-public class ReadmeService {
+import static java.lang.System.lineSeparator;
+import static org.jesperancinha.projectsigner.utils.StandardUtils.counHashTags;
+import static org.jesperancinha.projectsigner.utils.StandardUtils.sanitizeTag;
 
+@Service
+public class ReadmeServiceImpl implements ReadmeService {
+
+    @Override
     public String readDataSprippedOfTags(final InputStream templateInputStream, String... tags) throws IOException {
         final StringBuilder sb = new StringBuilder();
         try (BufferedReader br = new BufferedReader(new InputStreamReader(templateInputStream))) {
 
             final List<String> allTags = Arrays.asList(tags);
-            String line = null;
+            String line;
             int currentMinHashTags = 0;
             while ((line = br.readLine()) != null) {
                 if (line.startsWith("#")) {

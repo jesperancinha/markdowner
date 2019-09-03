@@ -7,8 +7,10 @@ import lombok.Setter;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
-@Setter
+import java.nio.file.Path;
+
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProjectSignerOptions {
@@ -25,4 +27,7 @@ public class ProjectSignerOptions {
     @Option(names = {"-ne", "--no-empty"}, paramLabel = "No Empty", description = "If set, it does not create empty signed Readme.md files", defaultValue = "false")
     private boolean noEmpty;
 
+    public Path getRootDirectory() {
+        return Path.of(rootDirectory);
+    }
 }

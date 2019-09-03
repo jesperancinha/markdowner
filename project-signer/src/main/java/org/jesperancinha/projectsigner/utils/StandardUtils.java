@@ -5,7 +5,7 @@ public class StandardUtils {
     public static String sanitizeTag(final String tag) {
         int i = 0;
         for (char c : tag.toCharArray()) {
-            if(c!='#'){
+            if (c != '#') {
                 return tag.substring(i).trim();
             }
             i++;

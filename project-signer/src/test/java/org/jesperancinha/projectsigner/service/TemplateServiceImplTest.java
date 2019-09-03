@@ -1,7 +1,6 @@
 package org.jesperancinha.projectsigner.service;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
+import org.jesperancinha.projectsigner.inteface.TemplateService;
 import org.jesperancinha.projectsigner.model.Paragraph;
 import org.jesperancinha.projectsigner.model.Paragraphs;
 import org.junit.jupiter.api.Test;
@@ -12,11 +11,13 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.io.IOException;
 import java.io.InputStream;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @ExtendWith(MockitoExtension.class)
-public class TemplateServiceTest {
+public class TemplateServiceImplTest {
 
     @InjectMocks
-    private TemplateService templateService;
+    private TemplateService templateService = new TemplateServiceImpl();
 
     @Test
     void findAllParagraphs() throws IOException {

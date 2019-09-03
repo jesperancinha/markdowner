@@ -1,9 +1,9 @@
 package org.jesperancinha.projectsigner.configuration;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import org.junit.jupiter.api.Test;
 import picocli.CommandLine;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class ProjectSignerOptionsTest {
 
@@ -20,7 +20,7 @@ public class ProjectSignerOptionsTest {
 
         assertThat(projectSignerOptions.getTemplateLocation()).isEqualTo(TEST_LOCATION);
         assertThat(projectSignerOptions.getTagNames()).containsOnly(TEST_LABEL_1, TEST_LABEL_2);
-        assertThat(projectSignerOptions.getRootDirectory()).isEqualTo(TEST_ROOT);
+        assertThat(projectSignerOptions.getRootDirectory().toString()).isEqualTo(TEST_ROOT);
         assertThat(projectSignerOptions.isNoEmpty()).isFalse();
     }
 
@@ -32,7 +32,7 @@ public class ProjectSignerOptionsTest {
 
         assertThat(projectSignerOptions.getTemplateLocation()).isEqualTo(TEST_LOCATION);
         assertThat(projectSignerOptions.getTagNames()).containsOnly(TEST_LABEL_1, TEST_LABEL_2);
-        assertThat(projectSignerOptions.getRootDirectory()).isEqualTo(TEST_ROOT);
+        assertThat(projectSignerOptions.getRootDirectory().toString()).isEqualTo(TEST_ROOT);
         assertThat(projectSignerOptions.isNoEmpty()).isTrue();
     }
 

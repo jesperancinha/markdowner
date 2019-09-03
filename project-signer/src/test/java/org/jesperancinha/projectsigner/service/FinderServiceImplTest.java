@@ -1,9 +1,8 @@
 package org.jesperancinha.projectsigner.service;
 
-import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
-
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
+import org.jesperancinha.projectsigner.inteface.FinderService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,12 +15,14 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
+
 @Slf4j
 @ExtendWith(MockitoExtension.class)
-class FinderServiceTest {
+class FinderServiceImplTest {
 
     @InjectMocks
-    private FinderService finderService;
+    private FinderService finderService = new FinderServiceImpl();
 
     @TempDir
     public static Path tempDirectory;
@@ -34,7 +35,7 @@ class FinderServiceTest {
 
     private void copyFolder(Path src, Path dest) throws IOException {
         Files.walk(src)
-            .forEach(source -> copy(source, dest.resolve(src.relativize(source))));
+                .forEach(source -> copy(source, dest.resolve(src.relativize(source))));
     }
 
     private void copy(Path src, Path dest) {
