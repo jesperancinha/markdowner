@@ -30,8 +30,8 @@ public class TemplateServiceImplTest {
         final Paragraph aboutMe = allParagraphs.getParagraphByTag("About me");
         assertThat(license).isNotNull();
         assertThat(aboutMe).isNotNull();
-        assertThat(license.getText()).isEqualTo("This is one\nOne\n");
-        assertThat(aboutMe.getText()).isEqualTo("This is two\nTwo\n");
+        assertThat(license.getText()).isEqualTo("This is one\nOne");
+        assertThat(aboutMe.getText()).isEqualTo("This is two\nTwo");
         assertThat(allParagraphs.getParagraphCount()).isEqualTo(2);
     }
 }

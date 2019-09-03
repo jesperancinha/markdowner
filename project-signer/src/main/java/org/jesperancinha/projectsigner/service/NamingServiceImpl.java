@@ -13,6 +13,7 @@ import java.io.InputStream;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Objects;
 
 @Service
 public class NamingServiceImpl implements NamingService {
@@ -25,14 +26,15 @@ public class NamingServiceImpl implements NamingService {
 
     @Override
     public InputStream buildReadmeStream(Path path) throws IOException {
-        Path readmePath = path.resolve("Readme.md");
-        File readmeFile = readmePath.toFile();
+        final Path readmePath = path.resolve("Readme.md");
+        final File readmeFile = readmePath.toFile();
         if (readmeFile.exists()) {
             return new FileInputStream(readmeFile);
         }
-
-        PackageInfo packageInfo = findProjectType(path);
-
+        final PackageInfo packageInfo = findProjectType(path);
+        if (Objects.isNull(packageInfo)) {
+            return null;
+        }
         return new ByteArrayInputStream("# ".concat(packageInfo.getProjectName()).getBytes());
     }
 

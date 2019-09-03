@@ -2,13 +2,13 @@ package org.jesperancinha.projectsigner.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
-import org.jesperancinha.projectsigner.inteface.FinderService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.io.TempDir;
-import org.mockito.InjectMocks;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.io.IOException;
 import java.net.URL;
@@ -17,12 +17,13 @@ import java.nio.file.Path;
 
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
+@SpringBootTest
+@ExtendWith(SpringExtension.class)
 @Slf4j
-@ExtendWith(MockitoExtension.class)
 class FinderServiceImplTest {
 
-    @InjectMocks
-    private FinderService finderService = new FinderServiceImpl();
+    @Autowired
+    private FinderServiceImpl finderService;
 
     @TempDir
     public static Path tempDirectory;

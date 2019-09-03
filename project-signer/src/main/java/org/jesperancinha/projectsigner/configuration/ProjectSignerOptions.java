@@ -30,4 +30,8 @@ public class ProjectSignerOptions {
     public Path getRootDirectory() {
         return Path.of(rootDirectory);
     }
+
+    public Path getTemplateLocation() {
+        return Path.of(templateLocation);
+    }
 }

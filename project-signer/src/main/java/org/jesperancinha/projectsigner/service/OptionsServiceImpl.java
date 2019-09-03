@@ -10,10 +10,18 @@ import picocli.CommandLine;
 @Profile({"dev", "prod"})
 public class OptionsServiceImpl implements OptionsService {
 
+    private ProjectSignerOptions projectSignerOptions;
+
     @Override
     public ProjectSignerOptions processOptions(final String[] args) {
         final ProjectSignerOptions projectSignerOptions = new ProjectSignerOptions();
         new CommandLine(projectSignerOptions).parseArgs(args);
+        this.projectSignerOptions = projectSignerOptions;
+        return projectSignerOptions;
+    }
+
+    @Override
+    public ProjectSignerOptions getProjectSignerOptions() {
         return projectSignerOptions;
     }
 }

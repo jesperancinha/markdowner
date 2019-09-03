@@ -18,7 +18,7 @@ public class ProjectSignerOptionsTest {
         final ProjectSignerOptions projectSignerOptions = new ProjectSignerOptions();
         new CommandLine(projectSignerOptions).parseArgs(args);
 
-        assertThat(projectSignerOptions.getTemplateLocation()).isEqualTo(TEST_LOCATION);
+        assertThat(projectSignerOptions.getTemplateLocation().toString()).isEqualTo(TEST_LOCATION);
         assertThat(projectSignerOptions.getTagNames()).containsOnly(TEST_LABEL_1, TEST_LABEL_2);
         assertThat(projectSignerOptions.getRootDirectory().toString()).isEqualTo(TEST_ROOT);
         assertThat(projectSignerOptions.isNoEmpty()).isFalse();
@@ -30,7 +30,7 @@ public class ProjectSignerOptionsTest {
         final ProjectSignerOptions projectSignerOptions = new ProjectSignerOptions();
         new CommandLine(projectSignerOptions).parseArgs(args);
 
-        assertThat(projectSignerOptions.getTemplateLocation()).isEqualTo(TEST_LOCATION);
+        assertThat(projectSignerOptions.getTemplateLocation().toString()).isEqualTo(TEST_LOCATION);
         assertThat(projectSignerOptions.getTagNames()).containsOnly(TEST_LABEL_1, TEST_LABEL_2);
         assertThat(projectSignerOptions.getRootDirectory().toString()).isEqualTo(TEST_ROOT);
         assertThat(projectSignerOptions.isNoEmpty()).isTrue();

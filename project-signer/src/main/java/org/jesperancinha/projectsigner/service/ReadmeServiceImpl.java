@@ -35,7 +35,7 @@ public class ReadmeServiceImpl implements ReadmeService {
                 }
             }
         }
-        return sb.toString();
+        return sb.toString().stripTrailing();
     }
 
     private int calculateCurrentMinHashTags(String line, int currentMinHashTags, List<String> allTags) {

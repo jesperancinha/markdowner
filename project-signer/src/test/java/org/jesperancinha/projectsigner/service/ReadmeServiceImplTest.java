@@ -28,7 +28,7 @@ class ReadmeServiceImplTest {
 
         final String label1 = readmeService.readDataSprippedOfTags(resourceAsStream, "label1");
 
-        assertThat(label1).isEqualTo("# label3\n");
+        assertThat(label1).isEqualTo("# label3");
     }
 
     @Test
@@ -37,7 +37,7 @@ class ReadmeServiceImplTest {
 
         final String label2 = readmeService.readDataSprippedOfTags(resourceAsStream, "label2");
 
-        assertThat(label2).isEqualTo("## label1\n\n# label3\n");
+        assertThat(label2).isEqualTo("## label1\n\n# label3");
     }
 
     @Test
@@ -46,7 +46,7 @@ class ReadmeServiceImplTest {
 
         final String label3 = readmeService.readDataSprippedOfTags(resourceAsStream, "label3");
 
-        assertThat(label3).isEqualTo("## label1\n\n### label2\n\n");
+        assertThat(label3).isEqualTo("## label1\n\n### label2");
     }
 
 
@@ -56,7 +56,7 @@ class ReadmeServiceImplTest {
 
         final String label1 = readmeService.readDataSprippedOfTags(resourceAsStream, "label1");
 
-        assertThat(label1).isEqualTo("# label2\n\n# label3\n");
+        assertThat(label1).isEqualTo("# label2\n\n# label3");
     }
 
     @Test
@@ -65,7 +65,7 @@ class ReadmeServiceImplTest {
 
         final String label2 = readmeService.readDataSprippedOfTags(resourceAsStream, "label2");
 
-        assertThat(label2).isEqualTo("# label1\n\n# label3\n");
+        assertThat(label2).isEqualTo("# label1\n\n# label3");
     }
 
     @Test
@@ -74,7 +74,7 @@ class ReadmeServiceImplTest {
 
         final String label3 = readmeService.readDataSprippedOfTags(resourceAsStream, "label3");
 
-        assertThat(label3).isEqualTo("# label1\n\n# label2\n\n");
+        assertThat(label3).isEqualTo("# label1\n\n# label2");
     }
 
 }

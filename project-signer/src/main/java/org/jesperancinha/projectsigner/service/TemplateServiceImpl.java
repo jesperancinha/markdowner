@@ -39,7 +39,7 @@ public class TemplateServiceImpl implements TemplateService {
 
     private void createParagraphLine(Paragraphs.ParagraphsBuilder paragraphsBuilder, String currentTag, StringBuilder sb) {
         if (!ObjectUtils.isEmpty(currentTag)) {
-            paragraphsBuilder.withTagParagraph(currentTag, sb.toString());
+            paragraphsBuilder.withTagParagraph(currentTag, sb.toString().stripTrailing());
         }
     }
 

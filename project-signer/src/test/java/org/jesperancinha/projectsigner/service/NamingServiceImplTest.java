@@ -1,6 +1,7 @@
 package org.jesperancinha.projectsigner.service;
 
 import org.apache.commons.io.IOUtils;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Path;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.verifyZeroInteractions;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
@@ -25,6 +27,15 @@ class NamingServiceImplTest {
 
     @Autowired
     private NamingServiceImpl namingService;
+
+    @Test
+    void testBuildReadmeStreamNothing() throws URISyntaxException, IOException {
+
+        final Path path = Path.of(getClass().getResource("/directory2NoReadme/noProject2").toURI());
+        final InputStream inputStream = namingService.buildReadmeStream(path);
+
+        assertThat(inputStream).isNull();
+    }
 
     @Test
     void testBuildReadmeStreamMixMavenAndNPM() throws URISyntaxException, IOException {
@@ -90,5 +101,10 @@ class NamingServiceImplTest {
         assertThat(inputStream).isNotNull();
         final String result = IOUtils.toString(inputStream, Charset.defaultCharset());
         assertThat(result).isEqualTo("# sbt-project");
+    }
+
+    @AfterEach
+    public void tearDown() {
+        verifyZeroInteractions(finderService);
     }
 }
