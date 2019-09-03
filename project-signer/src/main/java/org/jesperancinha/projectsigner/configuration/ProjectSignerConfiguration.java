@@ -1,6 +1,10 @@
 package org.jesperancinha.projectsigner.configuration;
 
-import org.jesperancinha.projectsigner.filter.*;
+import org.jesperancinha.projectsigner.filter.FileFilterChain;
+import org.jesperancinha.projectsigner.filter.GradleFilter;
+import org.jesperancinha.projectsigner.filter.MavenFilter;
+import org.jesperancinha.projectsigner.filter.NPMFilter;
+import org.jesperancinha.projectsigner.filter.SBTFilter;
 import org.jesperancinha.projectsigner.model.ProjectType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

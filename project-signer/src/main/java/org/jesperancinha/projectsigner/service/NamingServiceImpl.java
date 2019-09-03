@@ -3,10 +3,13 @@ package org.jesperancinha.projectsigner.service;
 import org.jesperancinha.projectsigner.filter.FileFilterChain;
 import org.jesperancinha.projectsigner.inteface.NamingService;
 import org.jesperancinha.projectsigner.model.PackageInfo;
-import org.jesperancinha.projectsigner.model.ProjectType;
 import org.springframework.stereotype.Service;
 
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -16,7 +19,7 @@ public class NamingServiceImpl implements NamingService {
 
     private FileFilterChain fileFilterChain;
 
-    public NamingServiceImpl(final FileFilterChain fileFilterChain){
+    public NamingServiceImpl(final FileFilterChain fileFilterChain) {
         this.fileFilterChain = fileFilterChain;
     }
 
@@ -38,7 +41,7 @@ public class NamingServiceImpl implements NamingService {
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(path)) {
             for (Path newPath : stream) {
                 if (!Files.isDirectory(newPath)) {
-                    highestLevel =  fileFilterChain.findHighest(highestLevel, newPath);
+                    highestLevel = fileFilterChain.findHighest(highestLevel, newPath);
                 }
             }
         }

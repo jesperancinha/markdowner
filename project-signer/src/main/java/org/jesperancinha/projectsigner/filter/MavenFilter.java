@@ -41,7 +41,7 @@ public class MavenFilter implements ProjectFilter<Path> {
     private String getString(Document xmlDocument, String expression) throws XPathExpressionException {
         final XPath xPath = XPathFactory.newInstance().newXPath();
         final NodeList nodeList = (NodeList) xPath.compile(expression).evaluate(xmlDocument, XPathConstants.NODESET);
-        if(nodeList.getLength() == 0){
+        if (nodeList.getLength() == 0) {
             return null;
         }
         return nodeList.item(0).getTextContent();

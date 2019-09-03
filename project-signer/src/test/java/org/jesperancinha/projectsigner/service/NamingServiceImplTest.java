@@ -58,6 +58,7 @@ class NamingServiceImplTest {
         final String result = IOUtils.toString(inputStream, Charset.defaultCharset());
         assertThat(result).isEqualTo("# ProjectMavenArtifact");
     }
+
     @Test
     void testBuildReadmeStreamNPM() throws URISyntaxException, IOException {
 

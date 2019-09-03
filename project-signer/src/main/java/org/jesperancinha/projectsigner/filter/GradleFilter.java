@@ -1,8 +1,5 @@
 package org.jesperancinha.projectsigner.filter;
 
-import org.springframework.stereotype.Service;
-
-import java.io.File;
 import java.nio.file.Path;
 
 public class GradleFilter implements ProjectFilter<Path> {
