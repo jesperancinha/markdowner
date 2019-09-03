@@ -11,17 +11,28 @@ import java.nio.file.Path;
 import java.util.Objects;
 
 @Slf4j
-public class NPMFilter implements ProjectFilter<File> {
+public class NPMFilter implements ProjectFilter<Path> {
+
+    private String lastProjectName;
+
     @Override
     public boolean test(Path path) {
         try {
             JsonElement jsonElement = new Gson().getAdapter(JsonElement.class).fromJson(new FileReader(path.toFile()));
             JsonElement name = jsonElement.getAsJsonObject().get("name");
-            return !Objects.isNull(name);
+            if (Objects.nonNull(name)) {
+                this.lastProjectName = name.getAsString();
+                return true;
+            }
         } catch (IOException e) {
             log.trace("Not a valid JSON!", e);
-            return false;
         }
+        return false;
 
+    }
+
+    @Override
+    public String lastProjectName() {
+        return this.lastProjectName;
     }
 }

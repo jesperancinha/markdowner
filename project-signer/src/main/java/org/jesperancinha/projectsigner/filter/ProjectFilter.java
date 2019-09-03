@@ -1,7 +1,9 @@
 package org.jesperancinha.projectsigner.filter;
 
-import java.nio.file.Path;
+import java.util.function.Predicate;
 
-public interface ProjectFilter<P> {
-    boolean test(Path path);
+public interface ProjectFilter<P>{
+    boolean test(P path);
+
+    String lastProjectName();
 }

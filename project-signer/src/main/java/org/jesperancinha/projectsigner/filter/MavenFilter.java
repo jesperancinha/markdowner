@@ -1,6 +1,7 @@
 package org.jesperancinha.projectsigner.filter;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
@@ -17,6 +18,8 @@ import java.util.Objects;
 @Slf4j
 public class MavenFilter implements ProjectFilter<Path> {
 
+    private String lastProjectName;
+
     @Override
     public boolean test(Path path) {
         try {
@@ -27,10 +30,16 @@ public class MavenFilter implements ProjectFilter<Path> {
             final String expression = "/project/artifactId";
             final NodeList nodeList = (NodeList) xPath.compile(expression).evaluate(xmlDocument, XPathConstants.NODESET);
             final String textContent = nodeList.item(0).getTextContent();
+            this.lastProjectName = textContent;
             return Objects.nonNull(textContent);
         } catch (Exception e) {
-            log.trace("Not a valid XML", e);
+            log.trace("Not a valid Maven file", e);
             return false;
         }
+    }
+
+    @Override
+    public String lastProjectName() {
+        return lastProjectName;
     }
 }

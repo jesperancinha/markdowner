@@ -11,17 +11,19 @@ public class MavenFilterTest {
     @Test
     void testMavenFilter() {
         final Path resource = Path.of(getClass().getResource("/directory2NoReadme/project1Maven/pom.xml").getPath());
-        final ProjectFilter mavenFilter = new MavenFilter();
+        final ProjectFilter<Path> mavenFilter = new MavenFilter();
 
         boolean result = mavenFilter.test(resource);
 
         assertThat(result).isTrue();
+        assertThat(mavenFilter.lastProjectName()).isEqualTo("ProjectMaven");
+
     }
 
     @Test
     void testMavenFilterFail() {
         final Path resource = Path.of(getClass().getResource("/directory2NoReadme/project3MavenAndNPM/package.json").getPath());
-        final ProjectFilter mavenFilter = new MavenFilter();
+        final ProjectFilter<Path> mavenFilter = new MavenFilter();
 
         boolean result = mavenFilter.test(resource);
 

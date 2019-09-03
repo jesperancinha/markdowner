@@ -12,17 +12,18 @@ public class NPMFilterTest {
     @Test
     void testNPMFilter() {
         final Path resource = Path.of(getClass().getResource("/directory2NoReadme/project3MavenAndNPM/package.json").getPath());
-        final ProjectFilter npmFilter = new NPMFilter();
+        final ProjectFilter<Path> npmFilter = new NPMFilter();
 
         boolean result = npmFilter.test(resource);
 
         assertThat(result).isTrue();
+        assertThat(npmFilter.lastProjectName()).isEqualTo("npm-project");
     }
 
     @Test
     void testNPMFilterFail() {
         final Path resource = Path.of(getClass().getResource("/directory2NoReadme/project1Maven/pom.xml").getPath());
-        final ProjectFilter mavenFilter = new NPMFilter();
+        final ProjectFilter<Path> mavenFilter = new NPMFilter();
 
         boolean result = mavenFilter.test(resource);
 

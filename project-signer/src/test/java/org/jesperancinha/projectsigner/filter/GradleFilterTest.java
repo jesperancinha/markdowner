@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.nio.file.Path;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GradleFilterTest {
@@ -12,17 +13,18 @@ public class GradleFilterTest {
     @Test
     void testGradleFilter() {
         final Path resource = Path.of(getClass().getResource("/directory2NoReadme/project4Gradle/gradle.build").getPath());
-        final ProjectFilter npmFilter = new GradleFilter();
+        final ProjectFilter<Path> npmFilter = new GradleFilter();
 
         boolean result = npmFilter.test(resource);
 
         assertThat(result).isTrue();
+        assertThat(npmFilter.lastProjectName()).isEqualTo("project4Gradle");
     }
 
     @Test
     void testGradleFilterFail() {
         final Path resource = Path.of(getClass().getResource("/directory2NoReadme/project3MavenAndNPM/package.json").getPath());
-        final ProjectFilter mavenFilter = new GradleFilter();
+        final ProjectFilter<Path> mavenFilter = new GradleFilter();
 
         boolean result = mavenFilter.test(resource);
 

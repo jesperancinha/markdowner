@@ -4,13 +4,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Path;
 
 @Slf4j
-public class SBTFilter implements ProjectFilter<File> {
+public class SBTFilter implements ProjectFilter<Path> {
+
+    private String lastProjectName;
+
     @Override
     public boolean test(Path path) {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path.toFile()))) {
@@ -22,15 +24,20 @@ public class SBTFilter implements ProjectFilter<File> {
                     if (left.equals("name")) {
                         String right = split[1].trim();
                         if (Strings.isNotEmpty(right)) {
+                            this.lastProjectName = right.substring(1, right.length() - 1);
                             return true;
                         }
                     }
                 }
             }
-            return false;
         } catch (IOException e) {
             log.trace("Not SBT format!");
-            return false;
         }
+        return false;
+    }
+
+    @Override
+    public String lastProjectName() {
+        return this.lastProjectName;
     }
 }

@@ -1,1 +1,1 @@
-name := "image-train-filters-service"
+name := "sbt-project"

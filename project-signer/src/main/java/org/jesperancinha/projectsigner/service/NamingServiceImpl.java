@@ -1,5 +1,6 @@
 package org.jesperancinha.projectsigner.service;
 
+import org.jesperancinha.projectsigner.filter.FileFilterChain;
 import org.jesperancinha.projectsigner.inteface.NamingService;
 import org.jesperancinha.projectsigner.model.ProjectType;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,12 @@ import java.nio.file.Path;
 
 @Service
 public class NamingServiceImpl implements NamingService {
+
+    private FileFilterChain fileFilterChain;
+
+    public NamingServiceImpl(final FileFilterChain fileFilterChain){
+        this.fileFilterChain = fileFilterChain;
+    }
 
     @Override
     public InputStream buildReadmeStream(Path path) throws IOException {
