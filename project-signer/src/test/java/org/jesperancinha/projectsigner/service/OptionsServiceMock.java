@@ -2,6 +2,7 @@ package org.jesperancinha.projectsigner.service;
 
 import org.jesperancinha.projectsigner.configuration.ProjectSignerOptions;
 import org.jesperancinha.projectsigner.inteface.OptionsService;
+import org.mockito.Mockito;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +13,14 @@ import static org.mockito.Mockito.when;
 
 @Service
 @Profile({"test", "localtest", "default"})
-public class OptionsServiceImplTest implements OptionsService {
+public class OptionsServiceMock implements OptionsService {
 
     private ProjectSignerOptions projectSignerOptions;
+
+    public void setNoEmptyUp() {
+        Mockito.clearInvocations(projectSignerOptions);
+        when(projectSignerOptions.isNoEmpty()).thenReturn(true);
+    }
 
     @Override
     public ProjectSignerOptions processOptions(final String[] args) {
@@ -31,5 +37,10 @@ public class OptionsServiceImplTest implements OptionsService {
     @Override
     public ProjectSignerOptions getProjectSignerOptions() {
         return projectSignerOptions;
+    }
+
+    public void setNoEmptyDown() {
+        Mockito.clearInvocations(projectSignerOptions);
+        when(projectSignerOptions.isNoEmpty()).thenReturn(false);
     }
 }

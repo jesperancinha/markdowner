@@ -3,14 +3,12 @@ package org.jesperancinha.projectsigner.configuration;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
 import java.nio.file.Path;
 
 @Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProjectSignerOptions {

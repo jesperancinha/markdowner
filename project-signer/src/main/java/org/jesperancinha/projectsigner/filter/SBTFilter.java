@@ -12,7 +12,7 @@ import java.nio.file.Path;
 public class SBTFilter implements ProjectFilter<Path> {
 
     private static final String NAME = "name";
-    
+
     private String lastProjectName;
 
     @Override

@@ -2,6 +2,7 @@ package org.jesperancinha.projectsigner.service;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,19 +29,37 @@ class ReadmeNamingServiceImplTest {
     @Autowired
     private ReadmeNamingServiceImpl namingService;
 
-    @Test
-    void testBuildReadmeStreamNothing() throws URISyntaxException, IOException {
+    @Autowired
+    private OptionsServiceMock optionsService;
 
+    @BeforeEach
+    public void setUp() {
+        optionsService.setNoEmptyDown();
+    }
+
+    @Test
+    public void testBuildReadmeStreamNothing() throws URISyntaxException, IOException {
         final Path path = Path.of(getClass().getResource("/directory2NoReadme/noProject2").toURI());
+
         final InputStream inputStream = namingService.buildReadmeStream(path);
 
         assertThat(inputStream).isNull();
     }
 
     @Test
-    void testBuildReadmeStreamMixMavenAndNPM() throws URISyntaxException, IOException {
-
+    public void testBuildReadmeStreamMixMavenAndNPMFlagOn() throws URISyntaxException, IOException {
+        optionsService.setNoEmptyUp();
         final Path path = Path.of(getClass().getResource("/directory2NoReadme/project3MavenAndNPM").toURI());
+
+        final InputStream inputStream = namingService.buildReadmeStream(path);
+
+        assertThat(inputStream).isNull();
+    }
+
+    @Test
+    public void testBuildReadmeStreamMixMavenAndNPM() throws URISyntaxException, IOException {
+        final Path path = Path.of(getClass().getResource("/directory2NoReadme/project3MavenAndNPM").toURI());
+
         final InputStream inputStream = namingService.buildReadmeStream(path);
 
         assertThat(inputStream).isNotNull();
@@ -49,9 +68,9 @@ class ReadmeNamingServiceImplTest {
     }
 
     @Test
-    void testBuildReadmeStreamMavenName() throws URISyntaxException, IOException {
-
+    public void testBuildReadmeStreamMavenName() throws URISyntaxException, IOException {
         final Path path = Path.of(getClass().getResource("/directory2NoReadme/project1Maven").toURI());
+
         final InputStream inputStream = namingService.buildReadmeStream(path);
 
         assertThat(inputStream).isNotNull();
@@ -60,7 +79,7 @@ class ReadmeNamingServiceImplTest {
     }
 
     @Test
-    void testBuildReadmeStreamMavenNoName() throws URISyntaxException, IOException {
+    public void testBuildReadmeStreamMavenNoName() throws URISyntaxException, IOException {
 
         final Path path = Path.of(getClass().getResource("/directory2NoReadme/project1MavenNoName").toURI());
         final InputStream inputStream = namingService.buildReadmeStream(path);
@@ -71,9 +90,9 @@ class ReadmeNamingServiceImplTest {
     }
 
     @Test
-    void testBuildReadmeStreamNPM() throws URISyntaxException, IOException {
-
+    public void testBuildReadmeStreamNPM() throws URISyntaxException, IOException {
         final Path path = Path.of(getClass().getResource("/directory2NoReadme/project2NPM").toURI());
+
         final InputStream inputStream = namingService.buildReadmeStream(path);
 
         assertThat(inputStream).isNotNull();
@@ -82,9 +101,9 @@ class ReadmeNamingServiceImplTest {
     }
 
     @Test
-    void testBuildReadmeStreamGradle() throws URISyntaxException, IOException {
-
+    public void testBuildReadmeStreamGradle() throws URISyntaxException, IOException {
         final Path path = Path.of(getClass().getResource("/directory2NoReadme/project4Gradle").toURI());
+
         final InputStream inputStream = namingService.buildReadmeStream(path);
 
         assertThat(inputStream).isNotNull();
@@ -93,9 +112,9 @@ class ReadmeNamingServiceImplTest {
     }
 
     @Test
-    void testBuildReadmeStreamSBT() throws URISyntaxException, IOException {
-
+    public void testBuildReadmeStreamSBT() throws URISyntaxException, IOException {
         final Path path = Path.of(getClass().getResource("/directory2NoReadme/project5Sbt").toURI());
+
         final InputStream inputStream = namingService.buildReadmeStream(path);
 
         assertThat(inputStream).isNotNull();
