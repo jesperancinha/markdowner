@@ -75,7 +75,7 @@ public class FinderServiceImpl implements FinderService {
 
             @Override
             public FileVisitResult postVisitDirectory(Path dir, IOException e) throws IOException {
-                if (dir.toString().equalsIgnoreCase("resources")) {
+                if (dir.getFileName().toString().equalsIgnoreCase("resources")) {
                     return SKIP_SUBTREE;
                 }
                 if (ObjectUtils.isEmpty(e)) {
