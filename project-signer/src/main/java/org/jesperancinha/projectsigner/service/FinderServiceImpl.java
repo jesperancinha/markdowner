@@ -75,7 +75,7 @@ public class FinderServiceImpl implements FinderService {
 
             @Override
             public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) {
-                if (dir.getFileName().toString().equalsIgnoreCase("resources")) {
+                if (isIgnorableFolder(dir)) {
                     return SKIP_SUBTREE;
                 }
                 return CONTINUE;
@@ -83,7 +83,7 @@ public class FinderServiceImpl implements FinderService {
 
             @Override
             public FileVisitResult postVisitDirectory(Path dir, IOException e) throws IOException {
-                if (dir.getFileName().toString().equalsIgnoreCase("resources")) {
+                if (isIgnorableFolder(dir)) {
                     return SKIP_SUBTREE;
                 }
                 if (ObjectUtils.isEmpty(e)) {
@@ -112,5 +112,11 @@ public class FinderServiceImpl implements FinderService {
                 return CONTINUE;
             }
         });
+    }
+
+    private boolean isIgnorableFolder(Path dir) {
+        return dir.getFileName().toString().equalsIgnoreCase("resources")
+                ||
+                dir.getFileName().toString().equalsIgnoreCase("project-signer-templates");
     }
 }
