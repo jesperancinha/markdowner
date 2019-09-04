@@ -28,6 +28,7 @@ import java.util.Objects;
 
 import static java.nio.file.FileVisitOption.FOLLOW_LINKS;
 import static java.nio.file.FileVisitResult.CONTINUE;
+import static java.nio.file.FileVisitResult.SKIP_SUBTREE;
 
 @Slf4j
 @Service
@@ -74,6 +75,9 @@ public class FinderServiceImpl implements FinderService {
 
             @Override
             public FileVisitResult postVisitDirectory(Path dir, IOException e) throws IOException {
+                if (dir.toString().equalsIgnoreCase("resources")) {
+                    return SKIP_SUBTREE;
+                }
                 if (ObjectUtils.isEmpty(e)) {
                     final InputStream inputStream = readmeNamingService.buildReadmeStream(dir);
                     if (Objects.nonNull(inputStream)) {

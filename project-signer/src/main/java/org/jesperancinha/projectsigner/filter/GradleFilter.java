@@ -11,7 +11,7 @@ public class GradleFilter implements ProjectFilter<Path> {
     @Override
     public boolean test(Path path) {
         boolean isGradleBuild = path.getFileName().toString().equals(GRADLE_BUILD);
-        if(isGradleBuild) {
+        if (isGradleBuild) {
             this.lastProjectName = path.getParent().getFileName().toString();
             return true;
         }
