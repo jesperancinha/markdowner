@@ -37,13 +37,15 @@ public class FinderServiceImpl implements FinderService {
     private TemplateService templateService;
     private ReadmeService readmeService;
     private OptionsService optionsService;
+    private FileWriterServiceImpl fileWriterService;
 
     public FinderServiceImpl(
             final NamingService namingService,
             final MergeService mergeService,
             final TemplateService templateService,
             final ReadmeService readmeService,
-            final OptionsService optionsService
+            final OptionsService optionsService,
+            final FileWriterServiceImpl fileWriterService
     ) {
 
         this.namingService = namingService;
@@ -51,6 +53,7 @@ public class FinderServiceImpl implements FinderService {
         this.templateService = templateService;
         this.readmeService = readmeService;
         this.optionsService = optionsService;
+        this.fileWriterService = fileWriterService;
     }
 
     @Override
@@ -76,7 +79,8 @@ public class FinderServiceImpl implements FinderService {
                         log.trace("Visiting path {}", dir);
                         final String readme = readmeService.readDataSprippedOfTags(inputStream, optionsService.getProjectSignerOptions().getTagNames());
                         final String newText = mergeService.mergeDocumentWithFooterTemplate(readme, allParagraphs);
-                        log.info(newText);
+                        log.trace("New readme:\n {}", newText);
+                        fileWriterService.exportReadmeFile(dir, newText);
                     }
                 } else {
                     log.error("Failed on file {}", dir, e);
