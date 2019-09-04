@@ -74,6 +74,14 @@ public class FinderServiceImpl implements FinderService {
             }
 
             @Override
+            public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) {
+                if (dir.getFileName().toString().equalsIgnoreCase("resources")) {
+                    return SKIP_SUBTREE;
+                }
+                return CONTINUE;
+            }
+
+            @Override
             public FileVisitResult postVisitDirectory(Path dir, IOException e) throws IOException {
                 if (dir.getFileName().toString().equalsIgnoreCase("resources")) {
                     return SKIP_SUBTREE;
