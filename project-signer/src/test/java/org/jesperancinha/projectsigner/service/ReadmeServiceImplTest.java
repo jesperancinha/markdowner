@@ -18,6 +18,7 @@ class ReadmeServiceImplTest {
 
     private static final String DIRECTORY_0_README_MD = "/directory1/Readme.md";
     private static final String DIRECTORY_1_README_MD = "/directory1/subDirectory1/Readme.md";
+    private static final String DIRECTORY_1_SPECIAL_CASE_1 = "/directory1/specialCase1/Readme.md";
 
     @InjectMocks
     private ReadmeService readmeService = new ReadmeServiceImpl();
@@ -75,6 +76,15 @@ class ReadmeServiceImplTest {
         final String label3 = readmeService.readDataSprippedOfTags(resourceAsStream, "label3");
 
         assertThat(label3).isEqualTo("# label1\n\n# label2");
+    }
+
+    @Test
+    void testReadDataSprippedOfTagsSpecialCase1() throws IOException {
+        final InputStream resourceAsStream = getClass().getResourceAsStream(DIRECTORY_1_SPECIAL_CASE_1);
+
+        final String label3 = readmeService.readDataSprippedOfTags(resourceAsStream, "License", "About me");
+
+        assertThat(label3).isEqualTo("# Mancala JE");
     }
 
 }

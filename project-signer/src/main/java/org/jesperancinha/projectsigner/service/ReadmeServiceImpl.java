@@ -18,9 +18,9 @@ import static org.jesperancinha.projectsigner.utils.StandardUtils.sanitizeTag;
 public class ReadmeServiceImpl implements ReadmeService {
 
     @Override
-    public String readDataSprippedOfTags(final InputStream templateInputStream, String... tags) throws IOException {
+    public String readDataSprippedOfTags(final InputStream readmeInputStream, String... tags) throws IOException {
         final StringBuilder sb = new StringBuilder();
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(templateInputStream))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(readmeInputStream))) {
 
             final List<String> allTags = Arrays.asList(tags);
             String line;
@@ -41,7 +41,7 @@ public class ReadmeServiceImpl implements ReadmeService {
     private int calculateCurrentMinHashTags(String line, int currentMinHashTags, List<String> allTags) {
         if (allTags.contains(sanitizeTag(line))) {
             int hashCount = counHashTags(line);
-            if (hashCount <= currentMinHashTags) {
+            if (hashCount < currentMinHashTags) {
                 currentMinHashTags = 0;
             } else {
                 currentMinHashTags = hashCount;
