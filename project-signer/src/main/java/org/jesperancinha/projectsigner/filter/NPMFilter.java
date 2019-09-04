@@ -5,7 +5,6 @@ import com.google.gson.JsonElement;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.FileReader;
-import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Objects;
 
@@ -14,16 +13,21 @@ public class NPMFilter implements ProjectFilter<Path> {
 
     private static final String NAME = "name";
 
+    private static final String PACKAGE_JSON = "package.json";
+
     private String lastProjectName;
 
     @Override
     public boolean test(Path path) {
+        boolean maybeNPMBuild = path.getFileName().toString().equals(PACKAGE_JSON);
         try {
-            JsonElement jsonElement = new Gson().getAdapter(JsonElement.class).fromJson(new FileReader(path.toFile()));
-            JsonElement name = jsonElement.getAsJsonObject().get(NAME);
-            if (Objects.nonNull(name)) {
-                this.lastProjectName = name.getAsString();
-                return true;
+            if (maybeNPMBuild) {
+                JsonElement jsonElement = new Gson().getAdapter(JsonElement.class).fromJson(new FileReader(path.toFile()));
+                JsonElement name = jsonElement.getAsJsonObject().get(NAME);
+                if (Objects.nonNull(name)) {
+                    this.lastProjectName = name.getAsString();
+                    return true;
+                }
             }
         } catch (Exception e) {
             log.trace("Not a valid JSON!", e);

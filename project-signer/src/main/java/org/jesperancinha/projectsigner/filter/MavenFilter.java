@@ -18,24 +18,29 @@ import java.nio.file.Path;
 @Slf4j
 public class MavenFilter implements ProjectFilter<Path> {
 
+    private static final String POM_XML = "pom.xml";
+
     private String lastProjectName;
 
     @Override
     public boolean test(Path path) {
+        boolean maybeMavenBuild = path.getFileName().toString().equals(POM_XML);
         try {
-            final DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-            final Document xmlDocument = documentBuilder.parse(new InputSource(new FileReader(path.toFile())));
-            log.trace("Message is valid XML.");
-            String textContent = getString(xmlDocument, "/project/name");
-            if (Strings.isEmpty(textContent)) {
-                textContent = getString(xmlDocument, "/project/artifactId");
+            if (maybeMavenBuild) {
+                final DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+                final Document xmlDocument = documentBuilder.parse(new InputSource(new FileReader(path.toFile())));
+                log.trace("Message is valid XML.");
+                String textContent = getString(xmlDocument, "/project/name");
+                if (Strings.isEmpty(textContent)) {
+                    textContent = getString(xmlDocument, "/project/artifactId");
+                }
+                this.lastProjectName = textContent;
+                return !Strings.isEmpty(textContent);
             }
-            this.lastProjectName = textContent;
-            return !Strings.isEmpty(textContent);
         } catch (Exception e) {
             log.trace("Not a valid Maven file", e);
-            return false;
         }
+        return false;
     }
 
     private String getString(Document xmlDocument, String expression) throws XPathExpressionException {

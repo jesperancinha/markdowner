@@ -17,23 +17,26 @@ public class SBTFilter implements ProjectFilter<Path> {
 
     @Override
     public boolean test(Path path) {
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path.toFile()))) {
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                String[] split = line.split("\\s*:=\\s*");
-                if (split.length == 2) {
-                    String left = split[0].trim();
-                    if (left.equals(NAME)) {
-                        String right = split[1].trim();
-                        if (Strings.isNotEmpty(right)) {
-                            this.lastProjectName = right.substring(1, right.length() - 1);
-                            return true;
+        boolean maybeSBTBuild = path.getFileName().toString().equals("build.sbt");
+        if (maybeSBTBuild) {
+            try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path.toFile()))) {
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    String[] split = line.split("\\s*:=\\s*");
+                    if (split.length == 2) {
+                        String left = split[0].trim();
+                        if (left.equals(NAME)) {
+                            String right = split[1].trim();
+                            if (Strings.isNotEmpty(right)) {
+                                this.lastProjectName = right.substring(1, right.length() - 1);
+                                return true;
+                            }
                         }
                     }
                 }
+            } catch (IOException e) {
+                log.trace("Not SBT format!");
             }
-        } catch (IOException e) {
-            log.trace("Not SBT format!");
         }
         return false;
     }
