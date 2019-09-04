@@ -30,6 +30,9 @@ public class ReadmeNamingServiceImpl implements ReadmeNamingService {
 
     @Override
     public InputStream buildReadmeStream(Path path) throws IOException {
+        if(path.equals(optionsService.getProjectSignerOptions().getTemplateLocation())){
+            return null;
+        }
         final Path readmePath = path.resolve("Readme.md");
         final File readmeFile = readmePath.toFile();
         if (readmeFile.exists()) {

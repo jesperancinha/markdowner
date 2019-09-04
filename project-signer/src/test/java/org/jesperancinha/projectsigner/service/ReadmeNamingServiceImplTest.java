@@ -38,6 +38,15 @@ class ReadmeNamingServiceImplTest {
     }
 
     @Test
+    public void testBuildReadmeSamePath() throws IOException {
+        final Path path = Path.of(optionsService.getProjectSignerOptions().getTemplateLocation().toString());
+
+        final InputStream inputStream = namingService.buildReadmeStream(path);
+
+        assertThat(inputStream).isNull();
+    }
+
+    @Test
     public void testBuildReadmeStreamNothing() throws URISyntaxException, IOException {
         final Path path = Path.of(getClass().getResource("/directory2NoReadme/noProject2").toURI());
 
