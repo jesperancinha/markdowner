@@ -18,7 +18,7 @@ public class ProjectSignerStart implements ApplicationRunner {
     private final OptionsService optionsService;
 
     public static void main(String[] args) {
-        SpringApplication.run(ProjectSignerStart.class);
+        SpringApplication.run(ProjectSignerStart.class, args);
     }
 
     public ProjectSignerStart(final FinderServiceImpl finderServiceImpl, final OptionsService optionsService) {

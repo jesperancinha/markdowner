@@ -25,7 +25,7 @@ public class NPMFilter implements ProjectFilter<Path> {
                 this.lastProjectName = name.getAsString();
                 return true;
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             log.trace("Not a valid JSON!", e);
         }
         return false;
