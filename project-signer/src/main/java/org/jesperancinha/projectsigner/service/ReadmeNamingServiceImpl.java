@@ -1,7 +1,8 @@
 package org.jesperancinha.projectsigner.service;
 
 import org.jesperancinha.projectsigner.filter.FileFilterChain;
-import org.jesperancinha.projectsigner.inteface.NamingService;
+import org.jesperancinha.projectsigner.inteface.OptionsService;
+import org.jesperancinha.projectsigner.inteface.ReadmeNamingService;
 import org.jesperancinha.projectsigner.model.PackageInfo;
 import org.springframework.stereotype.Service;
 
@@ -16,12 +17,15 @@ import java.nio.file.Path;
 import java.util.Objects;
 
 @Service
-public class NamingServiceImpl implements NamingService {
+public class ReadmeNamingServiceImpl implements ReadmeNamingService {
 
+    private OptionsService optionsService;
     private FileFilterChain fileFilterChain;
 
-    public NamingServiceImpl(final FileFilterChain fileFilterChain) {
+    public ReadmeNamingServiceImpl(final FileFilterChain fileFilterChain,
+                                   final OptionsService optionsService) {
         this.fileFilterChain = fileFilterChain;
+        this.optionsService = optionsService;
     }
 
     @Override
@@ -33,6 +37,10 @@ public class NamingServiceImpl implements NamingService {
         }
         final PackageInfo packageInfo = findProjectType(path);
         if (Objects.isNull(packageInfo)) {
+            return null;
+        }
+
+        if (optionsService.getProjectSignerOptions().isNoEmpty()) {
             return null;
         }
         return new ByteArrayInputStream("# ".concat(packageInfo.getProjectName()).getBytes());

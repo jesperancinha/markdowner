@@ -1,9 +1,10 @@
 package org.jesperancinha.projectsigner.service;
 
 import lombok.extern.slf4j.Slf4j;
+import org.jesperancinha.projectsigner.inteface.FileWriterService;
 import org.jesperancinha.projectsigner.inteface.FinderService;
 import org.jesperancinha.projectsigner.inteface.MergeService;
-import org.jesperancinha.projectsigner.inteface.NamingService;
+import org.jesperancinha.projectsigner.inteface.ReadmeNamingService;
 import org.jesperancinha.projectsigner.inteface.OptionsService;
 import org.jesperancinha.projectsigner.inteface.ReadmeService;
 import org.jesperancinha.projectsigner.inteface.TemplateService;
@@ -32,23 +33,23 @@ import static java.nio.file.FileVisitResult.CONTINUE;
 @Service
 public class FinderServiceImpl implements FinderService {
 
-    private NamingService namingService;
+    private ReadmeNamingService readmeNamingService;
     private MergeService mergeService;
     private TemplateService templateService;
     private ReadmeService readmeService;
     private OptionsService optionsService;
-    private FileWriterServiceImpl fileWriterService;
+    private FileWriterService fileWriterService;
 
     public FinderServiceImpl(
-            final NamingService namingService,
+            final ReadmeNamingService readmeNamingService,
             final MergeService mergeService,
             final TemplateService templateService,
             final ReadmeService readmeService,
             final OptionsService optionsService,
-            final FileWriterServiceImpl fileWriterService
+            final FileWriterService fileWriterService
     ) {
 
-        this.namingService = namingService;
+        this.readmeNamingService = readmeNamingService;
         this.mergeService = mergeService;
         this.templateService = templateService;
         this.readmeService = readmeService;
@@ -74,7 +75,7 @@ public class FinderServiceImpl implements FinderService {
             @Override
             public FileVisitResult postVisitDirectory(Path dir, IOException e) throws IOException {
                 if (ObjectUtils.isEmpty(e)) {
-                    final InputStream inputStream = namingService.buildReadmeStream(dir);
+                    final InputStream inputStream = readmeNamingService.buildReadmeStream(dir);
                     if (Objects.nonNull(inputStream)) {
                         log.trace("Visiting path {}", dir);
                         final String readme = readmeService.readDataSprippedOfTags(inputStream, optionsService.getProjectSignerOptions().getTagNames());

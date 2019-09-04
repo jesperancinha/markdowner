@@ -4,6 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Path;
 
-public interface NamingService {
+public interface ReadmeNamingService {
     InputStream buildReadmeStream(Path path) throws IOException;
 }

@@ -12,13 +12,15 @@ import java.util.Objects;
 @Slf4j
 public class NPMFilter implements ProjectFilter<Path> {
 
+    private static final String NAME = "name";
+
     private String lastProjectName;
 
     @Override
     public boolean test(Path path) {
         try {
             JsonElement jsonElement = new Gson().getAdapter(JsonElement.class).fromJson(new FileReader(path.toFile()));
-            JsonElement name = jsonElement.getAsJsonObject().get("name");
+            JsonElement name = jsonElement.getAsJsonObject().get(NAME);
             if (Objects.nonNull(name)) {
                 this.lastProjectName = name.getAsString();
                 return true;

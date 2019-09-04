@@ -11,6 +11,8 @@ import java.nio.file.Path;
 @Slf4j
 public class SBTFilter implements ProjectFilter<Path> {
 
+    private static final String NAME = "name";
+    
     private String lastProjectName;
 
     @Override
@@ -21,7 +23,7 @@ public class SBTFilter implements ProjectFilter<Path> {
                 String[] split = line.split("\\s*:=\\s*");
                 if (split.length == 2) {
                     String left = split[0].trim();
-                    if (left.equals("name")) {
+                    if (left.equals(NAME)) {
                         String right = split[1].trim();
                         if (Strings.isNotEmpty(right)) {
                             this.lastProjectName = right.substring(1, right.length() - 1);

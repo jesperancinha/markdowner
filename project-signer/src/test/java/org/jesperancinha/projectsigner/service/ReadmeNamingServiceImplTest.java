@@ -20,13 +20,13 @@ import static org.mockito.Mockito.verifyZeroInteractions;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
-class NamingServiceImplTest {
+class ReadmeNamingServiceImplTest {
 
     @MockBean
     private FinderServiceImpl finderService;
 
     @Autowired
-    private NamingServiceImpl namingService;
+    private ReadmeNamingServiceImpl namingService;
 
     @Test
     void testBuildReadmeStreamNothing() throws URISyntaxException, IOException {
