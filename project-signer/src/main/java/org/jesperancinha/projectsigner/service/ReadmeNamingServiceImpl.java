@@ -45,7 +45,7 @@ public class ReadmeNamingServiceImpl implements ReadmeNamingService {
     @Override
     public InputStream buildReadmeStream(Path path) throws IOException {
         if (path.toAbsolutePath().toString()
-                .equals(optionsService.getProjectSignerOptions().getTemplateLocation().toAbsolutePath().toString())) {
+                .equals(optionsService.getTemplateLocation().toAbsolutePath().toString())) {
             return null;
         }
         final Path readmePath = path.resolve("Readme.md");
@@ -58,7 +58,7 @@ public class ReadmeNamingServiceImpl implements ReadmeNamingService {
             return null;
         }
 
-        if (optionsService.getProjectSignerOptions().isNoEmpty()) {
+        if (optionsService.isNoEmpty()) {
             return null;
         }
         return new ByteArrayInputStream("# ".concat(packageInfo.getProjectName()).getBytes());

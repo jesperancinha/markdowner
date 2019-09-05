@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static java.lang.System.lineSeparator;
+import static java.util.Arrays.asList;
 import static org.jesperancinha.projectsigner.utils.StandardUtils.counHashTags;
 import static org.jesperancinha.projectsigner.utils.StandardUtils.sanitizeTag;
 
@@ -35,7 +36,7 @@ public class ReadmeServiceImpl implements ReadmeService {
         final StringBuilder sb = new StringBuilder();
         try (BufferedReader br = new BufferedReader(new InputStreamReader(readmeInputStream))) {
 
-            final List<String> allTags = Arrays.asList(tags);
+            final List<String> allTags = asList(tags);
             String line;
             int currentMinHashTags = 0;
             while ((line = br.readLine()) != null) {

@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import picocli.CommandLine;
 
+import java.nio.file.Path;
+
 @Service
 @Profile({"dev", "prod"})
 public class OptionsServiceImpl implements OptionsService {
@@ -23,5 +25,15 @@ public class OptionsServiceImpl implements OptionsService {
     @Override
     public ProjectSignerOptions getProjectSignerOptions() {
         return projectSignerOptions;
+    }
+
+    @Override
+    public Path getTemplateLocation() {
+        return this.projectSignerOptions.getTemplateLocation();
+    }
+
+    @Override
+    public boolean isNoEmpty() {
+        return this.projectSignerOptions.isNoEmpty();
     }
 }

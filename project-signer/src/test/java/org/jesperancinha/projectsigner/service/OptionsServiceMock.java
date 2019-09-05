@@ -39,6 +39,16 @@ public class OptionsServiceMock implements OptionsService {
         return projectSignerOptions;
     }
 
+    @Override
+    public Path getTemplateLocation() {
+        return projectSignerOptions.getTemplateLocation();
+    }
+
+    @Override
+    public boolean isNoEmpty() {
+        return projectSignerOptions.isNoEmpty();
+    }
+
     public void setNoEmptyDown() {
         Mockito.clearInvocations(projectSignerOptions);
         when(projectSignerOptions.isNoEmpty()).thenReturn(false);
