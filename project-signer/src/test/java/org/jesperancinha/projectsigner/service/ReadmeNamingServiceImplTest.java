@@ -1,5 +1,6 @@
 package org.jesperancinha.projectsigner.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,10 +18,12 @@ import java.nio.charset.Charset;
 import java.nio.file.Path;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.verifyZeroInteractions;
+import static org.mockito.Mockito.atLeast;
+import static org.mockito.Mockito.verify;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
+@Slf4j
 class ReadmeNamingServiceImplTest {
 
     @MockBean
@@ -35,6 +38,7 @@ class ReadmeNamingServiceImplTest {
     @BeforeEach
     public void setUp() {
         optionsService.setNoEmptyDown();
+        log.info(optionsService.getProjectSignerOptions().getRootDirectory().toString());
     }
 
     @Test
@@ -132,7 +136,7 @@ class ReadmeNamingServiceImplTest {
     }
 
     @AfterEach
-    public void tearDown() {
-        verifyZeroInteractions(finderService);
+    public void tearDown() throws IOException {
+        verify(finderService, atLeast(0)).iterateThroughFilesAndFolders(optionsService.getProjectSignerOptions().getRootDirectory());
     }
 }

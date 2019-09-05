@@ -24,7 +24,7 @@ public class OptionsServiceMock implements OptionsService {
 
     @Override
     public ProjectSignerOptions processOptions(final String[] args) {
-        final String rootPath = getClass().getResource("/").getPath();
+        final String rootPath = getClass().getResource("/dummyDirectory").getPath();
         final String template = getClass().getResource("/Readme.md").getPath();
         final ProjectSignerOptions projectSignerOptions = mock(ProjectSignerOptions.class);
         when(projectSignerOptions.getRootDirectory()).thenReturn(Path.of(rootPath));
