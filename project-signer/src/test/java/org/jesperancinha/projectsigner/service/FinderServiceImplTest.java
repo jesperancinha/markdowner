@@ -87,5 +87,6 @@ class FinderServiceImplTest {
         verifyZeroInteractions(readmeService);
         verifyZeroInteractions(mergeService);
         assertThat(pathArgumentCaptor.getValue().toString()).isEqualTo(tempDirectory.toString());
+        assertThat(inputStreamArgumentCaptor.getValue()).isNotNull();
     }
 }
