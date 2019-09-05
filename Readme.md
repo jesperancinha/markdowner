@@ -4,6 +4,7 @@
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d423415df34f42bf821ae13a078094c9)](https://www.codacy.com/app/jofisaes/project-signer?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/project-signer&amp;utm_campaign=Badge_Grade)
 [![CircleCI](https://circleci.com/gh/jesperancinha/project-signer.svg?style=svg)](https://circleci.com/gh/jesperancinha/project-signer)
+[![Build Status](https://travis-ci.org/jesperancinha/project-signer.svg?branch=master)](https://travis-ci.org/jesperancinha/project-signer)
 
 ## Description
 
