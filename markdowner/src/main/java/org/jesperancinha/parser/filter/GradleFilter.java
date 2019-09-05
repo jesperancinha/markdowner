@@ -1,4 +1,6 @@
-package org.jesperancinha.projectsigner.filter;
+package org.jesperancinha.parser.filter;
+
+import org.jesperancinha.parser.filter.ProjectFilter;
 
 import java.nio.file.Path;
 

@@ -1,7 +1,8 @@
-package org.jesperancinha.projectsigner.filter;
+package org.jesperancinha.parser.filter;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
+import org.jesperancinha.parser.filter.ProjectFilter;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;

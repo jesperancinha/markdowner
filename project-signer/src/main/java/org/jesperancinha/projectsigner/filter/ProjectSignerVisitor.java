@@ -2,12 +2,12 @@ package org.jesperancinha.projectsigner.filter;
 
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
+import org.jesperancinha.parser.model.Paragraphs;
 import org.jesperancinha.projectsigner.inteface.FileWriterService;
 import org.jesperancinha.projectsigner.inteface.MergeService;
 import org.jesperancinha.projectsigner.inteface.OptionsService;
 import org.jesperancinha.projectsigner.inteface.ReadmeNamingService;
 import org.jesperancinha.projectsigner.inteface.ReadmeService;
-import org.jesperancinha.parser.model.Paragraphs;
 import org.springframework.util.ObjectUtils;
 
 import java.io.IOException;
@@ -92,9 +92,12 @@ public class ProjectSignerVisitor extends SimpleFileVisitor<Path> {
     }
 
     private boolean isIgnorableFolder(Path dir) {
-        return dir.getFileName().toString().equalsIgnoreCase("resources")
+        final String directoryName = dir.getFileName().toString();
+        return directoryName.equalsIgnoreCase("resources")
                 ||
-                dir.getFileName().toString().equalsIgnoreCase("project-signer-templates");
+                directoryName.equalsIgnoreCase("project-signer-templates")
+                ||
+                directoryName.equalsIgnoreCase("test-classes");
     }
 
 }

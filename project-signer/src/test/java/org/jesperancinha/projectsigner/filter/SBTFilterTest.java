@@ -1,5 +1,7 @@
 package org.jesperancinha.projectsigner.filter;
 
+import org.jesperancinha.parser.filter.ProjectFilter;
+import org.jesperancinha.parser.filter.SBTFilter;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Path;

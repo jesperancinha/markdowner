@@ -1,4 +1,4 @@
-package org.jesperancinha.projectsigner.filter;
+package org.jesperancinha.parser.filter;
 
 public interface ProjectFilter<P> {
     boolean test(P path);
