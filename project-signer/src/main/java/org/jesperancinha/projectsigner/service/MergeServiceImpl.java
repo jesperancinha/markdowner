@@ -1,14 +1,9 @@
 package org.jesperancinha.projectsigner.service;
 
-import org.jesperancinha.parser.model.Paragraph;
+import org.jesperancinha.parser.MergeParser;
 import org.jesperancinha.parser.model.Paragraphs;
 import org.jesperancinha.projectsigner.inteface.MergeService;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static java.lang.System.lineSeparator;
 
 /**
  * A merge service destined to merge operation between markdown files and objects
@@ -25,11 +20,6 @@ public class MergeServiceImpl implements MergeService {
      */
     @Override
     public String mergeDocumentWithFooterTemplate(String readmeMd, Paragraphs footer) {
-        List<String> paragraphsBuildList = footer.getTags()
-                .stream()
-                .map(footer::getParagraphByTag)
-                .map(Paragraph::toString)
-                .collect(Collectors.toList());
-        return readmeMd.concat(lineSeparator()).concat(lineSeparator()).concat(String.join(lineSeparator(), paragraphsBuildList));
+        return MergeParser.mergeDocumentWithFooterTemplate(readmeMd, footer);
     }
 }
