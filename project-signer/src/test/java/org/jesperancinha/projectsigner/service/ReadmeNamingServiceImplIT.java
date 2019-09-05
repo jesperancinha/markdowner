@@ -20,11 +20,12 @@ import java.nio.file.Path;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
 @Slf4j
-class ReadmeNamingServiceImplTest {
+class ReadmeNamingServiceImplIT {
 
     @MockBean
     private FinderServiceImpl finderService;
@@ -138,5 +139,6 @@ class ReadmeNamingServiceImplTest {
     @AfterEach
     public void tearDown() throws IOException {
         verify(finderService, atLeast(0)).iterateThroughFilesAndFolders(optionsService.getProjectSignerOptions().getRootDirectory());
+        verifyNoMoreInteractions(finderService);
     }
 }
