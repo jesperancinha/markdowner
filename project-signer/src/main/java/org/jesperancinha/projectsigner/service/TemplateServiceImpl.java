@@ -10,9 +10,19 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+/**
+ * A markdown template service to handle markdown texts
+ */
 @Service
 public class TemplateServiceImpl implements TemplateService {
 
+    /**
+     * Receives an input markdown text stream nd parses its content to a Paragraphs object see {@link Paragraphs}
+     *
+     * @param templateInputStream An input markdown text stream
+     * @return A {@link Paragraphs} parsed object
+     * @throws IOException Any kind of IO Exception
+     */
     @Override
     public Paragraphs findAllParagraphs(final InputStream templateInputStream) throws IOException {
 
