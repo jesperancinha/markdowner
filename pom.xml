@@ -31,8 +31,8 @@
     </parent>
 
     <modules>
-        <module>project-signer</module>
         <module>markdowner</module>
+        <module>project-signer</module>
     </modules>
 
     <dependencyManagement>
