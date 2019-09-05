@@ -3,7 +3,7 @@ package org.jesperancinha.projectsigner.service;
 import org.jesperancinha.projectsigner.filter.FileFilterChain;
 import org.jesperancinha.projectsigner.inteface.OptionsService;
 import org.jesperancinha.projectsigner.inteface.ReadmeNamingService;
-import org.jesperancinha.projectsigner.model.PackageInfo;
+import org.jesperancinha.parser.model.PackageInfo;
 import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayInputStream;

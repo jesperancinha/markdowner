@@ -7,7 +7,7 @@ import org.jesperancinha.projectsigner.inteface.MergeService;
 import org.jesperancinha.projectsigner.inteface.OptionsService;
 import org.jesperancinha.projectsigner.inteface.ReadmeNamingService;
 import org.jesperancinha.projectsigner.inteface.ReadmeService;
-import org.jesperancinha.projectsigner.model.Paragraphs;
+import org.jesperancinha.parser.model.Paragraphs;
 import org.springframework.util.ObjectUtils;
 
 import java.io.IOException;

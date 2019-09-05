@@ -1,4 +1,4 @@
-package org.jesperancinha.projectsigner.model;
+package org.jesperancinha.parser.model;
 
 public enum ProjectType {
     MAVEN, NPM, GRADLE, SBT,

@@ -8,7 +8,7 @@ import org.jesperancinha.projectsigner.inteface.OptionsService;
 import org.jesperancinha.projectsigner.inteface.ReadmeNamingService;
 import org.jesperancinha.projectsigner.inteface.ReadmeService;
 import org.jesperancinha.projectsigner.inteface.TemplateService;
-import org.jesperancinha.projectsigner.model.Paragraphs;
+import org.jesperancinha.parser.model.Paragraphs;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.io.TempDir;

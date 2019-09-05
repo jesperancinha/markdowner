@@ -2,8 +2,8 @@ package org.jesperancinha.projectsigner.filter;
 
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
-import org.jesperancinha.projectsigner.model.PackageInfo;
-import org.jesperancinha.projectsigner.model.ProjectType;
+import org.jesperancinha.parser.model.PackageInfo;
+import org.jesperancinha.parser.model.ProjectType;
 
 import java.nio.file.Path;
 import java.util.Objects;

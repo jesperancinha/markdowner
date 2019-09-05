@@ -1,5 +1,6 @@
 package org.jesperancinha.projectsigner.utils;
 
+import org.jesperancinha.parser.utils.StandardUtils;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

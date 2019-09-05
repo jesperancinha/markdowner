@@ -1,6 +1,6 @@
 package org.jesperancinha.projectsigner.inteface;
 
-import org.jesperancinha.projectsigner.model.Paragraphs;
+import org.jesperancinha.parser.model.Paragraphs;
 
 import java.io.IOException;
 import java.io.InputStream;

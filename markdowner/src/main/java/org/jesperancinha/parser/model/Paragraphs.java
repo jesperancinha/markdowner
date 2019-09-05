@@ -1,4 +1,4 @@
-package org.jesperancinha.projectsigner.model;
+package org.jesperancinha.parser.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import static lombok.AccessLevel.PRIVATE;
-import static org.jesperancinha.projectsigner.utils.StandardUtils.sanitizeTag;
+import static org.jesperancinha.parser.utils.StandardUtils.sanitizeTag;
 
 @Getter
 @AllArgsConstructor(access = PRIVATE)

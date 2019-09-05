@@ -1,8 +1,8 @@
 package org.jesperancinha.projectsigner.service;
 
 import org.jesperancinha.projectsigner.inteface.MergeService;
-import org.jesperancinha.projectsigner.model.Paragraph;
-import org.jesperancinha.projectsigner.model.Paragraphs;
+import org.jesperancinha.parser.model.Paragraph;
+import org.jesperancinha.parser.model.Paragraphs;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -8,10 +8,10 @@ import org.jesperancinha.projectsigner.filter.SBTFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import static org.jesperancinha.projectsigner.model.ProjectType.GRADLE;
-import static org.jesperancinha.projectsigner.model.ProjectType.MAVEN;
-import static org.jesperancinha.projectsigner.model.ProjectType.NPM;
-import static org.jesperancinha.projectsigner.model.ProjectType.SBT;
+import static org.jesperancinha.parser.model.ProjectType.GRADLE;
+import static org.jesperancinha.parser.model.ProjectType.MAVEN;
+import static org.jesperancinha.parser.model.ProjectType.NPM;
+import static org.jesperancinha.parser.model.ProjectType.SBT;
 
 @Configuration
 public class ProjectSignerConfiguration {

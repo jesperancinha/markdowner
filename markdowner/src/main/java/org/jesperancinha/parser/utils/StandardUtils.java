@@ -1,4 +1,4 @@
-package org.jesperancinha.projectsigner.utils;
+package org.jesperancinha.parser.utils;
 
 public class StandardUtils {
 

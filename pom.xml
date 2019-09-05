@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.jesperancinha</groupId>
+    <groupId>org.jesperancinha.parser</groupId>
     <artifactId>project-signer-root</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
@@ -32,6 +32,7 @@
 
     <modules>
         <module>project-signer</module>
+        <module>markdowner</module>
     </modules>
 
     <dependencyManagement>
@@ -50,6 +51,11 @@
                 <groupId>com.google.code.gson</groupId>
                 <artifactId>gson</artifactId>
                 <version>${gson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jesperancinha.parser</groupId>
+                <artifactId>markdowner</artifactId>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
