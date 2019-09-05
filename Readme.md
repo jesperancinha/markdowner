@@ -5,6 +5,13 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d423415df34f42bf821ae13a078094c9)](https://www.codacy.com/app/jofisaes/project-signer?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/project-signer&amp;utm_campaign=Badge_Grade)
 [![CircleCI](https://circleci.com/gh/jesperancinha/project-signer.svg?style=svg)](https://circleci.com/gh/jesperancinha/project-signer)
 [![Build Status](https://travis-ci.org/jesperancinha/project-signer.svg?branch=master)](https://travis-ci.org/jesperancinha/project-signer)
+[![codebeat badge](https://codebeat.co/badges/bfb0987b-e483-4954-9c3b-24ac488006bd)](https://codebeat.co/projects/github-com-jesperancinha-project-signer-master)
+[![BCH compliance](https://bettercodehub.com/edge/badge/jesperancinha/project-signer?branch=master)](https://bettercodehub.com/)
+
+
+[![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/project-signer.svg)](#)
+[![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/project-signer.svg)](#)
+[![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/project-signer.svg)](#)
 
 ## Description
 
