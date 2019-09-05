@@ -1,8 +1,8 @@
 package org.jesperancinha.projectsigner.service;
 
-import org.jesperancinha.projectsigner.inteface.TemplateService;
 import org.jesperancinha.parser.model.Paragraph;
 import org.jesperancinha.parser.model.Paragraphs;
+import org.jesperancinha.projectsigner.inteface.TemplateService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

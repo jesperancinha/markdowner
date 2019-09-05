@@ -1,7 +1,5 @@
 package org.jesperancinha.projectsigner.service;
 
-import static  org.jesperancinha.parser.TemplateParser.findAllParagraphs;
-
 import org.jesperancinha.parser.TemplateParser;
 import org.jesperancinha.parser.model.Paragraphs;
 import org.jesperancinha.projectsigner.inteface.TemplateService;

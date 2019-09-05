@@ -2,7 +2,6 @@ package org.jesperancinha.parser.filter;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
-import org.jesperancinha.parser.filter.ProjectFilter;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

@@ -3,7 +3,6 @@ package org.jesperancinha.parser.filter;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import lombok.extern.slf4j.Slf4j;
-import org.jesperancinha.parser.filter.ProjectFilter;
 
 import java.io.FileReader;
 import java.nio.file.Path;

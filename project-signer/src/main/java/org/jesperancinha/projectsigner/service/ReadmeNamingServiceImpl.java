@@ -1,6 +1,5 @@
 package org.jesperancinha.projectsigner.service;
 
-import org.jesperancinha.parser.ReadmeNamingParser;
 import org.jesperancinha.parser.filter.FileFilterChain;
 import org.jesperancinha.projectsigner.inteface.OptionsService;
 import org.jesperancinha.projectsigner.inteface.ReadmeNamingService;

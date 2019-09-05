@@ -1,6 +1,7 @@
 package org.jesperancinha.projectsigner.service;
 
 import lombok.extern.slf4j.Slf4j;
+import org.jesperancinha.parser.model.Paragraphs;
 import org.jesperancinha.projectsigner.filter.ProjectSignerVisitor;
 import org.jesperancinha.projectsigner.inteface.FileWriterService;
 import org.jesperancinha.projectsigner.inteface.FinderService;
@@ -9,7 +10,6 @@ import org.jesperancinha.projectsigner.inteface.OptionsService;
 import org.jesperancinha.projectsigner.inteface.ReadmeNamingService;
 import org.jesperancinha.projectsigner.inteface.ReadmeService;
 import org.jesperancinha.projectsigner.inteface.TemplateService;
-import org.jesperancinha.parser.model.Paragraphs;
 import org.springframework.stereotype.Service;
 
 import java.io.File;

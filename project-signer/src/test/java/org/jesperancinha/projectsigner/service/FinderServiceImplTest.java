@@ -1,6 +1,7 @@
 package org.jesperancinha.projectsigner.service;
 
 import lombok.extern.slf4j.Slf4j;
+import org.jesperancinha.parser.model.Paragraphs;
 import org.jesperancinha.projectsigner.configuration.ProjectSignerOptions;
 import org.jesperancinha.projectsigner.inteface.FileWriterService;
 import org.jesperancinha.projectsigner.inteface.MergeService;
@@ -8,7 +9,6 @@ import org.jesperancinha.projectsigner.inteface.OptionsService;
 import org.jesperancinha.projectsigner.inteface.ReadmeNamingService;
 import org.jesperancinha.projectsigner.inteface.ReadmeService;
 import org.jesperancinha.projectsigner.inteface.TemplateService;
-import org.jesperancinha.parser.model.Paragraphs;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.io.TempDir;

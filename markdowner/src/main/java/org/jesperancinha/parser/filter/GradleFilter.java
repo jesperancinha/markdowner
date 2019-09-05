@@ -1,7 +1,5 @@
 package org.jesperancinha.parser.filter;
 
-import org.jesperancinha.parser.filter.ProjectFilter;
-
 import java.nio.file.Path;
 
 public class GradleFilter implements ProjectFilter<Path> {
