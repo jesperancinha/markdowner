@@ -1,15 +1,21 @@
 package org.jesperancinha.projectsigner.inteface;
 
+import org.jesperancinha.parser.ReadmeNamingParser;
 import org.jesperancinha.projectsigner.configuration.ProjectSignerOptions;
 
-import java.nio.file.Path;
+public abstract class OptionsService {
 
-public interface OptionsService {
-    ProjectSignerOptions processOptions(String[] args);
+    protected ProjectSignerOptions projectSignerOptions;
 
-    ProjectSignerOptions getProjectSignerOptions();
+    protected ReadmeNamingParser.ReadmeNamingParserBuilder commonBuilder;
 
-    Path getTemplateLocation();
+    public abstract ProjectSignerOptions processOptions(String[] args);
 
-    boolean isNoEmpty();
+    public ProjectSignerOptions getProjectSignerOptions() {
+        return projectSignerOptions;
+    }
+
+    public ReadmeNamingParser.ReadmeNamingParserBuilder getCommonNamingParser() {
+        return commonBuilder;
+    }
 }
