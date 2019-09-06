@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.jesperancinha.parser</groupId>
-    <artifactId>project-signer-root</artifactId>
+    <artifactId>markdowner</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
@@ -22,7 +22,8 @@
         <mockito-junit-jupiter.version>2.23.0</mockito-junit-jupiter.version>
         <commons-io.version>2.6</commons-io.version>
         <gson.version>2.8.5</gson.version>
-        <maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+        <mapstruct-processor.version>1.3.0.Final</mapstruct-processor.version>
     </properties>
 
     <parent>
@@ -32,12 +33,17 @@
     </parent>
 
     <modules>
-        <module>markdowner</module>
+        <module>markdowner-core</module>
         <module>project-signer</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-processor</artifactId>
+                <version>${mapstruct-processor.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
@@ -55,8 +61,8 @@
             </dependency>
             <dependency>
                 <groupId>org.jesperancinha.parser</groupId>
-                <artifactId>markdowner</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <artifactId>markdowner-core</artifactId>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
