@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class MavenFilterTest {
 
     @Test
-    void testMavenFilter() {
+    public void testMavenFilter() {
         final Path resource = Path.of(getClass().getResource("/directory2NoReadme/project1Maven/pom.xml").getPath());
         final ProjectFilter<Path> mavenFilter = new MavenFilter();
 
@@ -23,7 +23,7 @@ public class MavenFilterTest {
     }
 
     @Test
-    void testMavenFilterFail() {
+    public void testMavenFilterFail() {
         final Path resource = Path.of(getClass().getResource("/directory2NoReadme/project3MavenAndNPM/package.json").getPath());
         final ProjectFilter<Path> mavenFilter = new MavenFilter();
 

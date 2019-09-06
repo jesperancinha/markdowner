@@ -24,7 +24,7 @@ class ReadmeServiceImplTest {
     private ReadmeService readmeService = new ReadmeServiceImpl();
 
     @Test
-    void testReadDataSprippedOfTagsFile0Label1() throws IOException {
+    public void testReadDataSprippedOfTagsFile0Label1() throws IOException {
         final InputStream resourceAsStream = getClass().getResourceAsStream(DIRECTORY_0_README_MD);
 
         final String label1 = readmeService.readDataSprippedOfTags(resourceAsStream, "label1");
@@ -33,7 +33,7 @@ class ReadmeServiceImplTest {
     }
 
     @Test
-    void testReadDataSprippedOfTagsFile0Label2() throws IOException {
+    public void testReadDataSprippedOfTagsFile0Label2() throws IOException {
         final InputStream resourceAsStream = getClass().getResourceAsStream(DIRECTORY_0_README_MD);
 
         final String label2 = readmeService.readDataSprippedOfTags(resourceAsStream, "label2");
@@ -42,7 +42,7 @@ class ReadmeServiceImplTest {
     }
 
     @Test
-    void testReadDataSprippedOfTagsFile0Label3() throws IOException {
+    public void testReadDataSprippedOfTagsFile0Label3() throws IOException {
         final InputStream resourceAsStream = getClass().getResourceAsStream(DIRECTORY_0_README_MD);
 
         final String label3 = readmeService.readDataSprippedOfTags(resourceAsStream, "label3");
@@ -52,7 +52,7 @@ class ReadmeServiceImplTest {
 
 
     @Test
-    void testReadDataSprippedOfTagsFile1Label1() throws IOException {
+    public void testReadDataSprippedOfTagsFile1Label1() throws IOException {
         final InputStream resourceAsStream = getClass().getResourceAsStream(DIRECTORY_1_README_MD);
 
         final String label1 = readmeService.readDataSprippedOfTags(resourceAsStream, "label1");
@@ -61,7 +61,7 @@ class ReadmeServiceImplTest {
     }
 
     @Test
-    void testReadDataSprippedOfTagsFile1Label2() throws IOException {
+    public void testReadDataSprippedOfTagsFile1Label2() throws IOException {
         final InputStream resourceAsStream = getClass().getResourceAsStream(DIRECTORY_1_README_MD);
 
         final String label2 = readmeService.readDataSprippedOfTags(resourceAsStream, "label2");
@@ -70,7 +70,7 @@ class ReadmeServiceImplTest {
     }
 
     @Test
-    void testReadDataSprippedOfTagsFile1Label3() throws IOException {
+    public void testReadDataSprippedOfTagsFile1Label3() throws IOException {
         final InputStream resourceAsStream = getClass().getResourceAsStream(DIRECTORY_1_README_MD);
 
         final String label3 = readmeService.readDataSprippedOfTags(resourceAsStream, "label3");
@@ -79,7 +79,7 @@ class ReadmeServiceImplTest {
     }
 
     @Test
-    void testReadDataSprippedOfTagsSpecialCase1() throws IOException {
+    public void testReadDataSprippedOfTagsSpecialCase1() throws IOException {
         final InputStream resourceAsStream = getClass().getResourceAsStream(DIRECTORY_1_SPECIAL_CASE_1);
 
         final String label3 = readmeService.readDataSprippedOfTags(resourceAsStream, "License", "About me");

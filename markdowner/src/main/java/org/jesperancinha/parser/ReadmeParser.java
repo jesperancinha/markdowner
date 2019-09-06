@@ -44,19 +44,20 @@ public class ReadmeParser {
     }
 
     private static int calculateCurrentMinHashTags(String line, int currentMinHashTags, List<String> allTags) {
+        int newMinHashTagsCount = currentMinHashTags;
         if (allTags.contains(sanitizeTag(line))) {
             int hashCount = counHashTags(line);
-            if (hashCount < currentMinHashTags) {
-                currentMinHashTags = 0;
+            if (hashCount < newMinHashTagsCount) {
+                newMinHashTagsCount = 0;
             } else {
-                currentMinHashTags = hashCount;
+                newMinHashTagsCount = hashCount;
             }
         } else {
             int hashCount = counHashTags(line);
-            if (hashCount <= currentMinHashTags) {
-                currentMinHashTags = 0;
+            if (hashCount <= newMinHashTagsCount) {
+                newMinHashTagsCount = 0;
             }
         }
-        return currentMinHashTags;
+        return newMinHashTagsCount;
     }
 }

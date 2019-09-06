@@ -8,10 +8,9 @@
 [![codebeat badge](https://codebeat.co/badges/bfb0987b-e483-4954-9c3b-24ac488006bd)](https://codebeat.co/projects/github-com-jesperancinha-project-signer-master)
 [![BCH compliance](https://bettercodehub.com/edge/badge/jesperancinha/project-signer?branch=master)](https://bettercodehub.com/)
 
-
-[![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/project-signer.svg)](#)
-[![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/project-signer.svg)](#)
-[![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/project-signer.svg)](#)
+[![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/project-signer.svg)]()
+[![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/project-signer.svg)]()
+[![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/project-signer.svg)]()
 
 ## Description
 
@@ -32,9 +31,9 @@ To summarize, this program will scan all your readme files and standardize name.
 
 This command line runner will complete several boiler plate tasks:
 
-*   Creates all Readme.md files missing - Wherever there is a pom or a package.json file, there should be a Readme.md to explain the purpose of your project. Title will be calculated according to your architecture. The title string is to be extracted from the build files. If multiple build files are present, it will find the name of the project by prioritizing the name of the project in detriment of the artifact name. In order of priority it will look for a title according to the following priority list: Maven, Gradle, SBT and finally NPM.
-*   All indicated paragraph which start on a certain tag will be removed - We consider a whole paragraph according to the '#' notation of the markdown.
-*   Once all Readme.md files have been created or updated, we will finally add the template signature AS IS to the footer of all found cases.
+-   Creates all Readme.md files missing - Wherever there is a pom or a package.json file, there should be a Readme.md to explain the purpose of your project. Title will be calculated according to your architecture. The title string is to be extracted from the build files. If multiple build files are present, it will find the name of the project by prioritizing the name of the project in detriment of the artifact name. In order of priority it will look for a title according to the following priority list: Maven, Gradle, SBT and finally NPM.
+-   All indicated paragraph which start on a certain tag will be removed - We consider a whole paragraph according to the '#' notation of the markdown.
+-   Once all Readme.md files have been created or updated, we will finally add the template signature AS IS to the footer of all found cases.
 
 All tags are case sensitive, which means you do need to add extra tags in case you have issues with word casing.
 Once you finally run the above command, please make sure to double check the given signature before committing and pushing to your repos.
@@ -87,11 +86,14 @@ limitations under the License.
     -   [![Generic badge](https://img.shields.io/static/v1.svg?label=Homepage&message=Image%20Train%20Filters&color=informational)](http://itf.joaofilipesabinoesperancinha.nl/)
     -   [![Generic badge](https://img.shields.io/static/v1.svg?label=Homepage&message=MancalaJE&color=informational)](http://mancalaje.joaofilipesabinoesperancinha.nl/)
     -   [![Generic badge](https://img.shields.io/static/v1.svg?label=Google%20Apps&message=Joao+Filipe+Sabino+Esperancinha&color=informational)](https://play.google.com/store/apps/developer?id=Joao+Filipe+Sabino+Esperancinha)
+
 -   Releases:
     -   itf-chartizate-android:   
         [![Maven Central](https://img.shields.io/maven-central/v/org.jesperancinha.itf/itf-chartizate-android)](https://search.maven.org/search?q=a:itf-chartizate-android) 
         [![Download](https://api.bintray.com/packages/jesperancinha/maven/itf-chartizate-android/images/download.svg)](https://bintray.com/jesperancinha/maven/itf-chartizate-android/_latestVersion)
+
     -   itf-chartizate-java:   
         [![Maven Central](https://img.shields.io/maven-central/v/org.jesperancinha.itf/itf-chartizate)](https://search.maven.org/search?q=a:itf-chartizate)
+
     -   itf-chartizate-api:  
         [![Maven Central](https://img.shields.io/maven-central/v/org.jesperancinha.itf/itf-chartizate-api)](https://search.maven.org/search?q=a:itf-chartizate-api)

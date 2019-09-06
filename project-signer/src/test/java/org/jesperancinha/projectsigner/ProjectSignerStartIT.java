@@ -29,7 +29,7 @@ public class ProjectSignerStartIT {
     private ArgumentCaptor<Path> pathArgumentCaptor;
 
     @Test
-    void run() throws IOException {
+    public void run() throws IOException {
         verify(finderService, atLeast(0)).iterateThroughFilesAndFolders(pathArgumentCaptor.capture());
         verifyNoMoreInteractions(finderService);
         if (!CollectionUtils.isEmpty(pathArgumentCaptor.getAllValues())) {

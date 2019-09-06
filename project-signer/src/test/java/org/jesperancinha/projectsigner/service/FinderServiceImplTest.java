@@ -69,7 +69,7 @@ class FinderServiceImplTest {
     private ArgumentCaptor<Path> pathArgumentCaptor;
 
     @Test
-    void testIterateThroughFilesAndFolders() throws IOException {
+    public void testIterateThroughFilesAndFolders() throws IOException {
         final Path tempFile = Files.createTempFile(tempDirectory, README_PREFIX, MD_SUFFIX);
         final ProjectSignerOptions mockProjectSignerOptions = mock(ProjectSignerOptions.class);
         final Paragraphs mockParagraphs = mock(Paragraphs.class);

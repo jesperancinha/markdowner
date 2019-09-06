@@ -27,7 +27,7 @@ class FileWriterServiceImplTest {
     public static Path tempDirectory;
 
     @Test
-    void testExportReadmeFile() throws IOException {
+    public void testExportReadmeFile() throws IOException {
         fileWriterService.exportReadmeFile(tempDirectory, README_SIGNED_FILE);
 
         final Path resultPath = tempDirectory.resolve("Readme.md");

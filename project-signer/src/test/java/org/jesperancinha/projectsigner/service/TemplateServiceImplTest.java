@@ -20,7 +20,7 @@ public class TemplateServiceImplTest {
     private TemplateService templateService = new TemplateServiceImpl();
 
     @Test
-    void findAllParagraphs() throws IOException {
+    public void findAllParagraphs() throws IOException {
         final InputStream resourceAsStream = getClass().getResourceAsStream("/Readme.md");
 
         final Paragraphs allParagraphs = templateService.findAllParagraphs(resourceAsStream);

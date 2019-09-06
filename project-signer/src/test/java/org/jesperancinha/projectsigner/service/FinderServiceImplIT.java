@@ -40,7 +40,7 @@ class FinderServiceImplIT {
     }
 
     @Test
-    void testIterateThroughFilesAndFolders() throws IOException {
+    public void testIterateThroughFilesAndFolders() throws IOException {
         finderService.iterateThroughFilesAndFolders(tempDirectory);
 
         final String subDirectory1 = getFileContent("directory1/subDirectory1/Readme.md");

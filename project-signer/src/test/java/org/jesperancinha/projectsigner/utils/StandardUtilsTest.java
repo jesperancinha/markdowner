@@ -8,19 +8,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class StandardUtilsTest {
 
     @Test
-    void testSanitizeTag() {
+    public void testSanitizeTag() {
         final String result = StandardUtils.sanitizeTag("### Title1 ##");
         assertThat(result).isEqualTo("Title1 ##");
     }
 
     @Test
-    void testSanitizeTagAllHashes() {
+    public void testSanitizeTagAllHashes() {
         final String result = StandardUtils.sanitizeTag("#####");
         assertThat(result).isEmpty();
     }
 
     @Test
-    void testCounHashTags() {
+    public void testCounHashTags() {
         final int result = StandardUtils.counHashTags("### okoko #");
         assertThat(result).isEqualTo(3);
     }
