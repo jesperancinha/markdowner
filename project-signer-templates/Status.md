@@ -11,8 +11,10 @@
 [![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/project-signer.svg)]()
 [![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/project-signer.svg)]()
 [![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/project-signer.svg)]()
+
 ---
 ---
+
 [![Generic badge](https://img.shields.io/static/v1.svg?label=Homepage&message=MancalaJE&color=informational)](http://mancalaje.joaofilipesabinoesperancinha.nl/)
 [![GitHub release](https://img.shields.io/github/release-pre/jesperancinha/mancalaje.svg)]()
 
@@ -25,8 +27,10 @@
 [![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/mancalaje.svg)]()
 [![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/mancalaje.svg)]()
 [![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/mancalaje.svg)]()
+
 ---
 ---
+
 [![Generic badge](https://img.shields.io/static/v1.svg?label=Homepage&message=Image%20Train%20Filters&color=informational)](http://itf.joaofilipesabinoesperancinha.nl/)
 [![GitHub release](https://img.shields.io/github/release-pre/jesperancinha/image-train-filters-scala.svg)]()
 
@@ -40,8 +44,10 @@
 [![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/image-train-filters-scala.svg)]()
 [![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/image-train-filters-scala.svg)]()
 [![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/image-train-filters-scala.svg)]()
+
 ---
 ---
+
 [![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Bridge%20Logistics&color=informational)](https://github.com/jesperancinha/bridge-logistics)
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/318e7f47f8944b3d97a83d2fd2402b85)](https://www.codacy.com/app/jofisaes/bridge-logistics?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/bridge-logistics&amp;utm_campaign=Badge_Grade)
@@ -53,8 +59,10 @@
 [![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/bridge-logistics.svg)]()
 [![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/bridge-logistics.svg)]()
 [![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/bridge-logistics.svg)]()
+
 ---
 ---
+
 [![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=ITF%20Chartizate&color=informational)](https://github.com/jesperancinha/itf-chartizate)
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f1ccef42562a4e338846f103c7549955)](https://www.codacy.com/app/jofisaes/itf-chartizate?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/itf-chartizate&amp;utm_campaign=Badge_Grade)
@@ -66,8 +74,10 @@
 [![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/itf-chartizate.svg)]()
 [![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/itf-chartizate.svg)]()
 [![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/itf-chartizate.svg)]()
+
 ---
 ---
+
 [![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=String%20Array%20Paradigms&color=informational)](https://github.com/jesperancinha/string-array-paradigms)
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/0eeb457321184b74922e97dcd563ba19)](https://www.codacy.com/app/jofisaes/string-array-paradigms?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/string-array-paradigms&amp;utm_campaign=Badge_Grade)
@@ -79,8 +89,10 @@
 [![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/string-array-paradigms.svg)]()
 [![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/string-array-paradigms.svg)]()
 [![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/string-array-paradigms.svg)]()
+
 ---
 ---
+
 [![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Coffee%20Paradigms&color=informational)](https://github.com/jesperancinha/coffee-paradigms)
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4619967a56c24086b00a7e0344aebaa8)](https://www.codacy.com/app/jofisaes/coffee-paradigms?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/coffee-paradigms&amp;utm_campaign=Badge_Grade)

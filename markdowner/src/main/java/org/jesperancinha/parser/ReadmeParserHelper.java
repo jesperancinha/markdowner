@@ -11,7 +11,7 @@ import static java.util.Arrays.asList;
 import static org.jesperancinha.parser.utils.StandardUtils.counHashTags;
 import static org.jesperancinha.parser.utils.StandardUtils.sanitizeTag;
 
-public class ReadmeParser {
+public class ReadmeParserHelper {
 
     /**
      * Reads an input marked down string and returns the exact same text without the specified cardinal tags and their content.

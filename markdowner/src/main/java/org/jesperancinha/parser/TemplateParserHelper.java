@@ -8,7 +8,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Objects;
 
-public class TemplateParser {
+public class TemplateParserHelper {
 
     /**
      * Receives an input markdown text stream nd parses its content to a Paragraphs object see {@link Paragraphs}

@@ -1,6 +1,6 @@
 package org.jesperancinha.projectsigner.service;
 
-import org.jesperancinha.parser.ReadmeParser;
+import org.jesperancinha.parser.ReadmeParserHelper;
 import org.jesperancinha.projectsigner.inteface.ReadmeService;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +25,6 @@ public class ReadmeServiceImpl implements ReadmeService {
      */
     @Override
     public String readDataSprippedOfTags(final InputStream readmeInputStream, String... tags) throws IOException {
-        return ReadmeParser.readDataSprippedOfTags(readmeInputStream, tags);
+        return ReadmeParserHelper.readDataSprippedOfTags(readmeInputStream, tags);
     }
 }

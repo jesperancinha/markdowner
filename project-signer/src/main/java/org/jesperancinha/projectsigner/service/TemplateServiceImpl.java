@@ -1,6 +1,6 @@
 package org.jesperancinha.projectsigner.service;
 
-import org.jesperancinha.parser.TemplateParser;
+import org.jesperancinha.parser.TemplateParserHelper;
 import org.jesperancinha.parser.model.Paragraphs;
 import org.jesperancinha.projectsigner.inteface.TemplateService;
 import org.springframework.stereotype.Service;
@@ -23,7 +23,7 @@ public class TemplateServiceImpl implements TemplateService {
      */
     @Override
     public Paragraphs findAllParagraphs(final InputStream templateInputStream) throws IOException {
-        return TemplateParser.findAllParagraphs(templateInputStream);
+        return TemplateParserHelper.findAllParagraphs(templateInputStream);
     }
 
 
