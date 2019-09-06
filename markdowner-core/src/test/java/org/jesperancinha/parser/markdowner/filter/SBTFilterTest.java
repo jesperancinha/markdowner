@@ -1,12 +1,10 @@
-package org.jesperancinha.parser.projectsigner.filter;
+package org.jesperancinha.parser.markdowner.filter;
 
-import org.jesperancinha.parser.markdowner.filter.ProjectFilter;
-import org.jesperancinha.parser.markdowner.filter.SBTFilter;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Path;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 class SBTFilterTest {
 

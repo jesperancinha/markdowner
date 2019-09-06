@@ -1,5 +1,8 @@
 package org.jesperancinha.parser.projectsigner.filter;
 
+import static java.nio.file.FileVisitResult.CONTINUE;
+import static java.nio.file.FileVisitResult.SKIP_SUBTREE;
+
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
 import org.jesperancinha.parser.markdowner.model.Paragraphs;
@@ -18,9 +21,6 @@ import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Objects;
-
-import static java.nio.file.FileVisitResult.CONTINUE;
-import static java.nio.file.FileVisitResult.SKIP_SUBTREE;
 
 @Slf4j
 @Builder
@@ -94,10 +94,10 @@ public class ProjectSignerVisitor extends SimpleFileVisitor<Path> {
     private boolean isIgnorableFolder(Path dir) {
         final String directoryName = dir.getFileName().toString();
         return directoryName.equalsIgnoreCase("resources")
-                ||
-                directoryName.equalsIgnoreCase("project-signer-templates")
-                ||
-                directoryName.equalsIgnoreCase("test-classes");
+            ||
+            directoryName.equalsIgnoreCase("project-signer-templates")
+            ||
+            directoryName.equalsIgnoreCase("test-classes");
     }
 
 }

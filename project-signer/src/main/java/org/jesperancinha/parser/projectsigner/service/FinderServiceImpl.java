@@ -1,5 +1,8 @@
 package org.jesperancinha.parser.projectsigner.service;
 
+import static java.lang.Integer.MAX_VALUE;
+import static java.nio.file.FileVisitOption.FOLLOW_LINKS;
+
 import lombok.extern.slf4j.Slf4j;
 import org.jesperancinha.parser.markdowner.model.Paragraphs;
 import org.jesperancinha.parser.projectsigner.filter.ProjectSignerVisitor;
@@ -20,9 +23,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.EnumSet;
 
-import static java.lang.Integer.MAX_VALUE;
-import static java.nio.file.FileVisitOption.FOLLOW_LINKS;
-
 @Slf4j
 @Service
 public class FinderServiceImpl implements FinderService {
@@ -35,12 +35,12 @@ public class FinderServiceImpl implements FinderService {
     private FileWriterService fileWriterService;
 
     public FinderServiceImpl(
-            final ReadmeNamingService readmeNamingService,
-            final MergeService mergeService,
-            final TemplateService templateService,
-            final ReadmeService readmeService,
-            final OptionsService optionsService,
-            final FileWriterService fileWriterService
+        final ReadmeNamingService readmeNamingService,
+        final MergeService mergeService,
+        final TemplateService templateService,
+        final ReadmeService readmeService,
+        final OptionsService optionsService,
+        final FileWriterService fileWriterService
     ) {
 
         this.readmeNamingService = readmeNamingService;
@@ -60,12 +60,12 @@ public class FinderServiceImpl implements FinderService {
 
         final EnumSet<FileVisitOption> opts = EnumSet.of(FOLLOW_LINKS);
         Files.walkFileTree(rootPath, opts, MAX_VALUE, new ProjectSignerVisitor(
-                readmeNamingService,
-                mergeService,
-                readmeService,
-                optionsService,
-                fileWriterService,
-                allParagraphs)
+            readmeNamingService,
+            mergeService,
+            readmeService,
+            optionsService,
+            fileWriterService,
+            allParagraphs)
         );
     }
 

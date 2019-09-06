@@ -1,5 +1,8 @@
 package org.jesperancinha.parser.markdowner;
 
+import static java.lang.System.lineSeparator;
+import static java.util.Arrays.asList;
+
 import org.jesperancinha.parser.markdowner.utils.StandardUtils;
 
 import java.io.BufferedReader;
@@ -7,9 +10,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
-
-import static java.lang.System.lineSeparator;
-import static java.util.Arrays.asList;
 
 public class ReadmeParserHelper {
 

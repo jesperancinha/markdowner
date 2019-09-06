@@ -38,9 +38,9 @@ public class ReadmeNamingServiceImpl implements ReadmeNamingService {
     @Override
     public InputStream buildReadmeStream(Path path) throws IOException {
         return optionsService.getCommonNamingParser()
-                .fileFilterChain(fileFilterChain)
-                .build()
-                .buildReadmeStream(path);
+            .fileFilterChain(fileFilterChain)
+            .build()
+            .buildReadmeStream(path);
     }
 
 }

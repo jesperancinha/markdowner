@@ -1,5 +1,7 @@
 package org.jesperancinha.parser.markdowner.model;
 
+import static lombok.AccessLevel.PRIVATE;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.jesperancinha.parser.markdowner.utils.StandardUtils;
@@ -8,8 +10,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static lombok.AccessLevel.PRIVATE;
 
 @Getter
 @AllArgsConstructor(access = PRIVATE)

@@ -1,9 +1,9 @@
 package org.jesperancinha.parser.markdowner;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.jesperancinha.parser.markdowner.model.Paragraphs;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class MergeParserHelperTest {
 

@@ -1,5 +1,8 @@
 package org.jesperancinha.parser.projectsigner.service;
 
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
@@ -18,9 +21,6 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
-
-import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
-import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
@@ -73,7 +73,7 @@ class FinderServiceImplIT {
 
     private void copyFolder(Path src, Path dest) throws IOException {
         Files.walk(src)
-                .forEach(source -> copy(source, dest.resolve(src.relativize(source))));
+            .forEach(source -> copy(source, dest.resolve(src.relativize(source))));
     }
 
     private void copy(Path src, Path dest) {

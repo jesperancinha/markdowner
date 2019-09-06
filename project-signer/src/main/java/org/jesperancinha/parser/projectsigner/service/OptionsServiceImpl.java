@@ -17,8 +17,8 @@ public class OptionsServiceImpl extends OptionsService {
         new CommandLine(projectSignerOptions).parseArgs(args);
         this.projectSignerOptions = projectSignerOptions;
         commonBuilder = ReadmeNamingParser.builder()
-                .templateLocation(this.projectSignerOptions.getTemplateLocation())
-                .isNoEmpty(this.projectSignerOptions.isNoEmpty());
+            .templateLocation(this.projectSignerOptions.getTemplateLocation())
+            .isNoEmpty(this.projectSignerOptions.isNoEmpty());
         return projectSignerOptions;
     }
 

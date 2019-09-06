@@ -1,9 +1,9 @@
 package org.jesperancinha.parser.markdowner.model;
 
+import static java.lang.System.lineSeparator;
+
 import lombok.Builder;
 import lombok.Getter;
-
-import static java.lang.System.lineSeparator;
 
 @Getter
 @Builder
@@ -14,8 +14,8 @@ public class Paragraph {
     @Override
     public String toString() {
         return tag
-                .concat(lineSeparator())
-                .concat(text)
-                .concat(lineSeparator());
+            .concat(lineSeparator())
+            .concat(text)
+            .concat(lineSeparator());
     }
 }

@@ -38,7 +38,7 @@ public class ReadmeNamingParser {
      */
     public InputStream buildReadmeStream(Path path) throws IOException {
         if (path.toAbsolutePath().toString()
-                .equals(templateLocation.toAbsolutePath().toString())) {
+            .equals(templateLocation.toAbsolutePath().toString())) {
             return null;
         }
         final Path readmePath = path.resolve("Readme.md");

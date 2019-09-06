@@ -1,9 +1,8 @@
-package org.jesperancinha.parser.projectsigner.utils;
-
-import org.jesperancinha.parser.markdowner.utils.StandardUtils;
-import org.junit.jupiter.api.Test;
+package org.jesperancinha.parser.markdowner.utils;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
+import org.junit.jupiter.api.Test;
 
 public class StandardUtilsTest {
 

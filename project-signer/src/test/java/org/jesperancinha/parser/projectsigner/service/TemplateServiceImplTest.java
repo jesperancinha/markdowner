@@ -1,5 +1,7 @@
 package org.jesperancinha.parser.projectsigner.service;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.jesperancinha.parser.markdowner.model.Paragraph;
 import org.jesperancinha.parser.markdowner.model.Paragraphs;
 import org.jesperancinha.parser.projectsigner.inteface.TemplateService;
@@ -11,8 +13,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.io.IOException;
 import java.io.InputStream;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 @ExtendWith(MockitoExtension.class)
 public class TemplateServiceImplTest {
 
@@ -20,7 +20,7 @@ public class TemplateServiceImplTest {
     private TemplateService templateService = new TemplateServiceImpl();
 
     @Test
-    public void findAllParagraphs() throws IOException {
+    public void testFindAllParagraphs() throws IOException {
         final InputStream resourceAsStream = getClass().getResourceAsStream("/Readme.md");
 
         final Paragraphs allParagraphs = templateService.findAllParagraphs(resourceAsStream);

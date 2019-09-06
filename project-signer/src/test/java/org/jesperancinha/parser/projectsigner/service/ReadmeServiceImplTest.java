@@ -1,5 +1,7 @@
 package org.jesperancinha.parser.projectsigner.service;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import lombok.extern.slf4j.Slf4j;
 import org.jesperancinha.parser.projectsigner.inteface.ReadmeService;
 import org.junit.jupiter.api.Test;
@@ -9,8 +11,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.io.IOException;
 import java.io.InputStream;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
 @ExtendWith(SpringExtension.class)

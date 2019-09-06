@@ -1,12 +1,12 @@
 package org.jesperancinha.parser.markdowner;
 
-import org.jesperancinha.parser.markdowner.model.Paragraphs;
+import static java.lang.System.lineSeparator;
+
 import org.jesperancinha.parser.markdowner.model.Paragraph;
+import org.jesperancinha.parser.markdowner.model.Paragraphs;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static java.lang.System.lineSeparator;
 
 public class MergeParserHelper {
 
@@ -19,10 +19,10 @@ public class MergeParserHelper {
      */
     public static String mergeDocumentWithFooterTemplate(String readmeMd, Paragraphs footer) {
         List<String> paragraphsBuildList = footer.getTags()
-                .stream()
-                .map(footer::getParagraphByTag)
-                .map(Paragraph::toString)
-                .collect(Collectors.toList());
+            .stream()
+            .map(footer::getParagraphByTag)
+            .map(Paragraph::toString)
+            .collect(Collectors.toList());
         return readmeMd.concat(lineSeparator()).concat(lineSeparator()).concat(String.join(lineSeparator(), paragraphsBuildList));
     }
 }

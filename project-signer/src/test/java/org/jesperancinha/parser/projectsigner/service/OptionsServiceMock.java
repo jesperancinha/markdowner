@@ -1,5 +1,8 @@
 package org.jesperancinha.parser.projectsigner.service;
 
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 import org.jesperancinha.parser.markdowner.ReadmeNamingParser;
 import org.jesperancinha.parser.projectsigner.configuration.ProjectSignerOptions;
 import org.jesperancinha.parser.projectsigner.inteface.OptionsService;
@@ -9,9 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.nio.file.Path;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
 @Service
 @Profile({"test", "localtest", "default"})
 public class OptionsServiceMock extends OptionsService {
@@ -19,8 +19,8 @@ public class OptionsServiceMock extends OptionsService {
         Mockito.clearInvocations(projectSignerOptions);
         when(projectSignerOptions.isNoEmpty()).thenReturn(true);
         commonBuilder = ReadmeNamingParser.builder()
-                .templateLocation(this.projectSignerOptions.getTemplateLocation())
-                .isNoEmpty(this.projectSignerOptions.isNoEmpty());
+            .templateLocation(this.projectSignerOptions.getTemplateLocation())
+            .isNoEmpty(this.projectSignerOptions.isNoEmpty());
     }
 
     @Override
@@ -33,8 +33,8 @@ public class OptionsServiceMock extends OptionsService {
         when(projectSignerOptions.getTagNames()).thenReturn(new String[]{"License", "About me"});
         this.projectSignerOptions = projectSignerOptions;
         commonBuilder = ReadmeNamingParser.builder()
-                .templateLocation(this.projectSignerOptions.getTemplateLocation())
-                .isNoEmpty(this.projectSignerOptions.isNoEmpty());
+            .templateLocation(this.projectSignerOptions.getTemplateLocation())
+            .isNoEmpty(this.projectSignerOptions.isNoEmpty());
         return projectSignerOptions;
     }
 
@@ -42,7 +42,7 @@ public class OptionsServiceMock extends OptionsService {
         Mockito.clearInvocations(projectSignerOptions);
         when(projectSignerOptions.isNoEmpty()).thenReturn(false);
         commonBuilder = ReadmeNamingParser.builder()
-                .templateLocation(this.projectSignerOptions.getTemplateLocation())
-                .isNoEmpty(this.projectSignerOptions.isNoEmpty());
+            .templateLocation(this.projectSignerOptions.getTemplateLocation())
+            .isNoEmpty(this.projectSignerOptions.isNoEmpty());
     }
 }

@@ -1,13 +1,13 @@
 package org.jesperancinha.parser.projectsigner.service;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.jesperancinha.parser.markdowner.model.Paragraphs;
 import org.jesperancinha.parser.projectsigner.inteface.MergeService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(MockitoExtension.class)
 public class MergeServiceImplTest {
