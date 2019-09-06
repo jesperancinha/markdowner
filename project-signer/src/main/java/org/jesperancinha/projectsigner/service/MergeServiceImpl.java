@@ -1,6 +1,6 @@
 package org.jesperancinha.projectsigner.service;
 
-import org.jesperancinha.parser.MergeParser;
+import org.jesperancinha.parser.MergeParserHelper;
 import org.jesperancinha.parser.model.Paragraphs;
 import org.jesperancinha.projectsigner.inteface.MergeService;
 import org.springframework.stereotype.Service;
@@ -20,6 +20,6 @@ public class MergeServiceImpl implements MergeService {
      */
     @Override
     public String mergeDocumentWithFooterTemplate(String readmeMd, Paragraphs footer) {
-        return MergeParser.mergeDocumentWithFooterTemplate(readmeMd, footer);
+        return MergeParserHelper.mergeDocumentWithFooterTemplate(readmeMd, footer);
     }
 }

@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 import static java.lang.System.lineSeparator;
 
-public class MergeParser {
+public class MergeParserHelper {
 
     /**
      * Receives a complete markdown text and a {@link Paragraphs} instance and adds all paragraphs in the stipulated order to the end of the text
