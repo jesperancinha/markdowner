@@ -5,7 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.jesperancinha.parser</groupId>
     <artifactId>markdowner</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <name>Markdowner parent POM</name>
+    <version>1.0.0</version>
     <description>Parent pom of the markdowner libraries</description>
     <url>https://github.com/jesperancinha/itf-chartizate</url>
     <licenses>
@@ -22,6 +23,22 @@
             <organizationUrl>http://joaofilipesabinoesperancinha.nl/</organizationUrl>
         </developer>
     </developers>
+    <scm>
+        <connection>git@github.com:jesperancinha/markdowner.git</connection>
+        <developerConnection>git@github.com:jesperancinha/markdowner.git</developerConnection>
+        <url>https://github.com/jesperancinha/markdowner</url>
+        <tag>1.0.0</tag>
+    </scm>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
     <properties>
         <lombok.version>1.18.8</lombok.version>
         <maven-compiler-plugin.compilerVersion>11</maven-compiler-plugin.compilerVersion>
@@ -53,7 +70,7 @@
 
     <modules>
         <module>markdowner-core</module>
-        <module>project-signer</module>
+<!--        <module>project-signer</module>-->
     </modules>
 
     <dependencyManagement>

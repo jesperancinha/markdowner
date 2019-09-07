@@ -49,6 +49,27 @@ The most common form of using this plugin would be something like this as comman
 
 Remember to user profiles dev/prod. No difference at the moment between the different profiles.
 
+## Tools
+
+```text
+gpg --keyserver hkp://keyserver.ubuntu.com --send-keys <your GPG key>
+gpg --list-keys
+export GPG_TTY=$(tty)
+mvn clean deploy -Prelease
+mvn nexus-staging:release  -Prelease
+```
+```xml
+<settings>
+    <servers>
+        <server>
+            <id>ossrh</id>
+            <username>your-jira-id</username>
+            <password>your-jira-pwd</password>
+        </server>
+    </servers>
+</settings>
+```
+
 ## License
 
 ```text
