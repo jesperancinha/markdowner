@@ -46,7 +46,7 @@ public class ReadmeNamingParser {
         if (readmeFile.exists()) {
             return new FileInputStream(readmeFile);
         }
-        final PackageInfo packageInfo = findProjectType(path);
+        final PackageInfo packageInfo = findPackageInfo(path);
         if (Objects.isNull(packageInfo)) {
             return null;
         }
@@ -57,7 +57,7 @@ public class ReadmeNamingParser {
         return new ByteArrayInputStream("# ".concat(packageInfo.getProjectName()).getBytes());
     }
 
-    private PackageInfo findProjectType(Path path) throws IOException {
+    private PackageInfo findPackageInfo(Path path) throws IOException {
         PackageInfo highestLevel = null;
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(path)) {
             for (Path newPath : stream) {

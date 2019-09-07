@@ -1,14 +1,8 @@
 package org.jesperancinha.parser.markdowner.filter;
 
-import static org.jesperancinha.parser.markdowner.model.ProjectType.GRADLE;
-import static org.jesperancinha.parser.markdowner.model.ProjectType.MAVEN;
-import static org.jesperancinha.parser.markdowner.model.ProjectType.NPM;
-import static org.jesperancinha.parser.markdowner.model.ProjectType.SBT;
-
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
 import org.jesperancinha.parser.markdowner.model.PackageInfo;
-import org.jesperancinha.parser.markdowner.model.ProjectType;
 
 import java.nio.file.Path;
 import java.util.Objects;
@@ -22,7 +16,7 @@ import java.util.Objects;
  * <p>
  * And returns the first find. The algorithm is shortened by levels. This means that in one specific folder, it will prioritize the finding, being Maven the first type and lastly the Simple Build Tool
  * The first find is return in a {@link PackageInfo} object. It contains the Readme type found and the title of the the parsed object.
- * Each chain is created by specifying a {@link FileFilterChain} next chain object, a {@link ProjectFilter} filter and a {@link ProjectType} to define its type
+ * Each chain is created by specifying a {@link FileFilterChain} next chain object and a {@link ProjectFilter} filter.
  * <p>
  * See {@link FileFilterChain#findHighest(PackageInfo, Path)} for more info.
  */
@@ -34,10 +28,8 @@ public class FileFilterChain {
 
     private final ProjectFilter<Path> projectFilter;
 
-    private final ProjectType projectType;
-
     /**
-     * Finds the highest element in the hierarchy ({@link ProjectType} found in the specified folder.
+     * Finds the highest element in the hierarchy found in the specified folder.
      * The deepness of the search will be limited by an element of {@link PackageInfo} given as an argument
      *
      * @param packageInfo Limiting search depth {@link PackageInfo}
@@ -46,12 +38,12 @@ public class FileFilterChain {
      */
     public PackageInfo findHighest(PackageInfo packageInfo, Path path) {
 
-        if (Objects.nonNull(packageInfo) && packageInfo.getProjectType() == projectType) {
+        if (Objects.nonNull(packageInfo) && packageInfo.getFileFilterChain() == this) {
             return packageInfo;
         }
 
         if (projectFilter.test(path)) {
-            return PackageInfo.builder().projectName(projectFilter.lastProjectName()).projectType(projectType).build();
+            return PackageInfo.builder().projectName(projectFilter.lastProjectName()).fileFilterChain(this).build();
         }
 
         if (Objects.nonNull(nextFileFilterChain)) {
@@ -67,28 +59,28 @@ public class FileFilterChain {
      * @return A filter chain {@link FileFilterChain}
      */
     public static FileFilterChain createDefaultChain() {
-        return FileFilterChain.builder().projectType(MAVEN).projectFilter(new MavenFilter())
+        return FileFilterChain.builder().projectFilter(new MavenFilter())
             .nextFileFilterChain(
                 createNPMChain()
             ).build();
     }
 
     private static FileFilterChain createNPMChain() {
-        return FileFilterChain.builder().projectType(NPM).projectFilter(new NPMFilter())
+        return FileFilterChain.builder().projectFilter(new NPMFilter())
             .nextFileFilterChain(
                 createGradleChain()
             ).build();
     }
 
     private static FileFilterChain createGradleChain() {
-        return FileFilterChain.builder().projectType(GRADLE).projectFilter(new GradleFilter())
+        return FileFilterChain.builder().projectFilter(new GradleFilter())
             .nextFileFilterChain(
                 createSBTChain()
             ).build();
     }
 
     private static FileFilterChain createSBTChain() {
-        return FileFilterChain.builder().projectType(SBT).projectFilter(new SBTFilter())
+        return FileFilterChain.builder().projectFilter(new SBTFilter())
             .nextFileFilterChain(null)
             .build();
     }
