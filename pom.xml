@@ -3,28 +3,47 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>org.jesperancinha.parser</groupId>
     <artifactId>markdowner</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
-
+    <description>Parent pom of the markdowner libraries</description>
+    <url>https://github.com/jesperancinha/itf-chartizate</url>
+    <licenses>
+        <license>
+            <name>Apache License</name>
+            <url>https://opensource.org/licenses/Apache-2.0</url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <name>João Filipe Sabino Esperancinha</name>
+            <email>jofisaes@gmail.com</email>
+            <organization>jesperancinha.org</organization>
+            <organizationUrl>http://joaofilipesabinoesperancinha.nl/</organizationUrl>
+        </developer>
+    </developers>
     <properties>
         <lombok.version>1.18.8</lombok.version>
-        <junit-jupiter.version>5.5.1</junit-jupiter.version>
-        <assertj-core.version>3.11.1</assertj-core.version>
-        <picocli.version>4.0.2</picocli.version>
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-        <lombok-maven-plugin.version>1.18.6.0</lombok-maven-plugin.version>
         <maven-compiler-plugin.compilerVersion>11</maven-compiler-plugin.compilerVersion>
         <maven-compiler-plugin.source>11</maven-compiler-plugin.source>
         <maven-compiler-plugin.target>11</maven-compiler-plugin.target>
+        <maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>
+        <maven-source-plugin.version>3.1.0</maven-source-plugin.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+        <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
+        <maven-release-plugin.version>2.4.1</maven-release-plugin.version>
+        <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
+        <junit-jupiter.version>5.5.1</junit-jupiter.version>
+        <assertj-core.version>3.11.1</assertj-core.version>
+        <picocli.version>4.0.2</picocli.version>
+        <lombok-maven-plugin.version>1.18.6.0</lombok-maven-plugin.version>
         <mockito-junit-jupiter.version>2.23.0</mockito-junit-jupiter.version>
         <commons-io.version>2.6</commons-io.version>
         <gson.version>2.8.5</gson.version>
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
         <mapstruct-processor.version>1.3.0.Final</mapstruct-processor.version>
     </properties>
+    <packaging>pom</packaging>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -97,4 +116,94 @@
         </dependencies>
     </dependencyManagement>
 
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>${maven-gpg-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${maven-source-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>${nexus-staging-maven-plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>false</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${maven-compiler-plugin.source}</source>
+                    <target>${maven-compiler-plugin.target}</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>${maven-release-plugin.version}</version>
+                <configuration>
+                    <useReleaseProfile>false</useReleaseProfile>
+                    <releaseProfiles>release</releaseProfiles>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <useSystemClassLoader>false</useSystemClassLoader>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
