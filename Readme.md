@@ -1,53 +1,27 @@
-# Project Signer
+# Markdowner
 
-[![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Project%20Signer&color=informational)](https://github.com/jesperancinha/project-signer)
+[![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Markdowner&color=informational)](https://github.com/jesperancinha/markdowner)
+[![Maven Central](https://img.shields.io/maven-central/v/org.jesperancinha.parser/markdowner)](https://search.maven.org/search?q=a:parser)
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d423415df34f42bf821ae13a078094c9)](https://www.codacy.com/app/jofisaes/project-signer?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/project-signer&amp;utm_campaign=Badge_Grade)
-[![CircleCI](https://circleci.com/gh/jesperancinha/project-signer.svg?style=svg)](https://circleci.com/gh/jesperancinha/project-signer)
-[![Build Status](https://travis-ci.org/jesperancinha/project-signer.svg?branch=master)](https://travis-ci.org/jesperancinha/project-signer)
-[![codebeat badge](https://codebeat.co/badges/bfb0987b-e483-4954-9c3b-24ac488006bd)](https://codebeat.co/projects/github-com-jesperancinha-project-signer-master)
-[![BCH compliance](https://bettercodehub.com/edge/badge/jesperancinha/project-signer?branch=master)](https://bettercodehub.com/)
-[![Build status](https://ci.appveyor.com/api/projects/status/rmiwrpoo9hipj28b/branch/master?svg=true)](https://ci.appveyor.com/project/jesperancinha/image-train-filters-scala/branch/master)
+[![Build Status](https://travis-ci.org/jesperancinha/markdowner.svg?branch=master)](https://travis-ci.org/jesperancinha/markdowner)
+[![BCH compliance](https://bettercodehub.com/edge/badge/jesperancinha/markdowner?branch=master)](https://bettercodehub.com/)
 
-[![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/project-signer.svg)]()
-[![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/project-signer.svg)]()
-[![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/project-signer.svg)]()
+[![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/markdowner.svg)]()
+[![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/markdowner.svg)]()
+[![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/markdowner.svg)]()
 
 ## Description
 
-This project serves the purpose of automatically signing all projects from the root
+An extra complicated markdown parsing library with extra special functions.
 
-The idea is to use something like:
+Look into the javadocs for more info.
 
--   Short switches
-```text
-java -jar project-signer.jar -t <template> <tag1>...<tagn> -d <root_path> -ne <no empty>
-```
--   Long switches
-```text
-java -jar project-signer.jar --template-location <template> <tag1>...<tagn> --root-directory <root_path> --no-empty <no empty>
-```
+Major highlights include:
 
-To summarize, this program will scan all your readme files and standardize name. You may want a generic signature in all your projects and this little runner will do just that!
-
-This command line runner will complete several boiler plate tasks:
-
--   Creates all Readme.md files missing - Wherever there is a pom or a package.json file, there should be a Readme.md to explain the purpose of your project. Title will be calculated according to your architecture. The title string is to be extracted from the build files. If multiple build files are present, it will find the name of the project by prioritizing the name of the project in detriment of the artifact name. In order of priority it will look for a title according to the following priority list: Maven, Gradle, SBT and finally NPM.
--   All indicated paragraph which start on a certain tag will be removed - We consider a whole paragraph according to the '#' notation of the markdown.
--   Once all Readme.md files have been created or updated, we will finally add the template signature AS IS to the footer of all found cases.
-
-All tags are case sensitive, which means you do need to add extra tags in case you have issues with word casing.
-Once you finally run the above command, please make sure to double check the given signature before committing and pushing to your repos.
-
-### Usage in an IDE
-
-The most common form of using this plugin would be something like this as command line parameters:
-
-```text
--t "../project-signer-templates/Readme.md" License "About me" -d ../../ 
-```
-
-Remember to user profiles dev/prod. No difference at the moment between the different profiles.
+-   Paragraph parser (current supports only start with #).
+-   Read of .md content stream with (#) paragraphs removed (this one does consider whole paragraphs and the tree).
+-   Read of a complete .md content stream or text auto-creation according to filter chain, determined by project type and its automated packaging system
+-   Merge of a readme file to a parsed template content
 
 ## Tools
 
