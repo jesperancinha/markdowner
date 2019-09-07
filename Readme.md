@@ -27,6 +27,16 @@ Major highlights include:
 -   Read of a complete .md content stream or text auto-creation according to filter chain, determined by project type and its automated packaging system
 -   Merge of a readme file to a parsed template content
 
+## Maven
+
+```xml
+<dependency>
+  <groupId>org.jesperancinha.parser</groupId>
+  <artifactId>markdowner</artifactId>
+  <version>1.0.0</version>
+  <type>pom</type>
+</dependency>
+```
 ## Tools
 
 ```text
