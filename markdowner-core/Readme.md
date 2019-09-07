@@ -1,5 +1,7 @@
 # markdowner
 
+[![Maven Central](https://img.shields.io/maven-central/v/org.jesperancinha.parser/markdowner-core)](https://search.maven.org/search?q=a:parser)
+
 ## License
 
 ```text
