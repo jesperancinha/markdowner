@@ -13,6 +13,7 @@ import org.jesperancinha.parser.markdowner.model.ProjectType;
 import java.nio.file.Path;
 import java.util.Objects;
 
+
 @Slf4j
 @Builder
 public class FileFilterChain {
