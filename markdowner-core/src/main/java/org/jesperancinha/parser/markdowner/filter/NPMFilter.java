@@ -8,22 +8,23 @@ import java.io.FileReader;
 import java.nio.file.Path;
 import java.util.Objects;
 
+/**
+ * Filter to check if folder contains a Node Package Manager project and keeps the project name in memory
+ */
 @Slf4j
-public class NPMFilter implements ProjectFilter<Path> {
+public class NPMFilter extends ProjectFilter<Path> {
 
     private static final String NAME = "name";
 
     private static final String PACKAGE_JSON = "package.json";
 
-    private String lastProjectName;
-
     @Override
     public boolean test(Path path) {
-        boolean maybeNPMBuild = path.getFileName().toString().equals(PACKAGE_JSON);
+        final boolean maybeNPMBuild = path.getFileName().toString().equals(PACKAGE_JSON);
         try {
             if (maybeNPMBuild) {
-                JsonElement jsonElement = new Gson().getAdapter(JsonElement.class).fromJson(new FileReader(path.toFile()));
-                JsonElement name = jsonElement.getAsJsonObject().get(NAME);
+                final JsonElement jsonElement = new Gson().getAdapter(JsonElement.class).fromJson(new FileReader(path.toFile()));
+                final JsonElement name = jsonElement.getAsJsonObject().get(NAME);
                 if (Objects.nonNull(name)) {
                     this.lastProjectName = name.getAsString();
                     return true;

@@ -8,30 +8,23 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Path;
 
+/**
+ * Filter to check if folder contains a Simple Build Tool project and keeps the project name in memory
+ */
 @Slf4j
-public class SBTFilter implements ProjectFilter<Path> {
+public class SBTFilter extends ProjectFilter<Path> {
 
     private static final String NAME = "name";
 
-    private String lastProjectName;
-
     @Override
     public boolean test(Path path) {
-        boolean maybeSBTBuild = path.getFileName().toString().equals("build.sbt");
+        final boolean maybeSBTBuild = path.getFileName().toString().equals("build.sbt");
         if (maybeSBTBuild) {
             try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path.toFile()))) {
                 String line;
                 while ((line = bufferedReader.readLine()) != null) {
-                    String[] split = line.split("\\s*:=\\s*");
-                    if (split.length == 2) {
-                        String left = split[0].trim();
-                        if (left.equals(NAME)) {
-                            String right = split[1].trim();
-                            if (Strings.isNotEmpty(right)) {
-                                this.lastProjectName = right.substring(1, right.length() - 1);
-                                return true;
-                            }
-                        }
+                    if (hasName(line)) {
+                        return true;
                     }
                 }
             } catch (IOException e) {
@@ -44,5 +37,30 @@ public class SBTFilter implements ProjectFilter<Path> {
     @Override
     public String lastProjectName() {
         return this.lastProjectName;
+    }
+
+    private boolean hasName(String line) {
+        final String[] split = line.split("\\s*:=\\s*");
+        if (split.length == 2) {
+            return isNameProperty(split);
+        }
+        return false;
+    }
+
+    private boolean isNameProperty(String[] split) {
+        final String left = split[0].trim();
+        if (left.equals(NAME)) {
+            return isValueAString(split[1]);
+        }
+        return false;
+    }
+
+    private boolean isValueAString(String s) {
+        final String right = s.trim();
+        if (Strings.isNotEmpty(right)) {
+            this.lastProjectName = right.substring(1, right.length() - 1);
+            return true;
+        }
+        return false;
     }
 }

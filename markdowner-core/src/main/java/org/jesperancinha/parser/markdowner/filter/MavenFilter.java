@@ -15,12 +15,13 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
+/**
+ * Filter to check if folder contains a Maven project and keeps the project name in memory
+ */
 @Slf4j
-public class MavenFilter implements ProjectFilter<Path> {
+public class MavenFilter extends ProjectFilter<Path> {
 
     private static final String POM_XML = "pom.xml";
-
-    private String lastProjectName;
 
     @Override
     public boolean test(Path path) {

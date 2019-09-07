@@ -1,7 +1,10 @@
 package org.jesperancinha.parser.markdowner.filter;
 
-public interface ProjectFilter<P> {
-    boolean test(P path);
+public abstract class ProjectFilter<P> {
 
-    String lastProjectName();
+    protected String lastProjectName;
+
+    public abstract boolean test(P path);
+
+    public abstract String lastProjectName();
 }

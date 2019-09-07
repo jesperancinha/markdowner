@@ -1,12 +1,16 @@
 package org.jesperancinha.parser.markdowner.filter;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.nio.file.Path;
 
-public class GradleFilter implements ProjectFilter<Path> {
+/**
+ * Filter to check if folder contains a Gradle project and keeps the project name in memory
+ */
+@Slf4j
+public class GradleFilter extends ProjectFilter<Path> {
 
     private static final String GRADLE_BUILD = "gradle.build";
-
-    private String lastProjectName;
 
     @Override
     public boolean test(Path path) {
