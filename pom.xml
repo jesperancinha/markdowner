@@ -6,7 +6,7 @@
     <groupId>org.jesperancinha.parser</groupId>
     <artifactId>markdowner</artifactId>
     <name>Markdowner parent POM</name>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
     <description>Parent pom of the markdowner libraries</description>
     <url>https://github.com/jesperancinha/itf-chartizate</url>
     <licenses>
@@ -27,7 +27,7 @@
         <connection>git@github.com:jesperancinha/markdowner.git</connection>
         <developerConnection>git@github.com:jesperancinha/markdowner.git</developerConnection>
         <url>https://github.com/jesperancinha/markdowner</url>
-        <tag>1.0.0</tag>
+        <tag>1.0.1-SNAPSHOT</tag>
     </scm>
     <distributionManagement>
         <snapshotRepository>
@@ -70,7 +70,6 @@
 
     <modules>
         <module>markdowner-core</module>
-<!--        <module>project-signer</module>-->
     </modules>
 
     <dependencyManagement>
