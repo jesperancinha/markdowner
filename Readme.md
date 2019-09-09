@@ -23,7 +23,7 @@ Look into the javadocs for more info.
 
 Major highlights include:
 
--   Paragraph parser (current supports only start with #).
+-   Paragraph parser (supports inner paragraphs #).
 -   Read of .md content stream with (#) paragraphs removed (this one does consider whole paragraphs and the tree).
 -   Read of a complete .md content stream or text auto-creation according to filter chain, determined by project type and its automated packaging system
 -   Merge of a readme file to a parsed template content
@@ -34,7 +34,7 @@ Major highlights include:
 <dependency>
   <groupId>org.jesperancinha.parser</groupId>
   <artifactId>markdowner</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <type>pom</type>
 </dependency>
 ```

@@ -1,14 +1,14 @@
 package org.jesperancinha.parser.markdowner;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.jesperancinha.parser.markdowner.TemplateParserHelper.findAllParagraphs;
-
 import org.jesperancinha.parser.markdowner.model.Paragraph;
 import org.jesperancinha.parser.markdowner.model.Paragraphs;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.jesperancinha.parser.markdowner.TemplateParserHelper.findAllParagraphs;
 
 public class TemplateParserHelperTest {
 

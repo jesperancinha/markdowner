@@ -1,7 +1,5 @@
 package org.jesperancinha.parser.markdowner;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import org.apache.commons.io.IOUtils;
 import org.jesperancinha.parser.markdowner.filter.FileFilterChain;
 import org.junit.jupiter.api.Test;
@@ -11,6 +9,8 @@ import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.nio.file.Path;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class ReadmeNamingParserTest {
 

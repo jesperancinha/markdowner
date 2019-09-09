@@ -6,14 +6,14 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
-import java.io.FileReader;
-import java.nio.file.Path;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
+import java.io.FileReader;
+import java.nio.file.Path;
 
 /**
  * Filter to check if folder contains a Maven project and keeps the project name in memory
