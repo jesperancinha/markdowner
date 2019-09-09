@@ -1,6 +1,5 @@
 package org.jesperancinha.parser.markdowner.helper;
 
-import org.jesperancinha.parser.markdowner.helper.ReadmeParserHelper;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;

@@ -12,7 +12,7 @@ import static org.jesperancinha.parser.markdowner.utils.StandardUtils.counHashTa
 
 public class TemplateParserHelper {
 
-    private TemplateParserHelper(){
+    private TemplateParserHelper() {
     }
 
     /**

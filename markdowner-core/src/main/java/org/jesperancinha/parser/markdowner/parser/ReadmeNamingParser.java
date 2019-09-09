@@ -2,7 +2,7 @@ package org.jesperancinha.parser.markdowner.parser;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import org.jesperancinha.parser.markdowner.filter.FileFilterChain;
+import org.jesperancinha.parser.markdowner.model.FileFilterChain;
 import org.jesperancinha.parser.markdowner.model.PackageInfo;
 
 import java.io.ByteArrayInputStream;
