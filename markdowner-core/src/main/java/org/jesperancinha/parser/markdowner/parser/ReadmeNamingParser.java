@@ -1,4 +1,4 @@
-package org.jesperancinha.parser.markdowner;
+package org.jesperancinha.parser.markdowner.parser;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

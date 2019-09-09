@@ -1,4 +1,4 @@
-package org.jesperancinha.parser.markdowner;
+package org.jesperancinha.parser.markdowner.helper;
 
 import org.jesperancinha.parser.markdowner.model.Paragraph;
 import org.jesperancinha.parser.markdowner.model.Paragraphs;

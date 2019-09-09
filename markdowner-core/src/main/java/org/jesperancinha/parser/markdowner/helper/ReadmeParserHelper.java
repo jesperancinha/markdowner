@@ -1,4 +1,4 @@
-package org.jesperancinha.parser.markdowner;
+package org.jesperancinha.parser.markdowner.helper;
 
 import java.io.BufferedReader;
 import java.io.IOException;
