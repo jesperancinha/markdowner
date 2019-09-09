@@ -1,7 +1,7 @@
 package org.jesperancinha.parser.markdowner.helper;
 
-import org.jesperancinha.parser.markdowner.model.Paragraph;
-import org.jesperancinha.parser.markdowner.model.Paragraphs;
+import org.jesperancinha.parser.markdowner.parser.Paragraph;
+import org.jesperancinha.parser.markdowner.parser.Paragraphs;
 
 import java.util.List;
 import java.util.stream.Collectors;

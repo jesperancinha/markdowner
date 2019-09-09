@@ -1,6 +1,6 @@
 package org.jesperancinha.parser.markdowner.helper;
 
-import org.jesperancinha.parser.markdowner.model.Paragraphs;
+import org.jesperancinha.parser.markdowner.parser.Paragraphs;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

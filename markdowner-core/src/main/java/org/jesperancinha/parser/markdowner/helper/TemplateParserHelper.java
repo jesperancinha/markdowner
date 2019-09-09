@@ -1,6 +1,6 @@
 package org.jesperancinha.parser.markdowner.helper;
 
-import org.jesperancinha.parser.markdowner.model.Paragraphs;
+import org.jesperancinha.parser.markdowner.parser.Paragraphs;
 
 import java.io.BufferedReader;
 import java.io.IOException;
