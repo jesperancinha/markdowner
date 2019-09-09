@@ -1,6 +1,6 @@
-package org.jesperancinha.parser.markdowner.utils;
+package org.jesperancinha.parser.markdowner.helper;
 
-public class StandardUtils {
+public class TagHelper {
 
     /**
      * Strips the first # characters from a string and removes eventually leading spaces

@@ -8,8 +8,8 @@ import java.util.List;
 
 import static java.lang.System.lineSeparator;
 import static java.util.Arrays.asList;
-import static org.jesperancinha.parser.markdowner.utils.StandardUtils.counHashTags;
-import static org.jesperancinha.parser.markdowner.utils.StandardUtils.sanitizeTag;
+import static org.jesperancinha.parser.markdowner.helper.TagHelper.counHashTags;
+import static org.jesperancinha.parser.markdowner.helper.TagHelper.sanitizeTag;
 
 public class ReadmeParserHelper {
 

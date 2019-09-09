@@ -8,7 +8,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Objects;
 
-import static org.jesperancinha.parser.markdowner.utils.StandardUtils.counHashTags;
+import static org.jesperancinha.parser.markdowner.helper.TagHelper.counHashTags;
 
 public class TemplateParserHelper {
 

@@ -1,26 +1,27 @@
 package org.jesperancinha.parser.markdowner.utils;
 
+import org.jesperancinha.parser.markdowner.helper.TagHelper;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class StandardUtilsTest {
+public class TagHelperTest {
 
     @Test
     public void testSanitizeTag() {
-        final String result = StandardUtils.sanitizeTag("### Title1 ##");
+        final String result = TagHelper.sanitizeTag("### Title1 ##");
         assertThat(result).isEqualTo("Title1 ##");
     }
 
     @Test
     public void testSanitizeTagAllHashes() {
-        final String result = StandardUtils.sanitizeTag("#####");
+        final String result = TagHelper.sanitizeTag("#####");
         assertThat(result).isEmpty();
     }
 
     @Test
     public void testCounHashTags() {
-        final int result = StandardUtils.counHashTags("### okoko #");
+        final int result = TagHelper.counHashTags("### okoko #");
         assertThat(result).isEqualTo(3);
     }
 }
