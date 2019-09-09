@@ -1,7 +1,7 @@
 package org.jesperancinha.parser.markdowner.helper;
 
-import org.jesperancinha.parser.markdowner.parser.Paragraph;
-import org.jesperancinha.parser.markdowner.parser.Paragraphs;
+import org.jesperancinha.parser.markdowner.model.Paragraph;
+import org.jesperancinha.parser.markdowner.model.Paragraphs;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
