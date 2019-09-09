@@ -1,6 +1,5 @@
 package org.jesperancinha.parser.markdowner.helper;
 
-import org.jesperancinha.parser.markdowner.helper.MergeParserHelper;
 import org.jesperancinha.parser.markdowner.model.Paragraphs;
 import org.junit.jupiter.api.Test;
 

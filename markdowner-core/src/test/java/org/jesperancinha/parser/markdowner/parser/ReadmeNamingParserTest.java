@@ -1,8 +1,7 @@
 package org.jesperancinha.parser.markdowner.parser;
 
 import org.apache.commons.io.IOUtils;
-import org.jesperancinha.parser.markdowner.filter.FileFilterChain;
-import org.jesperancinha.parser.markdowner.parser.ReadmeNamingParser;
+import org.jesperancinha.parser.markdowner.model.FileFilterChain;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
