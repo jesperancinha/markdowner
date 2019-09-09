@@ -17,7 +17,6 @@ public class MavenFilterTest {
 
         assertThat(result).isTrue();
         assertThat(mavenFilter.lastProjectName()).isEqualTo("This is a test project");
-
     }
 
     @Test

@@ -1,14 +1,14 @@
-# markdowner
+# Markdowner filter
 
-[![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Markdowner%20Core&color=informational)](https://github.com/jesperancinha/markdowner/tree/master/markdowner-core)
-[![Maven Central](https://img.shields.io/maven-central/v/org.jesperancinha.parser/markdowner-core)](https://search.maven.org/search?q=parser.markdowner)
+[![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Markdowner%20Filter&color=informational)](https://github.com/jesperancinha/markdowner/tree/master/markdowner-filter)
+[![Maven Central](https://img.shields.io/maven-central/v/org.jesperancinha.parser/markdowner-filter)](https://search.maven.org/search?q=parser.markdowner)
 
 ## Maven
 
 ```xml
 <dependency>
   <groupId>org.jesperancinha.parser</groupId>
-  <artifactId>markdowner-core</artifactId>
+  <artifactId>markdowner-filter</artifactId>
   <version>2.0.0</version>
 </dependency>
 ```
