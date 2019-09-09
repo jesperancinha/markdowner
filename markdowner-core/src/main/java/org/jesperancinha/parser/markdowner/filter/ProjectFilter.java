@@ -1,4 +1,4 @@
-package org.jesperancinha.parser.markdowner.parser;
+package org.jesperancinha.parser.markdowner.filter;
 
 public abstract class ProjectFilter<P> {
 

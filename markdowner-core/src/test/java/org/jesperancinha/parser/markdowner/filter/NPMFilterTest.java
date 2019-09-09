@@ -1,6 +1,5 @@
 package org.jesperancinha.parser.markdowner.filter;
 
-import org.jesperancinha.parser.markdowner.parser.ProjectFilter;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Path;
