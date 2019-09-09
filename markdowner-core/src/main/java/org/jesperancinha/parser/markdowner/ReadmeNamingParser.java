@@ -37,33 +37,79 @@ public class ReadmeNamingParser {
      * @throws IOException Any IO Exception that may occur
      */
     public InputStream buildReadmeStream(Path path) throws IOException {
-        if (path.toAbsolutePath().toString()
-                .equals(templateLocation.toAbsolutePath().toString())) {
+        if (isItATemplatePath(path)) {
             return null;
         }
-        final Path readmePath = path.resolve("Readme.md");
-        final File readmeFile = readmePath.toFile();
+        final File readmeFile = getReadmePath(path);
         if (readmeFile.exists()) {
             return new FileInputStream(readmeFile);
         }
         final PackageInfo packageInfo = findPackageInfo(path);
-        if (Objects.isNull(packageInfo)) {
-            return null;
-        }
-
-        if (isNoEmpty) {
+        if (noPackageInfo(packageInfo) || isNoEmpty) {
             return null;
         }
         return new ByteArrayInputStream("# ".concat(packageInfo.getProjectName()).getBytes());
     }
 
+    /**
+     * If no package has been found
+     *
+     * @param packageInfo The package info
+     * @return If packageInfo is not null
+     */
+    private boolean noPackageInfo(PackageInfo packageInfo) {
+        return Objects.isNull(packageInfo);
+    }
+
+    /**
+     * Gets the Readme.me from the reference directory path
+     *
+     * @param path The directory path
+     * @return The directory path with the added Readme.md file
+     */
+    private File getReadmePath(Path path) {
+        final Path readmePath = path.resolve("Readme.md");
+        return readmePath.toFile();
+    }
+
+    /**
+     * If the path is the actual template. We do not want to change the template itself
+     *
+     * @param path The path to test
+     * @return true if the template path matches the given path, otherwise false
+     */
+    private boolean isItATemplatePath(Path path) {
+        return path.toAbsolutePath().toString()
+                .equals(templateLocation.toAbsolutePath().toString());
+    }
+
+    /**
+     * Discovers the package info based on all the chain elements created during chain creation.
+     * The default configuration of this chain is MAVEN, NPM, GRADLE and SBT.
+     *
+     * @param path The Path to be tested
+     * @return The created package info with the project name and the automated packaging system type {@link PackageInfo}
+     * @throws IOException If an input/output exception has occurred
+     */
     private PackageInfo findPackageInfo(Path path) throws IOException {
-        PackageInfo highestLevel = null;
+        PackageInfo highestLevel;
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(path)) {
-            for (Path newPath : stream) {
-                if (!Files.isDirectory(newPath)) {
-                    highestLevel = fileFilterChain.findHighest(highestLevel, newPath);
-                }
+            highestLevel = iterateAllPathsInDirectoryStream(stream);
+        }
+        return highestLevel;
+    }
+
+    /**
+     * Iterates through all files in the given Directory stream
+     *
+     * @param stream Directory stream {@link DirectoryStream}
+     * @return The created package info with the project name and the automated packaging system type {@link PackageInfo}
+     */
+    private PackageInfo iterateAllPathsInDirectoryStream(DirectoryStream<Path> stream) {
+        PackageInfo highestLevel = null;
+        for (Path newPath : stream) {
+            if (!Files.isDirectory(newPath)) {
+                highestLevel = fileFilterChain.findHighest(highestLevel, newPath);
             }
         }
         return highestLevel;
