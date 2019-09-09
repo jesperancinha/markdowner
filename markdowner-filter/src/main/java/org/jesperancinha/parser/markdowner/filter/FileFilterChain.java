@@ -1,12 +1,7 @@
-package org.jesperancinha.parser.markdowner.parser;
+package org.jesperancinha.parser.markdowner.filter;
 
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
-import org.jesperancinha.parser.markdowner.filter.GradleFilter;
-import org.jesperancinha.parser.markdowner.filter.MavenFilter;
-import org.jesperancinha.parser.markdowner.filter.NPMFilter;
-import org.jesperancinha.parser.markdowner.filter.ProjectFilter;
-import org.jesperancinha.parser.markdowner.filter.SBTFilter;
 
 import java.nio.file.Path;
 import java.util.Objects;

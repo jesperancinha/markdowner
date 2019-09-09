@@ -1,4 +1,4 @@
-package org.jesperancinha.parser.markdowner.parser;
+package org.jesperancinha.parser.markdowner.filter;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.Test;
