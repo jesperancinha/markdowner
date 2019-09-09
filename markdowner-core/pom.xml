@@ -6,7 +6,7 @@
     <parent>
         <artifactId>markdowner</artifactId>
         <groupId>org.jesperancinha.parser</groupId>
-        <version>1.0.1-SNAPSHOT</version>
+        <version>1.0.1</version>
     </parent>
     <artifactId>markdowner-core</artifactId>
     <name>Markdowner core</name>
@@ -29,7 +29,7 @@
         <connection>git@github.com:jesperancinha/markdowner.git</connection>
         <developerConnection>git@github.com:jesperancinha/markdowner.git</developerConnection>
         <url>https://github.com/jesperancinha/markdowner</url>
-        <tag>1.0.1-SNAPSHOT</tag>
+        <tag>1.0.1</tag>
     </scm>
     <distributionManagement>
         <snapshotRepository>

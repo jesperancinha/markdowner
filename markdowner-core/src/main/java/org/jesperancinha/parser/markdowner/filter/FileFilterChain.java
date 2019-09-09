@@ -60,28 +60,28 @@ public class FileFilterChain {
      */
     public static FileFilterChain createDefaultChain() {
         return FileFilterChain.builder().projectFilter(new MavenFilter())
-            .nextFileFilterChain(
-                createNPMChain()
-            ).build();
+                .nextFileFilterChain(
+                        createNPMChain()
+                ).build();
     }
 
     private static FileFilterChain createNPMChain() {
         return FileFilterChain.builder().projectFilter(new NPMFilter())
-            .nextFileFilterChain(
-                createGradleChain()
-            ).build();
+                .nextFileFilterChain(
+                        createGradleChain()
+                ).build();
     }
 
     private static FileFilterChain createGradleChain() {
         return FileFilterChain.builder().projectFilter(new GradleFilter())
-            .nextFileFilterChain(
-                createSBTChain()
-            ).build();
+                .nextFileFilterChain(
+                        createSBTChain()
+                ).build();
     }
 
     private static FileFilterChain createSBTChain() {
         return FileFilterChain.builder().projectFilter(new SBTFilter())
-            .nextFileFilterChain(null)
-            .build();
+                .nextFileFilterChain(null)
+                .build();
     }
 }
