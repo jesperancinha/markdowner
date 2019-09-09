@@ -2,6 +2,7 @@ package org.jesperancinha.parser.markdowner.filter;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
+import org.jesperancinha.parser.markdowner.parser.ProjectFilter;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

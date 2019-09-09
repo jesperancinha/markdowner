@@ -1,6 +1,7 @@
 package org.jesperancinha.parser.markdowner.filter;
 
 import lombok.extern.slf4j.Slf4j;
+import org.jesperancinha.parser.markdowner.parser.ProjectFilter;
 
 import java.nio.file.Path;
 
