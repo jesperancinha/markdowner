@@ -1,4 +1,4 @@
-package org.jesperancinha.parser.markdowner;
+package org.jesperancinha.parser.markdowner.helper;
 
 import org.jesperancinha.parser.markdowner.model.Paragraph;
 import org.jesperancinha.parser.markdowner.model.Paragraphs;
@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.jesperancinha.parser.markdowner.TemplateParserHelper.findAllParagraphs;
+import static org.jesperancinha.parser.markdowner.helper.TemplateParserHelper.findAllParagraphs;
 
 public class TemplateParserHelperTest {
 

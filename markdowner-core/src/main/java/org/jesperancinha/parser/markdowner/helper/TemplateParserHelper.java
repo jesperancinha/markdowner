@@ -1,4 +1,4 @@
-package org.jesperancinha.parser.markdowner;
+package org.jesperancinha.parser.markdowner.helper;
 
 import org.jesperancinha.parser.markdowner.model.Paragraphs;
 
@@ -11,6 +11,9 @@ import java.util.Objects;
 import static org.jesperancinha.parser.markdowner.utils.StandardUtils.counHashTags;
 
 public class TemplateParserHelper {
+
+    private TemplateParserHelper(){
+    }
 
     /**
      * Receives an input markdown text stream nd parses its content to a Paragraphs object see {@link Paragraphs}
