@@ -20,33 +20,43 @@ public class TemplateParserHelper {
      * @throws IOException Any kind of IO Exception
      */
     public static Paragraphs findAllParagraphs(final InputStream templateInputStream) throws IOException {
-
         Paragraphs.ParagraphsBuilder paragraphsBuilder = new Paragraphs.ParagraphsBuilder();
         try (BufferedReader br = new BufferedReader(new InputStreamReader(templateInputStream))) {
             final StringBuilder sb = new StringBuilder();
-            String line;
-            String currentTag = null;
-            int currentHashCount = 0;
-            while ((line = br.readLine()) != null) {
-                if (line.startsWith("#") && (currentHashCount >= counHashTags(line) || currentHashCount == 0)) {
-                    createParagraphLine(paragraphsBuilder, currentTag, sb);
-                    sb.delete(0, sb.length());
-                    currentTag = line;
-                    currentHashCount = counHashTags(line);
+            final ParagraphCounter paragraphCounter = new ParagraphCounter();
+            while ((paragraphCounter.line = br.readLine()) != null) {
+                if (reachedEndOfParagrah(paragraphCounter.line, paragraphCounter.currentHashCount)) {
+                    createParagraphAndUpdateCounters(paragraphsBuilder, sb, paragraphCounter);
                 } else {
-                    sb.append(line);
-                    sb.append(System.lineSeparator());
+                    sb.append(paragraphCounter.line).append(System.lineSeparator());
                 }
             }
-            createParagraphLine(paragraphsBuilder, currentTag, sb);
+            createParagraphLine(paragraphsBuilder, paragraphCounter.currentTag, sb);
         }
         return paragraphsBuilder.build();
+    }
+
+    private static void createParagraphAndUpdateCounters(Paragraphs.ParagraphsBuilder paragraphsBuilder, StringBuilder sb, ParagraphCounter paragraphCounter) {
+        createParagraphLine(paragraphsBuilder, paragraphCounter.currentTag, sb);
+        paragraphCounter.currentTag = paragraphCounter.line;
+        paragraphCounter.currentHashCount = counHashTags(paragraphCounter.line);
+    }
+
+    private static boolean reachedEndOfParagrah(String line, int currentHashCount) {
+        return line.startsWith("#") && (currentHashCount >= counHashTags(line) || currentHashCount == 0);
     }
 
     private static void createParagraphLine(Paragraphs.ParagraphsBuilder paragraphsBuilder, String currentTag, StringBuilder sb) {
         if (Objects.nonNull(currentTag)) {
             paragraphsBuilder.withTagParagraph(currentTag, sb.toString().stripTrailing());
         }
+        sb.delete(0, sb.length());
+    }
+
+    private static class ParagraphCounter {
+        String line = null;
+        String currentTag = null;
+        int currentHashCount = 0;
     }
 
 }

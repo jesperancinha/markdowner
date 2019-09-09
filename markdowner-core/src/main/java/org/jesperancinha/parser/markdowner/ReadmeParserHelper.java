@@ -1,7 +1,5 @@
 package org.jesperancinha.parser.markdowner;
 
-import org.jesperancinha.parser.markdowner.utils.StandardUtils;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,6 +8,8 @@ import java.util.List;
 
 import static java.lang.System.lineSeparator;
 import static java.util.Arrays.asList;
+import static org.jesperancinha.parser.markdowner.utils.StandardUtils.counHashTags;
+import static org.jesperancinha.parser.markdowner.utils.StandardUtils.sanitizeTag;
 
 public class ReadmeParserHelper {
 
@@ -26,7 +26,6 @@ public class ReadmeParserHelper {
     public static String readDataSprippedOfTags(final InputStream readmeInputStream, String... tags) throws IOException {
         final StringBuilder sb = new StringBuilder();
         try (BufferedReader br = new BufferedReader(new InputStreamReader(readmeInputStream))) {
-
             final List<String> allTags = asList(tags);
             String line;
             int currentMinHashTags = 0;
@@ -34,7 +33,7 @@ public class ReadmeParserHelper {
                 if (line.startsWith("#")) {
                     currentMinHashTags = calculateCurrentMinHashTags(line, currentMinHashTags, allTags);
                 }
-                if (currentMinHashTags == 0 && (!line.startsWith("#") || !allTags.contains(StandardUtils.sanitizeTag(line)))) {
+                if (currentMinHashTags == 0 && (!line.startsWith("#") || !allTags.contains(sanitizeTag(line)))) {
                     sb.append(line);
                     sb.append(lineSeparator());
                 }
@@ -45,19 +44,29 @@ public class ReadmeParserHelper {
 
     private static int calculateCurrentMinHashTags(String line, int currentMinHashTags, List<String> allTags) {
         int newMinHashTagsCount = currentMinHashTags;
-        if (allTags.contains(StandardUtils.sanitizeTag(line))) {
-            int hashCount = StandardUtils.counHashTags(line);
-            if (hashCount < newMinHashTagsCount) {
-                newMinHashTagsCount = 0;
-            } else {
-                newMinHashTagsCount = hashCount;
-            }
+        if (allTags.contains(sanitizeTag(line))) {
+            newMinHashTagsCount = getNewMinHashTagsCountAfterMatch(line, newMinHashTagsCount);
         } else {
-            int hashCount = StandardUtils.counHashTags(line);
-            if (hashCount <= newMinHashTagsCount) {
-                newMinHashTagsCount = 0;
-            }
+            newMinHashTagsCount = getNewMinHashTagsCountAfterNoMatch(line, newMinHashTagsCount);
         }
         return newMinHashTagsCount;
+    }
+
+    private static int getNewMinHashTagsCountAfterNoMatch(String line, int newMinHashTagsCount) {
+        int hashCount = counHashTags(line);
+        if (hashCount <= newMinHashTagsCount) {
+            newMinHashTagsCount = 0;
+        }
+        return newMinHashTagsCount;
+    }
+
+    private static int getNewMinHashTagsCountAfterMatch(String line, int currentHashTagsCount) {
+        int hashCount = counHashTags(line);
+        if (hashCount < currentHashTagsCount) {
+            currentHashTagsCount = 0;
+        } else {
+            currentHashTagsCount = hashCount;
+        }
+        return currentHashTagsCount;
     }
 }
