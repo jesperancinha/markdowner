@@ -5,8 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.jesperancinha.parser.markdowner.filter.GradleFilter;
 import org.jesperancinha.parser.markdowner.filter.MavenFilter;
 import org.jesperancinha.parser.markdowner.filter.NPMFilter;
-import org.jesperancinha.parser.markdowner.filter.ProjectFilter;
 import org.jesperancinha.parser.markdowner.filter.SBTFilter;
+import org.jesperancinha.parser.markdowner.parser.ProjectFilter;
 
 import java.nio.file.Path;
 import java.util.Objects;
