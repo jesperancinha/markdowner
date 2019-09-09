@@ -10,7 +10,7 @@
     </parent>
     <artifactId>markdowner-core</artifactId>
     <name>Markdowner core</name>
-    <description>Markdowner Core - A library to</description>
+    <description>Markdowner Core - A library to parse markdown files with exception functions</description>
     <licenses>
         <license>
             <name>Apache License</name>

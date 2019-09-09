@@ -1,5 +1,7 @@
 package org.jesperancinha.parser.markdowner;
 
+import static org.jesperancinha.parser.markdowner.utils.StandardUtils.counHashTags;
+
 import org.jesperancinha.parser.markdowner.model.Paragraphs;
 
 import java.io.BufferedReader;
@@ -25,12 +27,14 @@ public class TemplateParserHelper {
             final StringBuilder sb = new StringBuilder();
             String line;
             String currentTag = null;
+            int currentHashCount = 0;
             while ((line = br.readLine()) != null) {
-                if (line.startsWith("#")) {
+                if (line.startsWith("#") && (currentHashCount >= counHashTags(line) || currentHashCount == 0)) {
                     createParagraphLine(paragraphsBuilder, currentTag, sb);
                     sb.delete(0, sb.length());
                     currentTag = line;
-                } else {
+                    currentHashCount = counHashTags(line);
+                } else{
                     sb.append(line);
                     sb.append(System.lineSeparator());
                 }
