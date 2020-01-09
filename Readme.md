@@ -34,7 +34,7 @@ Major highlights include:
 <dependency>
   <groupId>org.jesperancinha.parser</groupId>
   <artifactId>markdowner</artifactId>
-  <version>1.0.1</version>
+  <version>2.0.1</version>
   <type>pom</type>
 </dependency>
 ```
