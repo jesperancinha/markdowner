@@ -40,7 +40,15 @@ Major highlights include:
 ```
 ## Tools
 
-```text
+### Use Java 11
+
+```bash
+sdk use java 11.0.5.hs-adpt
+```
+
+### Sign to Nexus
+
+```bash
 gpg --keyserver hkp://keyserver.ubuntu.com --send-keys <your GPG key>
 gpg --list-keys
 export GPG_TTY=$(tty)
