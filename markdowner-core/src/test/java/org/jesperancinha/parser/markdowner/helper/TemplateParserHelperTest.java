@@ -2,6 +2,7 @@ package org.jesperancinha.parser.markdowner.helper;
 
 import org.jesperancinha.parser.markdowner.model.Paragraph;
 import org.jesperancinha.parser.markdowner.model.Paragraphs;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -28,6 +29,24 @@ public class TemplateParserHelperTest {
         assertThat(aboutMe).isNotNull();
         assertThat(license.getTag()).isEqualTo(LICENSE_TAG);
         assertThat(aboutMe.getTag()).isEqualTo(ABOUT_ME_TAG);
+        assertThat(license.getText()).isEqualTo("This is one\nOne");
+        assertThat(aboutMe.getText()).isEqualTo("This is two\nTwo");
+        assertThat(allParagraphs.getParagraphCount()).isEqualTo(2);
+    }
+
+    @Test
+    public void testFindAllParagraphsEmojis() throws IOException {
+        final InputStream resourceAsStream = getClass().getResourceAsStream("/ReameEmojis.md");
+
+        final Paragraphs allParagraphs = findAllParagraphs(resourceAsStream);
+
+        assertThat(allParagraphs.getParagraphCount()).isEqualTo(2);
+        final Paragraph license = allParagraphs.getParagraphByTag("License");
+        final Paragraph aboutMe = allParagraphs.getParagraphByTag("About me");
+        assertThat(license).isNotNull();
+        assertThat(aboutMe).isNotNull();
+        assertThat(license.getTag()).isEqualTo(LICENSE_TAG);
+//        assertThat(aboutMe.getTag()).isEqualTo("## About me \uD83D\uDC68\uD83C\uDFFD\u200D\uD83D\uDCBB\uD83D\uDE80");
         assertThat(license.getText()).isEqualTo("This is one\nOne");
         assertThat(aboutMe.getText()).isEqualTo("This is two\nTwo");
         assertThat(allParagraphs.getParagraphCount()).isEqualTo(2);

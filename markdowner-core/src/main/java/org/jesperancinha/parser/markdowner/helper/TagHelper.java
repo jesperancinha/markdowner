@@ -1,5 +1,8 @@
 package org.jesperancinha.parser.markdowner.helper;
 
+import java.nio.CharBuffer;
+import java.util.Arrays;
+
 public class TagHelper {
 
     /**
@@ -9,6 +12,20 @@ public class TagHelper {
      * @return The sanitized tag {@link String}
      */
     public static String sanitizeTag(final String tag) {
+        final String preSanitizedTag = removeStartingHashTags(tag);
+        CharBuffer charBuff = CharBuffer.allocate(preSanitizedTag.length());
+        int finalSize = 0;
+        for (int i = 0; i < preSanitizedTag.length(); i++) {
+            char charCandidate = preSanitizedTag.charAt(i);
+            if (charCandidate < 256) {
+                charBuff = charBuff.append(charCandidate);
+                finalSize++;
+            }
+        }
+        return new String(Arrays.copyOfRange(charBuff.array(), 0, finalSize)).trim();
+    }
+
+    private static String removeStartingHashTags(String tag) {
         int i = 0;
         for (char c : tag.toCharArray()) {
             if (c != '#') {
