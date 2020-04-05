@@ -67,6 +67,11 @@ mvn nexus-staging:release  -Prelease
 </settings>
 ```
 
+## References
+
+-   [Nexus Repository Manager -Sonatype Nexus](https://oss.sonatype.org/)
+-   [Sonatype The Central Repository](https://search.maven.org/)
+
 ## About me 👨🏽‍💻🚀
 
 [![Twitter Follow](https://img.shields.io/twitter/follow/joaofse?label=João%20Esperancinha&style=social)](https://twitter.com/joaofse)
