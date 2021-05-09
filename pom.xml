@@ -41,7 +41,7 @@
     </distributionManagement>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <lombok.version>1.18.18</lombok.version>
+        <lombok.version>1.18.20</lombok.version>
         <maven-compiler-plugin.compilerVersion>11</maven-compiler-plugin.compilerVersion>
         <maven-compiler-plugin.source>11</maven-compiler-plugin.source>
         <maven-compiler-plugin.target>11</maven-compiler-plugin.target>
