@@ -1,13 +1,16 @@
 [
   {
+    "title": "Travis",
     "badge": "Build Status",
-    "codePrefix": "travis-ci.org"
+    "codePrefix": "travis-ci.com"
   },
   {
-    "badge": "Build Status",
+    "title": "App Surveyor",
+    "badge": "Build status",
     "codePrefix": "ci.appveyor.com"
   },
   {
+    "title": "Circle CI",
     "badge": "CircleCI",
     "codePrefix": "circleci.com"
   }
