@@ -1,0 +1,14 @@
+[
+  {
+    "badge": "Build Status",
+    "codePrefix": "travis-ci.org"
+  },
+  {
+    "badge": "Build Status",
+    "codePrefix": "ci.appveyor.com"
+  },
+  {
+    "badge": "CircleCI",
+    "codePrefix": "circleci.com"
+  }
+]

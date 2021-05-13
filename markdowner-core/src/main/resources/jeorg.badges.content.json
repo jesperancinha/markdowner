@@ -1,0 +1,14 @@
+[
+  {
+    "badge": "GitHub language count",
+    "codePrefix": "img.shields.io/github/languages/count"
+  },
+  {
+    "badge": "GitHub top language",
+    "codePrefix": "img.shields.io/github/languages/top"
+  },
+  {
+    "badge": "GitHub top language",
+    "codePrefix": "img.shields.io/github/languages/code-size"
+  }
+]

@@ -81,6 +81,11 @@
             <artifactId>assertj-core</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.11.4</version>
+        </dependency>
     </dependencies>
     <profiles>
         <profile>
@@ -153,6 +158,9 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <sourcepath>target/generated-sources/delombok</sourcepath>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
