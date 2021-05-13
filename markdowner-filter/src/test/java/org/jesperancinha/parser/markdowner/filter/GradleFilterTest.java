@@ -10,10 +10,12 @@ public class GradleFilterTest {
 
     @Test
     public void testGradleFilter() {
-        final Path resource = Path.of(getClass().getResource("/directory2NoReadme/project4Gradle/gradle.build").getPath());
-        final ProjectFilter<Path> npmFilter = new GradleFilter();
+        final var resource1 = getClass().getResource("/directory2NoReadme/project4Gradle/gradle.build");
+        assertThat(resource1).isNotNull();
+        final var resource = Path.of(resource1.getPath());
+        final var npmFilter = new GradleFilter();
 
-        boolean result = npmFilter.test(resource);
+        final var result = npmFilter.test(resource);
 
         assertThat(result).isTrue();
         assertThat(npmFilter.lastProjectName()).isEqualTo("project4Gradle");
@@ -21,10 +23,12 @@ public class GradleFilterTest {
 
     @Test
     public void testGradleFilterFail() {
-        final Path resource = Path.of(getClass().getResource("/directory2NoReadme/project3MavenAndNPM/package.json").getPath());
-        final ProjectFilter<Path> mavenFilter = new GradleFilter();
+        final var resource1 = getClass().getResource("/directory2NoReadme/project3MavenAndNPM/package.json");
+        assertThat(resource1).isNotNull();
+        final var resource = Path.of(resource1.getPath());
+        final var mavenFilter = new GradleFilter();
 
-        boolean result = mavenFilter.test(resource);
+        final var result = mavenFilter.test(resource);
 
         assertThat(result).isFalse();
     }
