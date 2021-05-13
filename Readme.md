@@ -4,12 +4,15 @@
 [![Maven Central](https://img.shields.io/maven-central/v/org.jesperancinha.parser/markdowner)](https://search.maven.org/search?q=parser.markdowner)
 [![GitHub release](https://img.shields.io/github/release-pre/jesperancinha/markdowner.svg)](https://github.com/jesperancinha/markdowner/releases)
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c423c85288eb45c883e2f721bb611a3f)](https://www.codacy.com/manual/jofisaes/markdowner?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/markdowner&amp;utm_campaign=Badge_Grade)
 [![CircleCI](https://circleci.com/gh/jesperancinha/markdowner.svg?style=svg)](https://circleci.com/gh/jesperancinha/markdowner)
 [![Build Status](https://travis-ci.org/jesperancinha/markdowner.svg?branch=master)](https://travis-ci.org/jesperancinha/markdowner)
+[![Build status](https://ci.appveyor.com/api/projects/status/kuedmakr9bbne46q/branch/master?svg=true)](https://ci.appveyor.com/project/jesperancinha/markdowner/branch/master)
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c423c85288eb45c883e2f721bb611a3f)](https://www.codacy.com/manual/jofisaes/markdowner?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/markdowner&amp;utm_campaign=Badge_Grade)
 [![codebeat badge](https://codebeat.co/badges/b6f714fa-6632-473e-9eb5-c481c776d415)](https://codebeat.co/projects/github-com-jesperancinha-markdowner-master)
 [![BCH compliance](https://bettercodehub.com/edge/badge/jesperancinha/markdowner?branch=master)](https://bettercodehub.com/)
-[![Build status](https://ci.appveyor.com/api/projects/status/kuedmakr9bbne46q/branch/master?svg=true)](https://ci.appveyor.com/project/jesperancinha/markdowner/branch/master)
+
+[![Coverage Status](https://coveralls.io/repos/github/jesperancinha/markdowner/badge.svg?branch=master)](https://coveralls.io/github/jesperancinha/markdowner?branch=master)
 
 [![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/markdowner.svg)]()
 [![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/markdowner.svg)]()
@@ -21,7 +24,11 @@ An extra complicated markdown parsing library with extra special functions.
 
 Look into the javadocs for more info.
 
-Major highlights include:
+## Release 2.0.3 - 20201/05/13
+
+-   Badge Parsing
+
+## Release 2.0.2 - 2020/04/05
 
 -   Paragraph parser (supports inner paragraphs #).
 -   Read of .md content stream with (#) paragraphs removed (this one does consider whole paragraphs and the tree).
@@ -34,7 +41,7 @@ Major highlights include:
 <dependency>
   <groupId>org.jesperancinha.parser</groupId>
   <artifactId>markdowner</artifactId>
-  <version>2.0.2</version>
+  <version>2.0.2-SNAPSHOT</version>
   <type>pom</type>
 </dependency>
 ```
