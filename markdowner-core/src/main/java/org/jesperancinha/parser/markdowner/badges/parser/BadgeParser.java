@@ -15,6 +15,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -28,7 +29,7 @@ public class BadgeParser {
             "(\\[!\\[%s]\\(http[s]*:\\/\\/%s[a-zA-Z0-9\\/\\.\\]\\?\\=\\-]*\\)]\\((http[s]*:\\/\\/)*[a-zA-Z0-9\\/\\.\\]\\=\\?\\-]*\\))";
     private static final List<BadgeSettingGroup> badgeSettingGroups = parseSettings();
 
-    public static List<BadgeGroup> parse(final InputStream readmeInputStream) {
+    public static Map<BadgeType, BadgeGroup> parse(final InputStream readmeInputStream) {
         final var sb = new StringBuilder();
         try (BufferedReader br = new BufferedReader(new InputStreamReader(readmeInputStream))) {
             String s;
@@ -39,33 +40,30 @@ public class BadgeParser {
             e.printStackTrace();
         }
         final var readmeText = sb.toString();
-        return badgeSettingGroups.stream().map(badgeSettingGroup -> {
-                    if (Objects.isNull(badgeSettingGroup)) {
-                        return null;
-                    }
-                    final List<Badge> allBadges = badgeSettingGroup.getBadgeSettingList()
-                            .stream().map(badgeSetting -> {
-                                final Matcher matcher = badgeSetting.getPattern().matcher(readmeText);
-                                if (matcher.find()) {
-                                    final String badgeText = matcher.group(0);
-                                    return Badge.builder()
-                                            .badgeText(badgeText)
-                                            .title(badgeSetting.getTitle())
-                                            .build();
-                                }
-                                return null;
-                            })
-                            .filter(Objects::nonNull)
-                            .collect(Collectors.toList());
-                    return BadgeGroup
-                            .builder()
-                            .badgeType(badgeSettingGroup.getBadgeType())
-                            .badgeList(allBadges)
-                            .build();
-                }
-        )
+        return badgeSettingGroups.stream()
                 .filter(Objects::nonNull)
-                .collect(Collectors.toList());
+                .collect(Collectors.toMap(BadgeSettingGroup::getBadgeType, badgeSettingGroup -> {
+                            final List<Badge> allBadges = badgeSettingGroup.getBadgeSettingList()
+                                    .stream().map(badgeSetting -> {
+                                        final Matcher matcher = badgeSetting.getPattern().matcher(readmeText);
+                                        if (matcher.find()) {
+                                            final String badgeText = matcher.group(0);
+                                            return Badge.builder()
+                                                    .badgeText(badgeText)
+                                                    .title(badgeSetting.getTitle())
+                                                    .build();
+                                        }
+                                        return null;
+                                    })
+                                    .filter(Objects::nonNull)
+                                    .collect(Collectors.toList());
+                            return BadgeGroup
+                                    .builder()
+                                    .badgeType(badgeSettingGroup.getBadgeType())
+                                    .badgeList(allBadges)
+                                    .build();
+                        }
+                ));
     }
 
 
