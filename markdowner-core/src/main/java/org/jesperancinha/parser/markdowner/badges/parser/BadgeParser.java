@@ -2,20 +2,19 @@ package org.jesperancinha.parser.markdowner.badges.parser;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.jesperancinha.parser.markdowner.badges.model.Badge;
 import org.jesperancinha.parser.markdowner.badges.model.BadgeGroup;
 import org.jesperancinha.parser.markdowner.badges.model.BadgePattern;
 import org.jesperancinha.parser.markdowner.badges.model.BadgeSetting;
 import org.jesperancinha.parser.markdowner.badges.model.BadgeSettingGroup;
 import org.jesperancinha.parser.markdowner.badges.model.BadgeType;
-import org.jesperancinha.parser.markdowner.helper.TemplateParserHelper;
-import org.jesperancinha.parser.markdowner.model.Paragraphs;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.Arrays;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -23,27 +22,54 @@ import java.util.stream.Collectors;
 public class BadgeParser {
 
     private static final ObjectMapper objectMapper = new ObjectMapper();
+    private static final String BADGE_REGEX =
+            "(\\[!\\[%s]\\(http[s]*:\\/\\/%s[sa-zA-Z0-9\\/\\.\\]\\?\\=\\-\\&\\%%\\;\\_\\#\\:]*\\)]\\((http[s]*:\\/\\/)*[a-zA-Z0-9\\/\\.\\]\\=\\?\\-\\&\\%%\\;\\_\\#\\:]*\\))";
+    private static final Pattern NOT_ACCEPTED_REGEX =
+            Pattern.compile("color=(?!(informational)).");
+    public static final Map<BadgeType, BadgeSettingGroup> badgeSettingGroups = parseSettings();
 
-    public static List<BadgeGroup> parse(final InputStream readmeInputStream) {
-        final var badgeSettingGroups = parseSettings();
-        badgeSettingGroups.stream().map(badgeSettingGroup ->
-            badgeSettingGroup.getBadgeSettingList()
-                    .stream().map(badgeSetting -> {
-                      return null;
-            })
-        );
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(readmeInputStream))) {
-            String s;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
+    public static Map<BadgeType, BadgeGroup> parse(final String readmeText) {
+        return badgeSettingGroups
+                .values()
+                .stream()
+                .filter(Objects::nonNull)
+                .collect(Collectors.toMap(BadgeSettingGroup::getBadgeType, badgeSettingGroup -> {
+                            final Map<Pattern, Badge> allBadges = badgeSettingGroup
+                                    .getBadgeSettingList()
+                                    .stream()
+                                    .filter(Objects::nonNull)
+                                    .collect(HashMap::new, (map, badgeSetting) -> {
+                                        final Matcher matcher = badgeSetting.getPattern().matcher(readmeText);
+                                        if (matcher.find()) {
+                                            final String badgeText = matcher.group(0);
+                                            final Matcher matcher1 = NOT_ACCEPTED_REGEX.matcher(badgeText);
+                                            if (matcher1.find()) {
+                                                map.put(badgeSetting.getPattern(), null);
+                                            } else {
+                                                map.put(badgeSetting.getPattern(), Badge.builder()
+                                                        .badgeText(badgeText)
+                                                        .title(badgeSetting.getTitle())
+                                                        .build());
+                                            }
+                                        } else {
+                                            map.put(badgeSetting.getPattern(), null);
+                                        }
+                                    }, HashMap::putAll);
+
+
+                            return BadgeGroup
+                                    .builder()
+                                    .badgeType(badgeSettingGroup.getBadgeType())
+                                    .badgeHashMap(allBadges)
+                                    .build();
+                        }
+                ));
     }
 
 
-    static List<BadgeSettingGroup> parseSettings() {
+    static Map<BadgeType, BadgeSettingGroup> parseSettings() {
         return Arrays.stream(BadgeType.values())
-                .map(badgeType -> {
+                .collect(Collectors.toMap(badgeType -> badgeType, badgeType -> {
                     try {
                         final var badgeSettingList = Arrays.stream(objectMapper.readValue(
                                 BadgeParser.class.getResourceAsStream("/".concat(badgeType.getBadgeFile())),
@@ -57,9 +83,12 @@ public class BadgeParser {
                                                 BadgePattern.builder()
                                                         .title(badgeSetting.getTitle())
                                                         .pattern(Pattern.compile(
-                                                                String.format("\\(\\[!\\[%s]\\(http.*%s.*\\)",
+                                                                String.format(BADGE_REGEX,
                                                                         badgeSetting.getBadge(),
-                                                                        badgeSetting.getCodePrefix().replace(".", "\\."))))
+                                                                        badgeSetting.getCodePrefix()
+                                                                                .replace(".", "\\.")
+                                                                                .replace("/", "\\/")
+                                                                )))
                                                         .build())
                                                 .collect(Collectors.toList())
                                 )
@@ -68,7 +97,6 @@ public class BadgeParser {
                         log.error("Error", e);
                     }
                     return null;
-                })
-                .collect(Collectors.toList());
+                }));
     }
 }

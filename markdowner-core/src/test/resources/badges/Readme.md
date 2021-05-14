@@ -4,7 +4,7 @@
 [![Maven Central](https://img.shields.io/maven-central/v/org.jesperancinha.parser/markdowner-core)](https://search.maven.org/search?q=parser.markdowner-core)
 
 [![CircleCI](https://circleci.com/gh/jesperancinha/markdowner.svg?style=svg)](https://circleci.com/gh/jesperancinha/markdowner)
-[![Build Status](https://travis-ci.org/jesperancinha/markdowner.svg?branch=master)](https://travis-ci.org/jesperancinha/markdowner)
+[![Build Status](https://travis-ci.com/jesperancinha/markdowner.svg?branch=master)](https://travis-ci.com/jesperancinha/markdowner)
 [![Build status](https://ci.appveyor.com/api/projects/status/kuedmakr9bbne46q/branch/master?svg=true)](https://ci.appveyor.com/project/jesperancinha/markdowner/branch/master)
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c423c85288eb45c883e2f721bb611a3f)](https://www.codacy.com/manual/jofisaes/markdowner?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/markdowner&amp;utm_campaign=Badge_Grade)
@@ -27,7 +27,7 @@
 <dependency>
   <groupId>org.jesperancinha.parser</groupId>
   <artifactId>markdowner-core</artifactId>
-  <version>2.0.2-SNAPSHOT</version>
+  <version>2.0.3</version>
 </dependency>
 ```
 

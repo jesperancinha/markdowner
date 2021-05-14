@@ -8,13 +8,13 @@ import java.nio.charset.Charset;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class BadgeParserTest {
+public class BadgeParser3Test {
 
     @Test
     public void testBadgeParser() throws IOException {
         final var badgeGroups =
                 BadgeParser.parse(
-                        IOUtils.resourceToString("/badges/Readme.md", Charset.defaultCharset()));
+                        IOUtils.resourceToString("/badges/Readme3.md", Charset.defaultCharset()));
 
         assertThat(badgeGroups).isNotNull();
     }

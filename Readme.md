@@ -5,7 +5,7 @@
 [![GitHub release](https://img.shields.io/github/release-pre/jesperancinha/markdowner.svg)](https://github.com/jesperancinha/markdowner/releases)
 
 [![CircleCI](https://circleci.com/gh/jesperancinha/markdowner.svg?style=svg)](https://circleci.com/gh/jesperancinha/markdowner)
-[![Build Status](https://travis-ci.org/jesperancinha/markdowner.svg?branch=master)](https://travis-ci.org/jesperancinha/markdowner)
+[![Build Status](https://travis-ci.com/jesperancinha/markdowner.svg?branch=master)](https://travis-ci.com/jesperancinha/markdowner)
 [![Build status](https://ci.appveyor.com/api/projects/status/kuedmakr9bbne46q/branch/master?svg=true)](https://ci.appveyor.com/project/jesperancinha/markdowner/branch/master)
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c423c85288eb45c883e2f721bb611a3f)](https://www.codacy.com/manual/jofisaes/markdowner?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/markdowner&amp;utm_campaign=Badge_Grade)
@@ -28,9 +28,10 @@ An extra complicated markdown parsing library with extra special functions.
 
 Look into the javadocs for more info.
 
-## Release 2.0.3 - 20201/05/13
+## Release 2.0.3 - 20201/05/14
 
 -   Badge Parsing
+-   Creates Badge maps and listings for build, content, coverage, info and quality
 
 ## Release 2.0.2 - 2020/04/05
 
@@ -45,7 +46,7 @@ Look into the javadocs for more info.
 <dependency>
   <groupId>org.jesperancinha.parser</groupId>
   <artifactId>markdowner</artifactId>
-  <version>2.0.2-SNAPSHOT</version>
+  <version>2.0.3</version>
   <type>pom</type>
 </dependency>
 ```

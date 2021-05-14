@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Project",
+    "badge": "Generic badge",
+    "codePrefix": "img.shields.io/static"
+  },
+  {
+    "title": "Codacy",
+    "badge": "Codacy Badge",
+    "codePrefix": "app.codacy.com/project/badge/Coverage"
+  },
+  {
+    "title": "Codecov",
+    "badge": "codecov",
+    "codePrefix": "codecov.io"
+  },
+  {
+    "title": "Coveralls",
+    "badge": "Coverage Status",
+    "codePrefix": "coveralls.io"
+  }
+]

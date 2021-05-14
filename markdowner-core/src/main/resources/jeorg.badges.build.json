@@ -1,5 +1,10 @@
 [
   {
+    "title": "Project",
+    "badge": "Generic badge",
+    "codePrefix": "img.shields.io/static"
+  },
+  {
     "title": "Travis",
     "badge": "Build Status",
     "codePrefix": "travis-ci.com"
