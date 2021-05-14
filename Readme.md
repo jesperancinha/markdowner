@@ -28,9 +28,10 @@ An extra complicated markdown parsing library with extra special functions.
 
 Look into the javadocs for more info.
 
-## Release 2.0.3 - 20201/05/13
+## Release 2.0.3 - 20201/05/14
 
 -   Badge Parsing
+-   Creates Badge maps and listings for build, content, coverage, info and quality
 
 ## Release 2.0.2 - 2020/04/05
 
@@ -45,7 +46,7 @@ Look into the javadocs for more info.
 <dependency>
   <groupId>org.jesperancinha.parser</groupId>
   <artifactId>markdowner</artifactId>
-  <version>2.0.2-SNAPSHOT</version>
+  <version>2.0.3</version>
   <type>pom</type>
 </dependency>
 ```
