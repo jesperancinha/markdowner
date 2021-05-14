@@ -1,35 +1,75 @@
-# markdowner
+# ITF chartizate android
 
-[![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Markdowner%20Core&color=informational)](https://github.com/jesperancinha/markdowner/tree/master/markdowner-core)
-[![Maven Central](https://img.shields.io/maven-central/v/org.jesperancinha.parser/markdowner-core)](https://search.maven.org/search?q=parser.markdowner-core)
+[![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=itf-chartizate-android&color=informational)](https://github.com/JEsperancinhaOrg/itf-chartizate-android)
+[![Maven Central](https://img.shields.io/maven-central/v/org.jesperancinha.itf/itf-chartizate-android)](https://search.maven.org/search?q=a:itf-chartizate-android)
+[![Download](https://api.bintray.com/packages/jesperancinha/maven/itf-chartizate-android/images/download.svg)](https://bintray.com/jesperancinha/maven/itf-chartizate-android/_latestVersion)
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/JEsperancinhaOrg/itf-chartizate-android)](https://github.com/JEsperancinhaOrg/itf-chartizate-android/releases)
 
-[![CircleCI](https://circleci.com/gh/jesperancinha/markdowner.svg?style=svg)](https://circleci.com/gh/jesperancinha/markdowner)
-[![Build Status](https://travis-ci.com/jesperancinha/markdowner.svg?branch=master)](https://travis-ci.com/jesperancinha/markdowner)
-[![Build status](https://ci.appveyor.com/api/projects/status/kuedmakr9bbne46q/branch/master?svg=true)](https://ci.appveyor.com/project/jesperancinha/markdowner/branch/master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/30fb9978d67c4abf92d9d426c7e60e55)](https://www.codacy.com/manual/jofisaes/itf-chartizate-android?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=JEsperancinhaOrg/itf-chartizate-android&amp;utm_campaign=Badge_Grade)
+[![CircleCI](https://circleci.com/gh/JEsperancinhaOrg/itf-chartizate-android.svg?style=svg)](https://circleci.com/gh/JEsperancinhaOrg/itf-chartizate-android)
+[![Build Status](https://travis-ci.org/JEsperancinhaOrg/itf-chartizate-android.svg?branch=master)](https://travis-ci.org/JEsperancinhaOrg/itf-chartizate-android)
+[![codebeat badge](https://codebeat.co/badges/3bfe5689-c2d6-42f0-94ad-93bdbd479472)](https://codebeat.co/projects/github-com-jesperancinhaorg-itf-chartizate-android-master)
+[![BCH compliance](https://bettercodehub.com/edge/badge/JEsperancinhaOrg/itf-chartizate-android?branch=master)](https://bettercodehub.com/)
+[![Build status](https://ci.appveyor.com/api/projects/status/59hue3nnb3hqpn5i?svg=true)](https://ci.appveyor.com/project/jesperancinha/itf-chartizate-android)
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c423c85288eb45c883e2f721bb611a3f)](https://www.codacy.com/manual/jofisaes/markdowner?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/markdowner&amp;utm_campaign=Badge_Grade)
-[![codebeat badge](https://codebeat.co/badges/b6f714fa-6632-473e-9eb5-c481c776d415)](https://codebeat.co/projects/github-com-jesperancinha-markdowner-master)
-[![BCH compliance](https://bettercodehub.com/edge/badge/jesperancinha/markdowner?branch=master)](https://bettercodehub.com/)
+## Description
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/c423c85288eb45c883e2f721bb611a3f)](https://www.codacy.com/gh/jesperancinha/markdowner/dashboard?utm_source=github.com&utm_medium=referral&utm_content=jesperancinha/markdowner&utm_campaign=Badge_Coverage)
-[![codecov](https://codecov.io/gh/jesperancinha/markdowner/branch/master/graph/badge.svg?token=BREGsxyj5M)](https://codecov.io/gh/jesperancinha/markdowner)
-[![Coverage Status](https://coveralls.io/repos/github/jesperancinha/markdowner/badge.svg?branch=master)](https://coveralls.io/github/jesperancinha/markdowner?branch=master)
+ITF library for android
 
-[![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/markdowner.svg)]()
-[![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/markdowner.svg)]()
-[![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/markdowner.svg)]()
+Example:
 
----
+[![alt text](documentation/testMarket.jpg "Bologna Market Original Image")](https://goo.gl/maps/ujJC9RPnpqA3QG3R9)
+[![alt text](documentation/testMarket1.png "Bologna Market Filter Image")](https://goo.gl/maps/ujJC9RPnpqA3QG3R9)
+[![alt text](documentation/testMarket2.png "Bologna Market Filter Rd Image")](https://goo.gl/maps/ujJC9RPnpqA3QG3R9)
+
+## Gradle
+
+```text
+implementation 'org.jesperancinha.itf:itf-chartizate-android:6.0.1'
+```
 
 ## Maven
 
 ```xml
 <dependency>
-  <groupId>org.jesperancinha.parser</groupId>
-  <artifactId>markdowner-core</artifactId>
-  <version>2.0.2-SNAPSHOT</version>
+  <groupId>org.jesperancinha.itf</groupId>
+  <artifactId>itf-chartizate-android</artifactId>
+  <version>6.0.1</version>
 </dependency>
 ```
+
+## Buid
+
+```text
+gradle wrapper
+
+./gradlew assembleRelease
+```
+
+```text
+gpg --keyring secring.gpg --export-secret-keys > ~/.gnupg/secring.gpg
+
+./gradlew assemble -x signArchives
+
+./gradlew assemble -x signArchives uploadArchives
+```
+
+```text
+./gradlew bintrayUpload
+```
+## gradle.properties
+
+```text
+signing.keyId=<keyId>
+signing.password=<password>
+ 
+sonatypeUsername=<username>
+sonatypePassword=<password>
+```
+
+## References
+
+-   [Azure/azure-sdk-for-android](https://github.com/Azure/azure-sdk-for-android/blob/master/.travis.yml)
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 

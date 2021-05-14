@@ -1,5 +1,10 @@
 [
   {
+    "title": "Project",
+    "badge": "Generic badge",
+    "codePrefix": "img.shields.io/static"
+  },
+  {
     "title": "Language Count",
     "badge": "GitHub language count",
     "codePrefix": "img.shields.io/github/languages/count"

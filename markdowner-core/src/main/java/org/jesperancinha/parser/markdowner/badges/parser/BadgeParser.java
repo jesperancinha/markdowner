@@ -9,12 +9,9 @@ import org.jesperancinha.parser.markdowner.badges.model.BadgeSetting;
 import org.jesperancinha.parser.markdowner.badges.model.BadgeSettingGroup;
 import org.jesperancinha.parser.markdowner.badges.model.BadgeType;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.Arrays;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.regex.Matcher;
@@ -26,50 +23,53 @@ public class BadgeParser {
 
     private static final ObjectMapper objectMapper = new ObjectMapper();
     private static final String BADGE_REGEX =
-            "(\\[!\\[%s]\\(http[s]*:\\/\\/%s[a-zA-Z0-9\\/\\.\\]\\?\\=\\-\\&\\%%\\;\\_]*\\)]\\((http[s]*:\\/\\/)*[a-zA-Z0-9\\/\\.\\]\\=\\?\\-\\&\\%%\\;\\_]*\\))";
-    private static final List<BadgeSettingGroup> badgeSettingGroups = parseSettings();
+            "(\\[!\\[%s]\\(http[s]*:\\/\\/%s[sa-zA-Z0-9\\/\\.\\]\\?\\=\\-\\&\\%%\\;\\_\\#\\:]*\\)]\\((http[s]*:\\/\\/)*[a-zA-Z0-9\\/\\.\\]\\=\\?\\-\\&\\%%\\;\\_\\#\\:]*\\))";
+    private static final Pattern NOT_ACCEPTED_REGEX =
+           Pattern.compile("color=(?!(informational)).");
+    public static final Map<BadgeType, BadgeSettingGroup> badgeSettingGroups = parseSettings();
 
-    public static Map<BadgeType, BadgeGroup> parse(final InputStream readmeInputStream) {
-        final var sb = new StringBuilder();
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(readmeInputStream))) {
-            String s;
-            while (null != (s = br.readLine())) {
-                sb.append(s);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        final var readmeText = sb.toString();
-        return badgeSettingGroups.stream()
+    public static Map<BadgeType, BadgeGroup> parse(final String readmeText) {
+        return badgeSettingGroups
+                .values()
+                .stream()
                 .filter(Objects::nonNull)
                 .collect(Collectors.toMap(BadgeSettingGroup::getBadgeType, badgeSettingGroup -> {
-                            final List<Badge> allBadges = badgeSettingGroup.getBadgeSettingList()
-                                    .stream().map(badgeSetting -> {
+                            final Map<Pattern, Badge> allBadges = badgeSettingGroup
+                                    .getBadgeSettingList()
+                                    .stream()
+                                    .filter(Objects::nonNull)
+                                    .collect(HashMap::new, (map, badgeSetting) -> {
                                         final Matcher matcher = badgeSetting.getPattern().matcher(readmeText);
                                         if (matcher.find()) {
                                             final String badgeText = matcher.group(0);
-                                            return Badge.builder()
-                                                    .badgeText(badgeText)
-                                                    .title(badgeSetting.getTitle())
-                                                    .build();
+                                            final Matcher matcher1 = NOT_ACCEPTED_REGEX.matcher(badgeText);
+                                            if(matcher1.find()){
+                                                map.put(badgeSetting.getPattern(), null);
+                                            }else {
+                                                map.put(badgeSetting.getPattern(), Badge.builder()
+                                                        .badgeText(badgeText)
+                                                        .title(badgeSetting.getTitle())
+                                                        .build());
+                                            }
+                                        } else {
+                                            map.put(badgeSetting.getPattern(), null);
                                         }
-                                        return null;
-                                    })
-                                    .filter(Objects::nonNull)
-                                    .collect(Collectors.toList());
+                                    }, HashMap::putAll);
+
+
                             return BadgeGroup
                                     .builder()
                                     .badgeType(badgeSettingGroup.getBadgeType())
-                                    .badgeList(allBadges)
+                                    .badgeHashMap(allBadges)
                                     .build();
                         }
                 ));
     }
 
 
-    static List<BadgeSettingGroup> parseSettings() {
+    static Map<BadgeType, BadgeSettingGroup> parseSettings() {
         return Arrays.stream(BadgeType.values())
-                .map(badgeType -> {
+                .collect(Collectors.toMap(badgeType -> badgeType, badgeType -> {
                     try {
                         final var badgeSettingList = Arrays.stream(objectMapper.readValue(
                                 BadgeParser.class.getResourceAsStream("/".concat(badgeType.getBadgeFile())),
@@ -97,7 +97,6 @@ public class BadgeParser {
                         log.error("Error", e);
                     }
                     return null;
-                })
-                .collect(Collectors.toList());
+                }));
     }
 }

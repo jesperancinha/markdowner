@@ -1,34 +1,50 @@
-# markdowner
+# performance-projects
 
-[![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Markdowner%20Core&color=informational)](https://github.com/jesperancinha/markdowner/tree/master/markdowner-core)
-[![Maven Central](https://img.shields.io/maven-central/v/org.jesperancinha.parser/markdowner-core)](https://search.maven.org/search?q=parser.markdowner-core)
-
-[![CircleCI](https://circleci.com/gh/jesperancinha/markdowner.svg?style=svg)](https://circleci.com/gh/jesperancinha/markdowner)
-[![Build Status](https://travis-ci.com/jesperancinha/markdowner.svg?branch=master)](https://travis-ci.com/jesperancinha/markdowner)
-[![Build status](https://ci.appveyor.com/api/projects/status/kuedmakr9bbne46q/branch/master?svg=true)](https://ci.appveyor.com/project/jesperancinha/markdowner/branch/master)
-
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c423c85288eb45c883e2f721bb611a3f)](https://www.codacy.com/manual/jofisaes/markdowner?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/markdowner&amp;utm_campaign=Badge_Grade)
-[![codebeat badge](https://codebeat.co/badges/b6f714fa-6632-473e-9eb5-c481c776d415)](https://codebeat.co/projects/github-com-jesperancinha-markdowner-master)
-[![BCH compliance](https://bettercodehub.com/edge/badge/jesperancinha/markdowner?branch=master)](https://bettercodehub.com/)
-
-[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/c423c85288eb45c883e2f721bb611a3f)](https://www.codacy.com/gh/jesperancinha/markdowner/dashboard?utm_source=github.com&utm_medium=referral&utm_content=jesperancinha/markdowner&utm_campaign=Badge_Coverage)
-[![codecov](https://codecov.io/gh/jesperancinha/markdowner/branch/master/graph/badge.svg?token=BREGsxyj5M)](https://codecov.io/gh/jesperancinha/markdowner)
-[![Coverage Status](https://coveralls.io/repos/github/jesperancinha/markdowner/badge.svg?branch=master)](https://coveralls.io/github/jesperancinha/markdowner?branch=master)
-
-[![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/markdowner.svg)]()
-[![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/markdowner.svg)]()
-[![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/markdowner.svg)]()
-
+[![CircleCI](https://circleci.com/gh/jesperancinha/performance-projects.svg?style=svg)](https://circleci.com/gh/jesperancinha/performance-projects)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/98bb1264a9ee4986bb6700b2b1bb9273)](https://www.codacy.com/app/jofisaes/performance-projects?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/performance-projects&amp;utm_campaign=Badge_Grade)
+[![codebeat badge](https://codebeat.co/badges/777f3fdd-9d28-4edf-add3-7a3df5c573a5)](https://codebeat.co/projects/github-com-jesperancinha-performance-projects-master)
+[![Build Status](https://travis-ci.com/jesperancinha/performance-projects.svg?branch=master)](https://travis-ci.com/jesperancinha/performance-projects)
 ---
 
-## Maven
+### Intro
 
-```xml
-<dependency>
-  <groupId>org.jesperancinha.parser</groupId>
-  <artifactId>markdowner-core</artifactId>
-  <version>2.0.2-SNAPSHOT</version>
-</dependency>
+This project is an experimental project made only for performance tests and to explore the developments made by Oracle.
+The main goal is to understand new changes made to the Java platform.
+
+Currently supporting Java 1.8.
+
+### Contents
+
+* [performance-buffered-reader](performance-buffered-reader)
+* [performance-input-test-generator](performance-input-test-generator)
+* [performance-jump-search](performance-jump-search)
+### Java Migration
+
+* Please Install SDK Man:
+
+https://sdkman.io/install
+
+* Select Java 11
+
+```bash
+
+sdk use java 11.0.1-open
+
+```
+
+### Running these tests
+
+* Make sure that Intellij or Eclipse have interpreted this code correctly
+```bash
+
+gradle idea 
+
+gradle cleanIdea 
+
+gradle test
+
+./gradlew test
+
 ```
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈

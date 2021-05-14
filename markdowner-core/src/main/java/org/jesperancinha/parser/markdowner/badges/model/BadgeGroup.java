@@ -5,12 +5,15 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Value;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.regex.Pattern;
 
 @Value
 @Builder
 @AllArgsConstructor(onConstructor_ = @JsonCreator)
 public class BadgeGroup {
     BadgeType badgeType;
-    List<Badge> badgeList;
+    Map<Pattern, Badge> badgeHashMap;
 }
