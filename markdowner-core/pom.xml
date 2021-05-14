@@ -170,9 +170,6 @@
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <sourcepath>target/generated-sources/delombok</sourcepath>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>

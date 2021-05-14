@@ -25,7 +25,7 @@ public class BadgeParser {
     private static final String BADGE_REGEX =
             "(\\[!\\[%s]\\(http[s]*:\\/\\/%s[sa-zA-Z0-9\\/\\.\\]\\?\\=\\-\\&\\%%\\;\\_\\#\\:]*\\)]\\((http[s]*:\\/\\/)*[a-zA-Z0-9\\/\\.\\]\\=\\?\\-\\&\\%%\\;\\_\\#\\:]*\\))";
     private static final Pattern NOT_ACCEPTED_REGEX =
-           Pattern.compile("color=(?!(informational)).");
+            Pattern.compile("color=(?!(informational)).");
     public static final Map<BadgeType, BadgeSettingGroup> badgeSettingGroups = parseSettings();
 
     public static Map<BadgeType, BadgeGroup> parse(final String readmeText) {
@@ -43,9 +43,9 @@ public class BadgeParser {
                                         if (matcher.find()) {
                                             final String badgeText = matcher.group(0);
                                             final Matcher matcher1 = NOT_ACCEPTED_REGEX.matcher(badgeText);
-                                            if(matcher1.find()){
+                                            if (matcher1.find()) {
                                                 map.put(badgeSetting.getPattern(), null);
-                                            }else {
+                                            } else {
                                                 map.put(badgeSetting.getPattern(), Badge.builder()
                                                         .badgeText(badgeText)
                                                         .title(badgeSetting.getTitle())
