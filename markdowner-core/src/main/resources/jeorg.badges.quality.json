@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Codacy",
+    "badge": "Codacy Badge",
+    "codePrefix": "api.codacy.com/project/badge/Grade"
+  },
+  {
+    "title": "Codebeat",
+    "badge": "codebeat badge",
+    "codePrefix": "codebeat.co/badges"
+  },
+  {
+    "title": "Better Code",
+    "badge": "BCH compliance",
+    "codePrefix": "bettercodehub.com/edge/badge"
+  }
+]

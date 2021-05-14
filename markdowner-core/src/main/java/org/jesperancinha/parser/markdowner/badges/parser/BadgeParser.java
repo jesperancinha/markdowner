@@ -26,7 +26,7 @@ public class BadgeParser {
 
     private static final ObjectMapper objectMapper = new ObjectMapper();
     private static final String BADGE_REGEX =
-            "(\\[!\\[%s]\\(http[s]*:\\/\\/%s[a-zA-Z0-9\\/\\.\\]\\?\\=\\-]*\\)]\\((http[s]*:\\/\\/)*[a-zA-Z0-9\\/\\.\\]\\=\\?\\-]*\\))";
+            "(\\[!\\[%s]\\(http[s]*:\\/\\/%s[a-zA-Z0-9\\/\\.\\]\\?\\=\\-\\&\\%%\\;\\_]*\\)]\\((http[s]*:\\/\\/)*[a-zA-Z0-9\\/\\.\\]\\=\\?\\-\\&\\%%\\;\\_]*\\))";
     private static final List<BadgeSettingGroup> badgeSettingGroups = parseSettings();
 
     public static Map<BadgeType, BadgeGroup> parse(final InputStream readmeInputStream) {
