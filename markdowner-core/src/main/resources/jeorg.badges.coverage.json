@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Codacy",
+    "badge": "Codacy Badge",
+    "codePrefix": "app.codacy.com"
+  },
+  {
+    "title": "Codecov",
+    "badge": "codecov",
+    "codePrefix": "codecov.io"
+  },
+  {
+    "title": "Coveralls",
+    "badge": "Coverage Status",
+    "codePrefix": "coveralls.io"
+  }
+]

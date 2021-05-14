@@ -1,0 +1,12 @@
+[
+  {
+    "title": "Project",
+    "badge": "Generic badge",
+    "codePrefix": "img.shields.io/static"
+  },
+  {
+    "title": "Maven Central",
+    "badge": "Maven Central",
+    "codePrefix": "img.shields.io/maven-central"
+  }
+]

@@ -10,6 +10,8 @@ public class BadgeParserTest {
     public void testBadgeParser() {
         final var badgeGroups =
                 BadgeParser.parse(getClass().getResourceAsStream("/badges/Readme.md"));
+
+        assertThat(badgeGroups).isNotNull();
     }
 
     @Test

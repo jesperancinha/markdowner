@@ -2,12 +2,13 @@ package org.jesperancinha.parser.markdowner.badges.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Value;
 
 @Value
+@Builder
 @AllArgsConstructor(onConstructor_ = @JsonCreator)
 public class Badge {
-    String badge;
-    String code;
-    String link;
+    String title;
+    String badgeText;
 }
