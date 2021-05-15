@@ -18,5 +18,20 @@
     "title": "Circle CI",
     "badge": "CircleCI",
     "codePrefix": "circleci.com"
+  },
+  {
+    "title": "GitHub Pipeline",
+    "badge": "[a-zA-Z0-9\\-]*",
+    "codePrefix": "github.com"
+  },
+  {
+    "title": "GitLab Pipeline",
+    "badge": "Gitlab pipeline status \\(branch\\)",
+    "codePrefix": "img.shields.io/gitlab/pipeline"
+  },
+  {
+    "title": "Bitbucket Pipeline",
+    "badge": "Bitbucket Pipelines branch",
+    "codePrefix": "img.shields.io/bitbucket/pipelines"
   }
 ]

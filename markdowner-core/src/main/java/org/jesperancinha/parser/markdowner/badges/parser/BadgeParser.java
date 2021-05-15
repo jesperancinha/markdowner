@@ -23,9 +23,22 @@ public class BadgeParser {
 
     private static final ObjectMapper objectMapper = new ObjectMapper();
     private static final String BADGE_REGEX =
-            "(\\[!\\[%s]\\(http[s]*:\\/\\/%s[sa-zA-Z0-9\\/\\.\\]\\?\\=\\-\\&\\%%\\;\\_\\#\\:]*\\)]\\((http[s]*:\\/\\/)*[a-zA-Z0-9\\/\\.\\]\\=\\?\\-\\&\\%%\\;\\_\\#\\:]*\\))";
+            "(\\[!\\[%s]\\(http[s]*:\\/\\/%s[sa-zA-Z0-9\\/\\.\\]\\?\\=\\-\\&\\%%\\;\\_\\#\\:\\\"\\ ]*\\)]\\((http[s]*:\\/\\/)*[a-zA-Z0-9\\/\\.\\]\\=\\?\\-\\&\\%%\\;\\_\\#\\:\\\"\\ ]*\\))";
     private static final Pattern NOT_ACCEPTED_REGEX =
             Pattern.compile("color=(?!(informational)).");
+    public static final Map<String, BadgeType> badgeTypes = parseBadgeTypes();
+    private static Map<String, BadgeType> parseBadgeTypes() {
+        try {
+            return Arrays.stream(objectMapper.readValue(BadgeParser.class.getResourceAsStream("/jeorg.badges.types.json")
+                    , BadgeType[].class))
+                    .collect(Collectors.toMap(BadgeType::getType, badgeType -> badgeType));
+        } catch (IOException e) {
+            log.error("Error!", e);
+            System.exit(1);
+        }
+        return null;
+    }
+
     public static final Map<BadgeType, BadgeSettingGroup> badgeSettingGroups = parseSettings();
 
     public static Map<BadgeType, BadgeGroup> parse(final String readmeText) {
@@ -68,7 +81,7 @@ public class BadgeParser {
 
 
     static Map<BadgeType, BadgeSettingGroup> parseSettings() {
-        return Arrays.stream(BadgeType.values())
+        return  badgeTypes.values().stream()
                 .collect(Collectors.toMap(badgeType -> badgeType, badgeType -> {
                     try {
                         final var badgeSettingList = Arrays.stream(objectMapper.readValue(

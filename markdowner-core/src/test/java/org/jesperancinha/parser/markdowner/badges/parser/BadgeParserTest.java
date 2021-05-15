@@ -24,6 +24,6 @@ public class BadgeParserTest {
         final var badgeSettingGroups =
                 BadgeParser.parseSettings();
 
-        assertThat(badgeSettingGroups).hasSize(5);
+        assertThat(badgeSettingGroups).hasSize(6);
     }
 }

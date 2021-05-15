@@ -1,0 +1,42 @@
+[
+  {
+    "type": "INFO",
+    "badgeFile": "jeorg.badges.info.json",
+    "destinationFile": "Info.md"
+  },
+  {
+    "type": "BUILD",
+    "badgeFile": "jeorg.badges.build.json",
+    "destinationFile": "Build.md"
+  },
+  {
+    "type": "QUALITY",
+    "badgeFile": "jeorg.badges.quality.json",
+    "destinationFile": "Quality.md"
+  },
+  {
+    "type": "COVERAGE",
+    "badgeFile": "jeorg.badges.coverage.json",
+    "destinationFile": "Coverage.md"
+  },
+  {
+    "type": "CONTENT",
+    "badgeFile": "jeorg.badges.content.json",
+    "destinationFile": "Content.md"
+  },
+  {
+    "type": "TECH",
+    "badgeFile": "jeorg.badges.tech.json",
+    "destinationFile": "Tech.md"
+  },
+  {
+    "type": "SERVERS",
+    "badgeFile": "jeorg.badges.servers.json",
+    "destinationFile": "Servers.md"
+  },
+  {
+    "type": "DEPLOYMENT",
+    "badgeFile": "jeorg.badges.deployment.json",
+    "destinationFile": "Deployment.md"
+  }
+]

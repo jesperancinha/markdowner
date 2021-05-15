@@ -8,5 +8,25 @@
     "title": "Maven Central",
     "badge": "Maven Central",
     "codePrefix": "img.shields.io/maven-central"
+  },
+  {
+    "title": "GitHub Pre-Release",
+    "badge": "GitHub release",
+    "codePrefix": "img.shields.io/github/release-pre"
+  },
+  {
+    "title": "GitHub Release",
+    "badge": "GitHub release \\(latest SemVer\\)",
+    "codePrefix": "img.shields.io/github/v/release"
+  },
+  {
+    "title": "PyPI Release",
+    "badge": "PyPI - Python Version",
+    "codePrefix": "img.shields.io/pypi/pyversions"
+  },
+  {
+    "title": "Twitter Share",
+    "badge": "Twitter URL",
+    "codePrefix": "img.shields.io/twitter/url"
   }
 ]

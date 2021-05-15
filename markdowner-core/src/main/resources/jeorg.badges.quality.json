@@ -7,7 +7,7 @@
   {
     "title": "Codacy",
     "badge": "Codacy Badge",
-    "codePrefix": "api.codacy.com/project/badge/Grade"
+    "codePrefix": "(api|app).codacy.com/project/badge/Grade"
   },
   {
     "title": "Codebeat",
@@ -18,5 +18,10 @@
     "title": "Better Code",
     "badge": "BCH compliance",
     "codePrefix": "bettercodehub.com/edge/badge"
+  },
+  {
+    "title": "Vulnerabilities",
+    "badge": "Known Vulnerabilities",
+    "codePrefix": "snyk.io/test"
   }
 ]
