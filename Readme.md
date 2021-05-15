@@ -28,7 +28,12 @@ An extra complicated markdown parsing library with extra special functions.
 
 Look into the javadocs for more info.
 
-## Release 2.0.3 - 20201/05/14
+## Release 3.0.0 - 2021/05/15
+
+-   Breaking changes
+-   Configurable report types. Enum is not necessary anymore
+
+## Release 2.0.3 - 2021/05/14
 
 -   Badge Parsing
 -   Creates Badge maps and listings for build, content, coverage, info and quality
