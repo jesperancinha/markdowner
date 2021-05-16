@@ -8,7 +8,7 @@
     <name>Markdowner parent POM</name>
     <version>3.0.0</version>
     <description>Parent pom of the markdowner libraries</description>
-    <url>https://github.com/jesperancinha/itf-chartizate</url>
+    <url>https://github.com/jesperancinha/markdowner</url>
     <licenses>
         <license>
             <name>Apache License</name>
@@ -24,8 +24,8 @@
         </developer>
     </developers>
     <scm>
-        <connection>git@github.com:jesperancinha/markdowner.git</connection>
-        <developerConnection>git@github.com:jesperancinha/markdowner.git</developerConnection>
+        <connection>scm:git:git://github.com:jesperancinha/markdowner.git</connection>
+        <developerConnection>scm:git:git://github.com:jesperancinha/markdowner.git</developerConnection>
         <url>https://github.com/jesperancinha/markdowner</url>
         <tag>3.0.0</tag>
     </scm>
