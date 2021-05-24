@@ -43,6 +43,10 @@ An extra complicated markdown parsing library with extra special functions.
 
 Look into the javadocs for more info.
 
+## Release 3.0.1 - 2021/05/24
+
+-   Adds title as an optional parameter
+
 ## Release 3.0.0 - 2021/05/15
 
 -   Breaking changes
