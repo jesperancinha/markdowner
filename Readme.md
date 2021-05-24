@@ -41,7 +41,7 @@
 
 An extra complicated markdown parsing library with extra special functions.
 
-Look into the javadocs for more info.
+Please Look into the javadocs for more info or check our [reference documentation](http://jesperancinha.github.io/markdowner/) for more details.
 
 ## Release 3.0.1 - 2021/05/24
 
