@@ -23,7 +23,7 @@ public class BadgeParser {
 
     private static final ObjectMapper objectMapper = new ObjectMapper();
     private static final String BADGE_REGEX =
-            "(\\[!\\[%s]\\(http[s]*:\\/\\/%s[sa-zA-Z0-9\\/\\.\\]\\?\\=\\-\\&\\%%\\;\\_\\#\\:\\\"\\ ]*\\)]\\((http[s]*:\\/\\/)*[a-zA-Z0-9\\/\\.\\]\\=\\?\\-\\&\\%%\\;\\_\\#\\:\\\"\\ ]*\\))";
+            "(\\[!\\[%s]\\(http[s]*:\\/\\/%s[sa-zA-Z0-9\\/\\.\\]\\?\\=\\-\\&\\%%\\;\\_\\#\\:\\@\\\"\\ ]*\\)]\\((http[s]*:\\/\\/)*[a-zA-Z0-9\\/\\.\\]\\=\\?\\-\\&\\%%\\;\\_\\#\\:\\@\\\"\\ ]*\\))";
     private static final Pattern NOT_ACCEPTED_REGEX =
             Pattern.compile("color=(?!(informational)).");
     public static final Map<String, BadgeType> badgeTypes = parseBadgeTypes();

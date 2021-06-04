@@ -43,6 +43,10 @@ An extra complicated markdown parsing library with extra special functions.
 
 Please Look into the javadocs for more info or check our [reference documentation](http://jesperancinha.github.io/markdowner/) for more details.
 
+## Release 3.0.2 - 2021/06/04
+
+-   The @ release
+
 ## Release 3.0.1 - 2021/05/24
 
 -   Adds title as an optional parameter
@@ -70,7 +74,7 @@ Please Look into the javadocs for more info or check our [reference documentatio
 <dependency>
     <groupId>org.jesperancinha.parser</groupId>
     <artifactId>markdowner</artifactId>
-    <version>3.0.1</version>
+    <version>3.0.2</version>
     <type>pom</type>
 </dependency>
 ```
