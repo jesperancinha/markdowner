@@ -5,7 +5,6 @@
 [![javadoc](https://javadoc.io/badge2/org.jesperancinha.parser/markdowner-filter/javadoc.svg)](https://javadoc.io/doc/org.jesperancinha.parser/markdowner-filter)
 
 [![CircleCI](https://circleci.com/gh/jesperancinha/markdowner.svg?style=svg)](https://circleci.com/gh/jesperancinha/markdowner)
-[![Build Status](https://travis-ci.com/jesperancinha/markdowner.svg?branch=master)](https://travis-ci.com/jesperancinha/markdowner)
 [![Build status](https://ci.appveyor.com/api/projects/status/kuedmakr9bbne46q/branch/master?svg=true)](https://ci.appveyor.com/project/jesperancinha/markdowner/branch/master)
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c423c85288eb45c883e2f721bb611a3f)](https://www.codacy.com/manual/jofisaes/markdowner?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/markdowner&amp;utm_campaign=Badge_Grade)
