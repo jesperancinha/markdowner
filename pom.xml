@@ -68,9 +68,9 @@
         <jacoco-maven-plugin.version>0.8.6</jacoco-maven-plugin.version>
         <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
-        <jackson-annotations.version>2.12.3</jackson-annotations.version>
+        <jackson-annotations.version>2.12.4</jackson-annotations.version>
         <jackson-databind.version>2.12.4</jackson-databind.version>
-        <jackson-core.version>2.12.3</jackson-core.version>
+        <jackson-core.version>2.12.4</jackson-core.version>
     </properties>
     <packaging>pom</packaging>
 
