@@ -112,9 +112,9 @@ mvn nexus-staging:release  -Prelease
 
 ## References
 
-- [Nexus Repository Manager -Sonatype Nexus](https://oss.sonatype.org/)
-- [Sonatype The Central Repository](https://search.maven.org/)
-- [nexus-staging-maven-plugin not working with java 16](https://issues.sonatype.org/browse/NEXUS-27902)
+-   [Nexus Repository Manager -Sonatype Nexus](https://oss.sonatype.org/)
+-   [Sonatype The Central Repository](https://search.maven.org/)
+-   [nexus-staging-maven-plugin not working with java 16](https://issues.sonatype.org/browse/NEXUS-27902)
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 
