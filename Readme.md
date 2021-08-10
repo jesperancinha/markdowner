@@ -42,7 +42,7 @@ An extra complicated markdown parsing library with extra special functions.
 
 Please Look into the javadocs for more info or check our [reference documentation](http://jesperancinha.github.io/markdowner/) for more details.
 
-## Release 3.0.3 - 2021/08/10
+## Release 3.0.3 - (...)
  
 -   Link content filter for badges
 
