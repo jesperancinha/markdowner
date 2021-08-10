@@ -12,4 +12,5 @@ import java.util.regex.Pattern;
 public class BadgePattern {
     String title;
     Pattern pattern;
+    String linkPrefix;
 }

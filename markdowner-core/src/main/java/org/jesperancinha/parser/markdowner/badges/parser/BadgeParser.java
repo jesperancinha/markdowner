@@ -27,10 +27,11 @@ public class BadgeParser {
     private static final Pattern NOT_ACCEPTED_REGEX =
             Pattern.compile("color=(?!(informational)).");
     public static final Map<String, BadgeType> badgeTypes = parseBadgeTypes();
+
     private static Map<String, BadgeType> parseBadgeTypes() {
         try {
             return Arrays.stream(objectMapper.readValue(BadgeParser.class.getResourceAsStream("/jeorg.badges.types.json")
-                    , BadgeType[].class))
+                            , BadgeType[].class))
                     .collect(Collectors.toMap(BadgeType::getType, badgeType -> badgeType));
         } catch (IOException e) {
             log.error("Error!", e);
@@ -56,7 +57,8 @@ public class BadgeParser {
                                         if (matcher.find()) {
                                             final String badgeText = matcher.group(0);
                                             final Matcher matcher1 = NOT_ACCEPTED_REGEX.matcher(badgeText);
-                                            if (matcher1.find()) {
+                                            final String linkPrefix = badgeSetting.getLinkPrefix();
+                                            if (matcher1.find() || linkPrefix != null && !badgeText.contains(linkPrefix)) {
                                                 map.put(badgeSetting.getPattern(), null);
                                             } else {
                                                 map.put(badgeSetting.getPattern(), Badge.builder()
@@ -81,7 +83,7 @@ public class BadgeParser {
 
 
     static Map<BadgeType, BadgeSettingGroup> parseSettings() {
-        return  badgeTypes.values().stream()
+        return badgeTypes.values().stream()
                 .collect(Collectors.toMap(badgeType -> badgeType, badgeType -> {
                     try {
                         final var badgeSettingList = Arrays.stream(objectMapper.readValue(
@@ -93,16 +95,17 @@ public class BadgeParser {
                                 .badgeSettingList(
                                         badgeSettingList
                                                 .stream().map(badgeSetting ->
-                                                BadgePattern.builder()
-                                                        .title(badgeSetting.getTitle())
-                                                        .pattern(Pattern.compile(
-                                                                String.format(BADGE_REGEX,
-                                                                        badgeSetting.getBadge(),
-                                                                        badgeSetting.getCodePrefix()
-                                                                                .replace(".", "\\.")
-                                                                                .replace("/", "\\/")
-                                                                )))
-                                                        .build())
+                                                        BadgePattern.builder()
+                                                                .title(badgeSetting.getTitle())
+                                                                .pattern(Pattern.compile(
+                                                                        String.format(BADGE_REGEX,
+                                                                                badgeSetting.getBadge(),
+                                                                                badgeSetting.getCodePrefix()
+                                                                                        .replace(".", "\\.")
+                                                                                        .replace("/", "\\/")
+                                                                        )))
+                                                                .linkPrefix(badgeSetting.getLinkPrefix())
+                                                                .build())
                                                 .collect(Collectors.toList())
                                 )
                                 .build();

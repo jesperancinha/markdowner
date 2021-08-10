@@ -6,7 +6,7 @@
     <parent>
         <artifactId>markdowner</artifactId>
         <groupId>org.jesperancinha.parser</groupId>
-        <version>3.0.2</version>
+        <version>3.0.3</version>
     </parent>
     <artifactId>markdowner-core</artifactId>
     <name>Markdowner core</name>
@@ -32,7 +32,7 @@
         <connection>git@github.com:jesperancinha/markdowner.git</connection>
         <developerConnection>git@github.com:jesperancinha/markdowner.git</developerConnection>
         <url>https://github.com/jesperancinha/markdowner/tree/master/markdowner-core</url>
-        <tag>3.0.2</tag>
+        <tag>3.0.3</tag>
     </scm>
     <distributionManagement>
         <snapshotRepository>
