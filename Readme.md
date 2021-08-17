@@ -44,7 +44,7 @@ Please Look into the javadocs for more info or check our [reference documentatio
 
 ## Release 3.0.3 - (...)
  
-- Link content filter for badges
+-   Link content filter for badges
 
 > Delay because of  [nexus-staging-maven-plugin not working with java 16](https://issues.sonatype.org/browse/NEXUS-27902)
 
