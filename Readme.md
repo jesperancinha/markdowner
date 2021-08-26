@@ -88,7 +88,8 @@ Please Look into the javadocs for more info or check our [reference documentatio
 ### Use Java 11
 
 ```bash
-sdk use java 11.0.5.hs-adpt
+sdk install java 11.0.11.hs-adpt
+sdk use java 11.0.11.hs-adpt
 ```
 
 ### Sign to Nexus
