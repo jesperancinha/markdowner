@@ -42,11 +42,12 @@ An extra complicated markdown parsing library with extra special functions.
 
 Please Look into the javadocs for more info or check our [reference documentation](http://jesperancinha.github.io/markdowner/) for more details.
 
-## Release 3.0.3 - (...)
+## Release 3.0.3 - 2021/08/26
  
 -   Link content filter for badges
 
 > Delay because of  [nexus-staging-maven-plugin not working with java 16](https://issues.sonatype.org/browse/NEXUS-27902)
+> Not released under JDK 16
 
 ## Release 3.0.2 - 2021/06/04
 
