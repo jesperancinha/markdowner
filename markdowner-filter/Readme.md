@@ -27,7 +27,7 @@
 <dependency>
   <groupId>org.jesperancinha.parser</groupId>
   <artifactId>markdowner-filter</artifactId>
-  <version>3.0.3</version>
+  <version>3.0.4</version>
 </dependency>
 ```
 
