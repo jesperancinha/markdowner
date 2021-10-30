@@ -63,6 +63,16 @@ class BadgeParserKtTest {
     }
 
     @Test
+    fun `should parse emoji generic badges example 5`() {
+        val testText =
+            "[![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=From%20Paris%20to%20Berlin%20\uD83D\uDEE3&color=informational)](https://github.com/jesperancinha/from-paris-to-berlin-circuit-breaker)"
+        val parse = BadgeParser.parse(testText)
+
+        parse[parse.keys.first()]?.badgeHashMap?.filter { it.key.pattern().contains("Generic badge") }?.values?.first()
+            .shouldNotBeNull()
+    }
+
+    @Test
     fun `should parse normal generic badges example 1`() {
         val testText =
             "[![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Project%20Signer&color=informational)](https://github.com/jesperancinha/project-signer)"
