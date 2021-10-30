@@ -41,7 +41,7 @@
     </distributionManagement>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <lombok.version>1.18.20</lombok.version>
+        <lombok.version>1.18.22</lombok.version>
         <java.version>11</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
@@ -68,9 +68,9 @@
         <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
         <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
-        <jackson-annotations.version>2.12.5</jackson-annotations.version>
-        <jackson-databind.version>2.12.5</jackson-databind.version>
-        <jackson-core.version>2.12.5</jackson-core.version>
+        <jackson-annotations.version>2.13.0</jackson-annotations.version>
+        <jackson-databind.version>2.13.0</jackson-databind.version>
+        <jackson-core.version>2.13.0</jackson-core.version>
     </properties>
     <packaging>pom</packaging>
 
