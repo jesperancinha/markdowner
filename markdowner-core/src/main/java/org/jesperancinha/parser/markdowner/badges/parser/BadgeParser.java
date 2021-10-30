@@ -2,12 +2,7 @@ package org.jesperancinha.parser.markdowner.badges.parser;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.jesperancinha.parser.markdowner.badges.model.Badge;
-import org.jesperancinha.parser.markdowner.badges.model.BadgeGroup;
-import org.jesperancinha.parser.markdowner.badges.model.BadgePattern;
-import org.jesperancinha.parser.markdowner.badges.model.BadgeSetting;
-import org.jesperancinha.parser.markdowner.badges.model.BadgeSettingGroup;
-import org.jesperancinha.parser.markdowner.badges.model.BadgeType;
+import org.jesperancinha.parser.markdowner.badges.model.*;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -22,8 +17,14 @@ import java.util.stream.Collectors;
 public class BadgeParser {
 
     private static final ObjectMapper objectMapper = new ObjectMapper();
+    private static final String GENERIC_REGEX = "a-zA-Z0-9\\/\\.\\]\\?\\=\\-\\&\\%%\\;\\_\\#\\:\\@\\\"\\ ";
+    private static final String EMOJI_REGEX =
+            "\u00a9\u00ae\u2000-\u3300\ud83c\ud000-\udfff\ud83d\ud000-\udfff\ud83e\ud000-\udfff\ufe0f";
+    public static final String FULL_REGEX = GENERIC_REGEX.concat(EMOJI_REGEX);
     private static final String BADGE_REGEX =
-            "(\\[!\\[%s]\\(http[s]*:\\/\\/%s[sa-zA-Z0-9\\/\\.\\]\\?\\=\\-\\&\\%%\\;\\_\\#\\:\\@\\\"\\ ]*\\)]\\((http[s]*:\\/\\/)*[a-zA-Z0-9\\/\\.\\]\\=\\?\\-\\&\\%%\\;\\_\\#\\:\\@\\\"\\ ]*\\))";
+            "(\\[!\\[%s]\\(http[s]*:\\/\\/%s[" + FULL_REGEX + "]*\\)]\\((http[s]*:\\/\\/)*[" + FULL_REGEX + "]*\\))";
+
+
     private static final Pattern NOT_ACCEPTED_REGEX =
             Pattern.compile("color=(?!(informational)).");
     public static final Map<String, BadgeType> badgeTypes = parseBadgeTypes();

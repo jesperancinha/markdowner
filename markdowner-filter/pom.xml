@@ -5,7 +5,7 @@
     <parent>
         <artifactId>markdowner</artifactId>
         <groupId>org.jesperancinha.parser</groupId>
-        <version>3.0.3</version>
+        <version>3.0.4</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -30,7 +30,7 @@
         <connection>git@github.com:jesperancinha/markdowner.git</connection>
         <developerConnection>git@github.com:jesperancinha/markdowner.git</developerConnection>
         <url>https://github.com/jesperancinha/markdowner/tree/master/markdowner-filter</url>
-        <tag>3.0.3</tag>
+        <tag>3.0.4</tag>
     </scm>
     <distributionManagement>
         <snapshotRepository>
