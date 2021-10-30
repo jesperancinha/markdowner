@@ -15,6 +15,15 @@ class BadgeParserKtTest {
     }
 
     @Test
+    fun `should parse emoji pen`() {
+        val testRegex = Regex("[".plus(BadgeParser.FULL_REGEX).plus("]"))
+        val testString = "pen \uD83D\uDD8B pen"
+
+        testString.shouldHaveLength(10)
+        testString.replace(testRegex,"") .shouldHaveLength(0)
+    }
+
+    @Test
     fun `should parse emoji generic badges example 1`() {
         val testText =
             "[![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Coffee%20Cups%20Kalah%20☕️%20&color=informational)](https://github.com/jesperancinha/mancalaje)"
@@ -44,7 +53,17 @@ class BadgeParserKtTest {
     }
 
     @Test
-    fun `should parse normal generic badges`() {
+    fun `should parse emoji generic badges example 4`() {
+        val testText =
+            "[![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Project%%20Signer%20\uD83D\uDD8B&color=informational)](https://github.com/jesperancinha/project-signer)"
+        val parse = BadgeParser.parse(testText)
+
+        parse[parse.keys.first()]?.badgeHashMap?.filter { it.key.pattern().contains("Generic badge") }?.values?.first()
+            .shouldNotBeNull()
+    }
+
+    @Test
+    fun `should parse normal generic badges example 1`() {
         val testText =
             "[![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Project%20Signer&color=informational)](https://github.com/jesperancinha/project-signer)"
         val parse = BadgeParser.parse(testText)
