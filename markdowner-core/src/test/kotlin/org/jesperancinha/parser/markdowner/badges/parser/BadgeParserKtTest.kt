@@ -15,9 +15,28 @@ class BadgeParserKtTest {
     }
 
     @Test
-    fun `should parse emoji generic badges`() {
+    fun `should parse emoji generic badges example 1`() {
         val testText =
             "[![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Coffee%20Cups%20Kalah%20☕️%20&color=informational)](https://github.com/jesperancinha/mancalaje)"
+        val parse = BadgeParser.parse(testText)
+
+        parse[parse.keys.first()]?.badgeHashMap?.filter { it.key.pattern().contains("Generic badge") }?.values?.first()
+            .shouldNotBeNull()
+    }
+    @Test
+    fun `should parse emoji generic badges example 2`() {
+        val testText =
+            "[![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=ISBN%20Stacks%20\uD83D\uDCDA%20&color=informational)](https://github.com/jesperancinha/isbn-stacks)"
+        val parse = BadgeParser.parse(testText)
+
+        parse[parse.keys.first()]?.badgeHashMap?.filter { it.key.pattern().contains("Generic badge") }?.values?.first()
+            .shouldNotBeNull()
+    }
+
+    @Test
+    fun `should parse emoji generic badges example 3`() {
+        val testText =
+            "[![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=City%20Library%20Management%20\uD83C\uDFE2&color=informational)](https://github.com/jesperancinha/advanced-library-management)"
         val parse = BadgeParser.parse(testText)
 
         parse[parse.keys.first()]?.badgeHashMap?.filter { it.key.pattern().contains("Generic badge") }?.values?.first()
