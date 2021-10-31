@@ -9,4 +9,4 @@ no-test:
 release:
 	export GPG_TTY=$(tty)
 	mvn clean deploy -Prelease
-	mvn nexus-staging:release  -Prelease
+	mvn nexus-staging:release -Prelease
