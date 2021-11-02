@@ -44,8 +44,8 @@ Please Look into the javadocs for more info or check our [reference documentatio
 
 ## Release 3.0.4 - 2021/10/31
 
-- Spring Boot upgrade to 2.5.5.
-- Emoji handling for badges
+-   Spring Boot upgrade to 2.5.5.
+-   Emoji handling for badges
 
 ## Release 3.0.3 - 2021/08/26
  

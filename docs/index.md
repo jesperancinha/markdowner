@@ -74,7 +74,7 @@ Please Look into the javadocs for more info or check our [reference documentatio
 <dependency>
     <groupId>org.jesperancinha.parser</groupId>
     <artifactId>markdowner</artifactId>
-    <version>3.0.4</version>
+    <version>3.0.5</version>
     <type>pom</type>
 </dependency>
 ```

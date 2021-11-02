@@ -15,6 +15,24 @@ class BadgeParserKtTest {
     }
 
     @Test
+    fun `should parse emoji coin cup`() {
+        val testRegex = Regex("[".plus(BadgeParser.FULL_REGEX).plus("]"))
+        val testString = "coin 🪙 coin"
+
+        testString.shouldHaveLength(12)
+        testString.replace(testRegex,"") .shouldHaveLength(0)
+    }
+
+    @Test
+    fun `should parse emoji guitar cup`() {
+        val testRegex = Regex("[".plus(BadgeParser.FULL_REGEX).plus("]"))
+        val testString = "guitar 🎸 guitar"
+
+        testString.shouldHaveLength(16)
+        testString.replace(testRegex,"") .shouldHaveLength(0)
+    }
+
+    @Test
     fun `should parse emoji pen`() {
         val testRegex = Regex("[".plus(BadgeParser.FULL_REGEX).plus("]"))
         val testString = "pen \uD83D\uDD8B pen"
@@ -66,6 +84,16 @@ class BadgeParserKtTest {
     fun `should parse emoji generic badges example 5`() {
         val testText =
             "[![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=From%20Paris%20to%20Berlin%20\uD83D\uDEE3&color=informational)](https://github.com/jesperancinha/from-paris-to-berlin-circuit-breaker)"
+        val parse = BadgeParser.parse(testText)
+
+        parse[parse.keys.first()]?.badgeHashMap?.filter { it.key.pattern().contains("Generic badge") }?.values?.first()
+            .shouldNotBeNull()
+    }
+
+    @Test
+    fun `should parse emoji generic badges example 6`() {
+        val testText =
+            "[![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Concert%20Demos%20\uD83C\uDFB8%20&color=informational)](https://github.com/jesperancinha/concert-demos-root)"
         val parse = BadgeParser.parse(testText)
 
         parse[parse.keys.first()]?.badgeHashMap?.filter { it.key.pattern().contains("Generic badge") }?.values?.first()
