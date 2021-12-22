@@ -9,6 +9,15 @@ import org.junit.jupiter.api.Test
 
 class BadgeParserKtTest {
     @Test
+    fun `should parse emoji yucca`() {
+        val testRegex = Regex("[".plus(BadgeParser.FULL_REGEX).plus("]"))
+        val testString = "yucca 🌴 yucca"
+
+        testString.shouldHaveLength(14)
+        testString.replace(testRegex, "").shouldHaveLength(0)
+    }
+
+    @Test
     fun `should parse emoji coffee cup`() {
         val testRegex = Regex("[".plus(BadgeParser.FULL_REGEX).plus("]"))
         val testString = "coffee ☕️ coffee"

@@ -6,7 +6,7 @@
     <parent>
         <artifactId>markdowner</artifactId>
         <groupId>org.jesperancinha.parser</groupId>
-        <version>3.0.5</version>
+        <version>3.0.5-SNAPSHOT</version>
     </parent>
     <artifactId>markdowner-core</artifactId>
     <name>Markdowner core</name>
