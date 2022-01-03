@@ -73,6 +73,7 @@
         <spring-boot-starter-parent.version>2.6.2</spring-boot-starter-parent.version>
         <omni-coveragereporter-maven-plugin.version>0.0.2</omni-coveragereporter-maven-plugin.version>
     </properties>
+
     <packaging>pom</packaging>
 
     <modules>
