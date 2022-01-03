@@ -1,17 +1,38 @@
 package org.jesperancinha.parser.markdowner.badges.parser
 
+import io.kotest.matchers.collections.shouldHaveSize
+import io.kotest.matchers.nulls.shouldBeNull
 import io.kotest.matchers.nulls.shouldNotBeNull
+import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldHaveLength
 import org.junit.jupiter.api.Test
 
 class BadgeParserKtTest {
+    @Test
+    fun `should parse emoji yucca`() {
+        val testRegex = Regex("[".plus(BadgeParser.FULL_REGEX).plus("]"))
+        val testString = "yucca 🌴 yucca"
+
+        testString.shouldHaveLength(14)
+        testString.replace(testRegex, "").shouldHaveLength(0)
+    }
+
     @Test
     fun `should parse emoji coffee cup`() {
         val testRegex = Regex("[".plus(BadgeParser.FULL_REGEX).plus("]"))
         val testString = "coffee ☕️ coffee"
 
         testString.shouldHaveLength(16)
-        testString.replace(testRegex,"") .shouldHaveLength(0)
+        testString.replace(testRegex, "").shouldHaveLength(0)
+    }
+
+    @Test
+    fun `should parse construction`() {
+        val testRegex = Regex("[".plus(BadgeParser.FULL_REGEX).plus("]"))
+        val testString = "construction 🚧️ construction"
+
+        testString.shouldHaveLength(29)
+        testString.replace(testRegex, "").shouldHaveLength(0)
     }
 
     @Test
@@ -20,7 +41,7 @@ class BadgeParserKtTest {
         val testString = "coin 🪙 coin"
 
         testString.shouldHaveLength(12)
-        testString.replace(testRegex,"") .shouldHaveLength(0)
+        testString.replace(testRegex, "").shouldHaveLength(0)
     }
 
     @Test
@@ -29,7 +50,7 @@ class BadgeParserKtTest {
         val testString = "guitar 🎸 guitar"
 
         testString.shouldHaveLength(16)
-        testString.replace(testRegex,"") .shouldHaveLength(0)
+        testString.replace(testRegex, "").shouldHaveLength(0)
     }
 
     @Test
@@ -38,7 +59,7 @@ class BadgeParserKtTest {
         val testString = "pen \uD83D\uDD8B pen"
 
         testString.shouldHaveLength(10)
-        testString.replace(testRegex,"") .shouldHaveLength(0)
+        testString.replace(testRegex, "").shouldHaveLength(0)
     }
 
     @Test
@@ -50,6 +71,7 @@ class BadgeParserKtTest {
         parse[parse.keys.first()]?.badgeHashMap?.filter { it.key.pattern().contains("Generic badge") }?.values?.first()
             .shouldNotBeNull()
     }
+
     @Test
     fun `should parse emoji generic badges example 2`() {
         val testText =
@@ -98,6 +120,36 @@ class BadgeParserKtTest {
 
         parse[parse.keys.first()]?.badgeHashMap?.filter { it.key.pattern().contains("Generic badge") }?.values?.first()
             .shouldNotBeNull()
+    }
+
+    @Test
+    fun `should parse emoji generic badges example 7 (color is not informational)`() {
+        val testText =
+            "[![Status badge](https://img.shields.io/static/v1.svg?label=Status&message=Under%20Construction%20\uD83D\uDEA7&color=purple)](https://github.com/jesperancinha/portuguese-recipes)\n"
+        val parse = BadgeParser.parse(testText)
+
+        val parseStatusBadges = parse.entries.flatMap { entry ->
+            entry.value.badgeHashMap.filter {
+                it.key.pattern().contains("Status badge")
+            }.values
+        }
+        parseStatusBadges.shouldHaveSize(1)
+        parseStatusBadges.first().shouldBeNull()
+    }
+
+    @Test
+    fun `should parse emoji generic badges example 8 (color is informational)`() {
+        val testText =
+            "[![Status badge](https://img.shields.io/static/v1.svg?label=Status&message=Under%20Construction%20\uD83D\uDEA7&color=informational)](https://github.com/jesperancinha/portuguese-recipes)\n"
+        val parse = BadgeParser.parse(testText)
+
+        val parseStatusBadges = parse.entries.flatMap { entry ->
+            entry.value.badgeHashMap.filter {
+                it.key.pattern().contains("Status badge")
+            }.values
+        }
+        parseStatusBadges.shouldHaveSize(1)
+        parseStatusBadges.first().shouldNotBeNull()
     }
 
     @Test
