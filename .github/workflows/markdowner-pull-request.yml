@@ -1,4 +1,4 @@
-name: markdowner
+name: markdowner-pull-request
 
 on:
   pull_request:
