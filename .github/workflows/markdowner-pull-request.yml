@@ -2,7 +2,7 @@ name: markdowner-pull-request
 
 on:
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   check-bats-version:

@@ -2,7 +2,7 @@ name: markdowner
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   check-bats-version:
