@@ -42,9 +42,9 @@ An extra complicated markdown parsing library with extra special functions.
 
 Please Look into the javadocs for more info or check our [reference documentation](http://jesperancinha.github.io/markdowner/) for more details.
 
-## Release 3.0.6 - Coming soon
+## Release 3.0.6 - 2022/01/13
 
--   Yucca upgrade
+-   All Icons Upgrade
 -   Spring Boot upgrade to 2.6.2
 
 ## Release 3.0.5 - 2021/12/12
