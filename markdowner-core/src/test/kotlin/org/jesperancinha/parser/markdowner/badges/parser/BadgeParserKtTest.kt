@@ -14,7 +14,7 @@ class BadgeParserKtTest {
         val testString = "yucca 🌴 yucca"
 
         testString.shouldHaveLength(14)
-        testString.replace(testRegex, "").shouldHaveLength(0)
+        testString.replace(testRegex, "").shouldHaveLength(2)
     }
 
     @Test
@@ -23,7 +23,7 @@ class BadgeParserKtTest {
         val testString = "coffee ☕️ coffee"
 
         testString.shouldHaveLength(16)
-        testString.replace(testRegex, "").shouldHaveLength(0)
+        testString.replace(testRegex, "").shouldHaveLength(2)
     }
 
     @Test
@@ -32,7 +32,7 @@ class BadgeParserKtTest {
         val testString = "construction 🚧️ construction"
 
         testString.shouldHaveLength(29)
-        testString.replace(testRegex, "").shouldHaveLength(0)
+        testString.replace(testRegex, "").shouldHaveLength(3)
     }
 
     @Test
@@ -41,7 +41,7 @@ class BadgeParserKtTest {
         val testString = "coin 🪙 coin"
 
         testString.shouldHaveLength(12)
-        testString.replace(testRegex, "").shouldHaveLength(0)
+        testString.replace(testRegex, "").shouldHaveLength(2)
     }
 
     @Test
@@ -50,7 +50,7 @@ class BadgeParserKtTest {
         val testString = "guitar 🎸 guitar"
 
         testString.shouldHaveLength(16)
-        testString.replace(testRegex, "").shouldHaveLength(0)
+        testString.replace(testRegex, "").shouldHaveLength(2)
     }
 
     @Test
@@ -59,7 +59,7 @@ class BadgeParserKtTest {
         val testString = "pen \uD83D\uDD8B pen"
 
         testString.shouldHaveLength(10)
-        testString.replace(testRegex, "").shouldHaveLength(0)
+        testString.replace(testRegex, "").shouldHaveLength(2)
     }
 
     @Test
