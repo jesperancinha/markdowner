@@ -16,7 +16,7 @@
   },
   {
     "title": "GitHub Release",
-    "badge": "GitHub release \\(latest SemVer\\)",
+    "badge": "GitHub release",
     "codePrefix": "img.shields.io/github/v/release"
   },
   {

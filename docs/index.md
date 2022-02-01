@@ -3,7 +3,7 @@
 [![Twitter URL](https://img.shields.io/twitter/url?logoColor=blue&style=social&url=https%3A%2F%2Fimg.shields.io%2Ftwitter%2Furl%3Fstyle%3Dsocial)](https://twitter.com/intent/tweet?text=%20Checkout%20this%20%40github%20repo%20by%20%40joaofse%20%F0%9F%91%A8%F0%9F%8F%BD%E2%80%8D%F0%9F%92%BB%3A%20https%3A//github.com/jesperancinha/markdowner)
 [![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Markdowner&color=informational)](https://github.com/jesperancinha/markdowner)
 [![Maven Central](https://img.shields.io/maven-central/v/org.jesperancinha.parser/markdowner)](https://search.maven.org/search?q=parser.markdowner)
-[![GitHub release](https://img.shields.io/github/release-pre/jesperancinha/markdowner.svg)](https://github.com/jesperancinha/markdowner/releases)
+[![GitHub release](https://img.shields.io/github/release/jesperancinha/markdowner.svg)](https://github.com/jesperancinha/markdowner/releases)
 [![javadoc](https://javadoc.io/badge2/org.jesperancinha.parser/markdowner/javadoc.svg)](https://javadoc.io/doc/org.jesperancinha.parser/markdowner)
 [![GitHub License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)
 
