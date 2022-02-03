@@ -1,7 +1,10 @@
 # Markdowner filter
 
 [![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Markdowner%20Filter&color=informational)](https://github.com/jesperancinha/markdowner/tree/master/markdowner-filter)
-[![Maven Central](https://img.shields.io/maven-central/v/org.jesperancinha.parser/markdowner-filter)](https://search.maven.org/search?q=parser.markdowner-filter)
+
+[![Maven Central](https://img.shields.io/maven-central/v/org.jesperancinha.parser/markdowner)](https://mvnrepository.com/artifact/org.jesperancinha.parser/markdowner)
+[![Sonatype Nexus](https://img.shields.io/nexus/r/https/oss.sonatype.org/org.jesperancinha.parser/markdowner.svg)](https://search.maven.org/artifact/org.jesperancinha.parser/markdowner)
+
 [![javadoc](https://javadoc.io/badge2/org.jesperancinha.parser/markdowner-filter/javadoc.svg)](https://javadoc.io/doc/org.jesperancinha.parser/markdowner-filter)
 
 [![CircleCI](https://circleci.com/gh/jesperancinha/markdowner.svg?style=svg)](https://circleci.com/gh/jesperancinha/markdowner)
@@ -27,7 +30,7 @@
 <dependency>
   <groupId>org.jesperancinha.parser</groupId>
   <artifactId>markdowner-filter</artifactId>
-  <version>3.0.6</version>
+  <version>3.0.7</version>
 </dependency>
 ```
 

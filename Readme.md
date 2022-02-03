@@ -2,8 +2,11 @@
 
 [![Twitter URL](https://img.shields.io/twitter/url?logoColor=blue&style=social&url=https%3A%2F%2Fimg.shields.io%2Ftwitter%2Furl%3Fstyle%3Dsocial)](https://twitter.com/intent/tweet?text=%20Checkout%20this%20%40github%20repo%20by%20%40joaofse%20%F0%9F%91%A8%F0%9F%8F%BD%E2%80%8D%F0%9F%92%BB%3A%20https%3A//github.com/jesperancinha/markdowner)
 [![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Markdowner&color=informational)](https://github.com/jesperancinha/markdowner)
+
 [![GitHub release](https://img.shields.io/github/release/jesperancinha/markdowner.svg)](https://github.com/jesperancinha/markdowner/releases)
-[![Maven Central](https://img.shields.io/maven-central/v/org.jesperancinha.parser/markdowner)](https://search.maven.org/search?q=parser.markdowner)
+[![Maven Central](https://img.shields.io/maven-central/v/org.jesperancinha.parser/markdowner)](https://mvnrepository.com/artifact/org.jesperancinha.parser/markdowner)
+[![Sonatype Nexus](https://img.shields.io/nexus/r/https/oss.sonatype.org/org.jesperancinha.parser/markdowner.svg)](https://search.maven.org/artifact/org.jesperancinha.parser/markdowner)
+
 [![javadoc](https://javadoc.io/badge2/org.jesperancinha.parser/markdowner/javadoc.svg)](https://javadoc.io/doc/org.jesperancinha.parser/markdowner)
 [![GitHub License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)
 
@@ -42,51 +45,7 @@ An extra complicated markdown parsing library with extra special functions.
 
 Please Look into the javadocs for more info or check our [reference documentation](http://jesperancinha.github.io/markdowner/) for more details.
 
-## Release 3.0.6 - 2022/01/13
-
--   All Icons Upgrade
--   Spring Boot upgrade to 2.6.2
-
-## Release 3.0.5 - 2021/12/12
-
--   Spring Boot upgrade to 2.6.1
-
-## Release 3.0.4 - 2021/10/31
-
--   Spring Boot upgrade to 2.5.5
--   Emoji handling for badges
-
-## Release 3.0.3 - 2021/08/26
- 
--   Link content filter for badges
-
-> Delay because of  [nexus-staging-maven-plugin not working with java 16](https://issues.sonatype.org/browse/NEXUS-27902)
-> Not released under JDK 16
-
-## Release 3.0.2 - 2021/06/04
-
--   Accepts @ in the URL path
-
-## Release 3.0.1 - 2021/05/24
-
--   Adds title as an optional parameter
-
-## Release 3.0.0 - 2021/05/15
-
--   Breaking changes
--   Configurable report types. Enum is not necessary anymore
-
-## Release 2.0.3 - 2021/05/14
-
--   Badge Parsing
--   Creates Badge maps and listings for build, content, coverage, info and quality
-
-## Release 2.0.2 - 2020/04/05
-
--   Paragraph parser (supports inner paragraphs #).
--   Read of .md content stream with (#) paragraphs removed (this one does consider whole paragraphs and the tree).
--   Read of a complete .md content stream or text auto-creation according to filter chain, determined by project type and its automated packaging system
--   Merge of a readme file to a parsed template content
+Check all the release notes [here](./ReleaseNotes.md).
 
 ## Maven
 

@@ -6,7 +6,7 @@
     <groupId>org.jesperancinha.parser</groupId>
     <artifactId>markdowner</artifactId>
     <name>Markdowner parent POM</name>
-    <version>3.0.6</version>
+    <version>3.0.7</version>
     <description>Parent pom of the markdowner libraries</description>
     <url>https://github.com/jesperancinha/markdowner</url>
     <licenses>
