@@ -1,7 +1,10 @@
 # markdowner
 
 [![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Markdowner%20Core&color=informational)](https://github.com/jesperancinha/markdowner/tree/master/markdowner-core)
-[![Maven Central](https://img.shields.io/maven-central/v/org.jesperancinha.parser/markdowner-core)](https://search.maven.org/search?q=parser.markdowner-core)
+
+[![Maven Central](https://img.shields.io/maven-central/v/org.jesperancinha.parser/markdowner)](https://mvnrepository.com/artifact/org.jesperancinha.parser/markdowner)
+[![Sonatype Nexus](https://img.shields.io/nexus/r/https/oss.sonatype.org/org.jesperancinha.parser/markdowner.svg)](https://search.maven.org/artifact/org.jesperancinha.parser/markdowner)
+
 [![javadoc](https://javadoc.io/badge2/org.jesperancinha.parser/markdowner-core/javadoc.svg)](https://javadoc.io/doc/org.jesperancinha.parser/markdowner-core)
 
 [![CircleCI](https://circleci.com/gh/jesperancinha/markdowner.svg?style=svg)](https://circleci.com/gh/jesperancinha/markdowner)
