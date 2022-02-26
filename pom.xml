@@ -64,7 +64,7 @@
         <commons-io.version>2.11.0</commons-io.version>
         <gson.version>2.9.0</gson.version>
         <mapstruct-processor.version>1.4.2.Final</mapstruct-processor.version>
-        <markdowner.version>3.0.6</markdowner.version>
+        <markdowner.version>3.0.7</markdowner.version>
         <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
         <jackson-annotations.version>2.13.1</jackson-annotations.version>
