@@ -20,7 +20,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <kotlin.version>1.7.20</kotlin.version>
-        <kotest.version>5.5.1</kotest.version>
+        <kotest.version>5.5.2</kotest.version>
     </properties>
     <developers>
         <developer>
