@@ -74,6 +74,7 @@
         <omni-coveragereporter-maven-plugin.version>0.3.1</omni-coveragereporter-maven-plugin.version>
         <kotlinx-coroutines-debug.version>1.6.4</kotlinx-coroutines-debug.version>
         <junit-jupiter-api.version>5.9.1</junit-jupiter-api.version>
+        <kotlin.version>1.8.0</kotlin.version>
     </properties>
 
     <packaging>pom</packaging>
@@ -184,6 +185,20 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib-jdk8</artifactId>
+            <version>${kotlin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-test</artifactId>
+            <version>${kotlin.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
     <profiles>
         <profile>
@@ -296,6 +311,30 @@
                 <groupId>org.jesperancinha.plugins</groupId>
                 <artifactId>omni-coveragereporter-maven-plugin</artifactId>
                 <version>${omni-coveragereporter-maven-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-maven-plugin</artifactId>
+                <version>${kotlin.version}</version>
+                <executions>
+                    <execution>
+                        <id>compile</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>test-compile</id>
+                        <phase>test-compile</phase>
+                        <goals>
+                            <goal>test-compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <jvmTarget>1.8</jvmTarget>
+                </configuration>
             </plugin>
         </plugins>
     </build>
