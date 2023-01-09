@@ -16,7 +16,6 @@
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c423c85288eb45c883e2f721bb611a3f)](https://www.codacy.com/manual/jofisaes/markdowner?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/markdowner&amp;utm_campaign=Badge_Grade)
 [![codebeat badge](https://codebeat.co/badges/b6f714fa-6632-473e-9eb5-c481c776d415)](https://codebeat.co/projects/github-com-jesperancinha-markdowner-master)
-[![BCH compliance](https://bettercodehub.com/edge/badge/jesperancinha/markdowner?branch=master)](https://bettercodehub.com/)
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/c423c85288eb45c883e2f721bb611a3f)](https://www.codacy.com/gh/jesperancinha/markdowner/dashboard?utm_source=github.com&utm_medium=referral&utm_content=jesperancinha/markdowner&utm_campaign=Badge_Coverage)
 [![codecov](https://codecov.io/gh/jesperancinha/markdowner/branch/master/graph/badge.svg?token=BREGsxyj5M)](https://codecov.io/gh/jesperancinha/markdowner)
