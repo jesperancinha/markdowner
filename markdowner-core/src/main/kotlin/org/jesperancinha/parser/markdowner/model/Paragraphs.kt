@@ -2,7 +2,7 @@ package org.jesperancinha.parser.markdowner.model
 
 import org.jesperancinha.parser.markdowner.helper.TagHelper
 
-class Paragraphs(
+open class Paragraphs(
     private val allParagraphs: MutableMap<String, Paragraph> = mutableMapOf(),
     val tags: MutableList<String> = mutableListOf()
 ) {

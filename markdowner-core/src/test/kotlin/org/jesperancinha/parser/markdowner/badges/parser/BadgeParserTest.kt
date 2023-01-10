@@ -18,9 +18,15 @@ class BadgeParserTest {
     }
 
     @Test
-    fun testBadgeSettingsParserr() {
+    fun `should run badge setting parser`(): Unit = run {
         val badgeSettingGroups = BadgeParser.parseSettings()
         badgeSettingGroups.shouldNotBeNull()
         badgeSettingGroups.shouldHaveSize(8)
     }
+
+    @Test
+    fun `should test badge parser`(): Unit = run { BadgeParser.badgeTypes.shouldNotBeNull() }
+
+    @Test
+    fun `should test badge settings parser`(): Unit = run { BadgeParser.badgeSettingGroups.shouldNotBeNull() }
 }

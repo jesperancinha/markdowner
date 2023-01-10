@@ -11,7 +11,7 @@ import kotlin.system.exitProcess
 
 class BadgeParser {
 
-    companion object{
+    companion object {
         private const val GENERIC_REGEX = "a-zA-Z0-9\\/\\.\\]\\?\\=\\-\\&\\%%\\;\\_\\#\\:\\@\\\"\\ "
         private const val EMOJI_REGEX = ".{0,4}"
         const val FULL_REGEX = GENERIC_REGEX + EMOJI_REGEX
@@ -21,7 +21,7 @@ class BadgeParser {
         private val objectMapper = ObjectMapper()
         private val logger: Logger = LoggerFactory.getLogger(BadgeParser::class.java)
 
-        private val badgeTypes = parseBadgeTypes()
+        val badgeTypes by lazy { parseBadgeTypes() }
         private fun parseBadgeTypes(): Map<String, BadgeType> = try {
             objectMapper.readValue(
                 BadgeParser::class.java.getResourceAsStream("/jeorg.badges.types.json"),
@@ -32,35 +32,35 @@ class BadgeParser {
             exitProcess(1)
         }
 
-        private val badgeSettingGroups by lazy { parseSettings() }
+        val badgeSettingGroups by lazy { parseSettings() }
 
         fun parse(readmeText: String): Map<BadgeType, BadgeGroup> = badgeSettingGroups.values
-                .filterNotNull().associate { badgeSettingGroup ->
-                    val allBadges = badgeSettingGroup.badgeSettingList.associate { badgePattern ->
-                        badgePattern.pattern to run {
-                            val matcher = badgePattern.pattern.matcher(readmeText)
-                            if (matcher.find()) {
-                                val badgeText = matcher.group(0)
-                                val matcher1 = NOT_ACCEPTED_REGEX.matcher(badgeText)
-                                val linkPrefix = badgePattern.linkPrefix
-                                if (matcher1.find() || linkPrefix != null && !badgeText.contains(linkPrefix)) {
-                                    null
-                                } else {
-                                    Badge(
-                                        badgeText = badgeText,
-                                        title = badgePattern.title
-                                    )
-                                }
-                            } else {
+            .filterNotNull().associate { badgeSettingGroup ->
+                val allBadges = badgeSettingGroup.badgeSettingList.associate { badgePattern ->
+                    badgePattern.pattern to run {
+                        val matcher = badgePattern.pattern.matcher(readmeText)
+                        if (matcher.find()) {
+                            val badgeText = matcher.group(0)
+                            val matcher1 = NOT_ACCEPTED_REGEX.matcher(badgeText)
+                            val linkPrefix = badgePattern.linkPrefix
+                            if (matcher1.find() || linkPrefix != null && !badgeText.contains(linkPrefix)) {
                                 null
+                            } else {
+                                Badge(
+                                    badgeText = badgeText,
+                                    title = badgePattern.title
+                                )
                             }
+                        } else {
+                            null
                         }
                     }
-                    badgeSettingGroup.badgeType to BadgeGroup(
-                        badgeType = badgeSettingGroup.badgeType,
-                        badgeHashMap = allBadges
-                    )
                 }
+                badgeSettingGroup.badgeType to BadgeGroup(
+                    badgeType = badgeSettingGroup.badgeType,
+                    badgeHashMap = allBadges
+                )
+            }
 
 
         fun parseSettings(): Map<BadgeType, BadgeSettingGroup?> =

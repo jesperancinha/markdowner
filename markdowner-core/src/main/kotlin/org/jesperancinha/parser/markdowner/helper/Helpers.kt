@@ -41,13 +41,13 @@ object ReadmeParserHelper {
         val sb = StringBuilder()
         BufferedReader(InputStreamReader(readmeInputStream)).use { br ->
             val allTags = listOf(*tags)
-            var line: String
+            var line: String?
             var currentMinHashTags = 0
             while (br.readLine().also { line = it } != null) {
-                if (line.startsWith("#")) {
-                    currentMinHashTags = calculateCurrentMinHashTags(line, currentMinHashTags, allTags)
+                if (line?.startsWith("#") == true) {
+                    line?.let{ currentMinHashTags = calculateCurrentMinHashTags(it, currentMinHashTags, allTags)}
                 }
-                if (currentMinHashTags == 0 && (!line.startsWith("#") || !allTags.contains(TagHelper.sanitizeTag(line)))) {
+                if (currentMinHashTags == 0 && (line?.startsWith("#") != true || !allTags.contains(TagHelper.sanitizeTag(line)))) {
                     sb.append(line)
                     sb.append(System.lineSeparator())
                 }
@@ -141,7 +141,7 @@ object TemplateParserHelper {
      * @throws IOException Any kind of IO Exception
      */
     @Throws(IOException::class)
-    fun findAllParagraphs(templateInputStream: InputStream): Paragraphs? {
+    fun findAllParagraphs(templateInputStream: InputStream): Paragraphs {
         val paragraphs = Paragraphs()
         BufferedReader(InputStreamReader(templateInputStream)).use { br ->
             val sb = StringBuilder()
