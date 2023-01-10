@@ -18,7 +18,7 @@ class BadgeParser3Test {
     }
 
     @Test
-    fun testBadgeSettingsParserr() {
+    fun testBadgeSettingsParser() {
         val badgeSettingGroups = BadgeParser.parseSettings()
         badgeSettingGroups.shouldNotBeNull()
         badgeSettingGroups.shouldHaveSize(8)

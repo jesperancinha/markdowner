@@ -1,5 +1,4 @@
-name: markdowner-pull-request
-
+name: MD Pull Request
 on:
   pull_request:
     branches: [ master ]

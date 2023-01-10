@@ -6,10 +6,10 @@
     <parent>
         <artifactId>markdowner</artifactId>
         <groupId>org.jesperancinha.parser</groupId>
-        <version>3.0.8</version>
+        <version>4.0.0</version>
     </parent>
     <artifactId>markdowner-core</artifactId>
-    <name>Markdowner core</name>
+    <name>Markdowner :: Core</name>
     <description>Markdowner Core - A library to parse markdown files with exception functions</description>
     <licenses>
         <license>
@@ -75,7 +75,6 @@
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib</artifactId>
-            <version>1.8.0</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>

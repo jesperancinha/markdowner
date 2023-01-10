@@ -5,12 +5,12 @@
     <parent>
         <artifactId>markdowner</artifactId>
         <groupId>org.jesperancinha.parser</groupId>
-        <version>3.0.8</version>
+        <version>4.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>markdowner-filter</artifactId>
-    <name>Markdowner filter</name>
+    <name>Markdowner :: Filter</name>
     <description>Markdowner Filter - A library to filter a folder into the right Readme file generation</description>
     <licenses>
         <license>
@@ -63,6 +63,10 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib</artifactId>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -155,6 +159,7 @@
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
                 <version>${maven-release-plugin.version}</version>
                 <configuration>
@@ -169,6 +174,11 @@
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <useSystemClassLoader>false</useSystemClassLoader>
+                    <includes>
+                        <include>**/*IT</include>
+                        <include>**/*Test</include>
+                        <include>**/*Tests</include>
+                    </includes>
                 </configuration>
             </plugin>
             <plugin>

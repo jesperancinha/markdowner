@@ -19,7 +19,7 @@ class TemplateParserHelperTest {
         license.shouldNotBeNull()
         aboutMe.shouldNotBeNull()
         license.tag shouldBe LICENSE_TAG
-        aboutMe.tag shouldBe ABOUT_ME_TAG
+        aboutMe.tag shouldBe ABOUT_ME_TAG_STRIPPED
         license.text shouldBe "This is one\nOne"
         aboutMe.text shouldBe "This is two\nTwo"
     }
@@ -55,13 +55,14 @@ class TemplateParserHelperTest {
         license.shouldNotBeNull()
         aboutMe.shouldNotBeNull()
         license.tag shouldBe LICENSE_TAG
-        aboutMe.tag shouldBe ABOUT_ME_TAG
+        aboutMe.tag shouldBe ABOUT_ME_TAG_STRIPPED
         license.text shouldBe "This is one\nOne\n### Inner text\nThis is inner text"
         aboutMe.text shouldBe "This is two\nTwo"
     }
 
     companion object {
         private const val LICENSE_TAG = "## License"
-        private const val ABOUT_ME_TAG = "## About me"
+        private const val ABOUT_ME_TAG = "## About me \uD83D\uDC68\uD83C\uDFFD\u200D\uD83D\uDCBB\uD83D\uDE80"
+        private const val ABOUT_ME_TAG_STRIPPED = "## About me"
     }
 }

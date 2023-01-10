@@ -32,10 +32,9 @@ class BadgeParser {
             exitProcess(1)
         }
 
-        val badgeSettingGroups = parseSettings()
+        private val badgeSettingGroups by lazy { parseSettings() }
 
-        fun parse(readmeText: String): Map<BadgeType, BadgeGroup> {
-            return badgeSettingGroups.values
+        fun parse(readmeText: String): Map<BadgeType, BadgeGroup> = badgeSettingGroups.values
                 .filterNotNull().associate { badgeSettingGroup ->
                     val allBadges = badgeSettingGroup.badgeSettingList.associate { badgePattern ->
                         badgePattern.pattern to run {
@@ -62,7 +61,7 @@ class BadgeParser {
                         badgeHashMap = allBadges
                     )
                 }
-        }
+
 
         fun parseSettings(): Map<BadgeType, BadgeSettingGroup?> =
             badgeTypes.values.associateWith { badgeType ->

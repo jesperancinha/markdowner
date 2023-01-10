@@ -30,7 +30,7 @@
 <dependency>
   <groupId>org.jesperancinha.parser</groupId>
   <artifactId>markdowner-filter</artifactId>
-  <version>3.0.8</version>
+  <version>4.0.0</version>
 </dependency>
 ```
 
