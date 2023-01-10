@@ -5,9 +5,9 @@ import java.util.regex.Pattern
 
 data class Badge (
     @JsonProperty("title")
-    var title: String? = null,
+    var title: String,
     @JsonProperty("badgeText")
-    var badgeText: String? = null
+    var badgeText: String
 )
 
 data class BadgeGroup (
