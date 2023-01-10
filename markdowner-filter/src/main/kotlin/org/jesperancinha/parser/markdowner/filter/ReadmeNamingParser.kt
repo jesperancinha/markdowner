@@ -7,9 +7,9 @@ import java.nio.file.Path
 import java.util.*
 
 class ReadmeNamingParser(
-    private val fileFilterChain: FileFilterChain? = null,
-    private val templateLocation: Path,
-    private val isNoEmpty: Boolean = false
+     val fileFilterChain: FileFilterChain? = null,
+     val templateLocation: Path,
+     val isNoEmpty: Boolean = false
 ) {
     /**
      * Builds a stream of a Readme marked down texts taking a [Path] as a reference.

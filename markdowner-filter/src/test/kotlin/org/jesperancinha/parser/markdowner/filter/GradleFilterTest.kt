@@ -1,28 +1,31 @@
 package org.jesperancinha.parser.markdowner.filter
 
-import org.assertj.core.api.Assertions
+import io.kotest.matchers.booleans.shouldBeFalse
+import io.kotest.matchers.booleans.shouldBeTrue
+import io.kotest.matchers.nulls.shouldNotBeNull
+import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 import java.nio.file.Path
 
 class GradleFilterTest {
     @Test
     fun testGradleFilter() {
-        val resource1 = javaClass.getResource("/directory2NoReadme/project4Gradle/gradle.build")
-        Assertions.assertThat(resource1).isNotNull
-        val resource = Path.of(resource1.path)
+        val gradleBuild = javaClass.getResource("/directory2NoReadme/project4Gradle/gradle.build")
+        gradleBuild.shouldNotBeNull()
+        val resource = Path.of(gradleBuild.path)
         val npmFilter = GradleFilter()
         val result = npmFilter.test(resource)
-        Assertions.assertThat(result).isTrue
-        Assertions.assertThat(npmFilter.lastProjectName()).isEqualTo("project4Gradle")
+        result.shouldBeTrue()
+        npmFilter.lastProjectName() shouldBe "project4Gradle"
     }
 
     @Test
     fun testGradleFilterFail() {
-        val resource1 = javaClass.getResource("/directory2NoReadme/project3MavenAndNPM/package.json")
-        Assertions.assertThat(resource1).isNotNull
-        val resource = Path.of(resource1.path)
+        val packageJson = javaClass.getResource("/directory2NoReadme/project3MavenAndNPM/package.json")
+        packageJson.shouldNotBeNull()
+        val resource = Path.of(packageJson.path)
         val mavenFilter = GradleFilter()
         val result = mavenFilter.test(resource)
-        Assertions.assertThat(result).isFalse
+        result.shouldBeFalse()
     }
 }

@@ -1,107 +1,143 @@
 package org.jesperancinha.parser.markdowner.filter
 
+import io.kotest.matchers.nulls.shouldBeNull
+import io.kotest.matchers.nulls.shouldNotBeNull
+import io.kotest.matchers.shouldBe
 import org.apache.commons.io.IOUtils
-import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 import java.io.IOException
 import java.net.URISyntaxException
-import java.nio.charset.Charset
+import java.nio.charset.Charset.*
 import java.nio.file.Path
 
 class ReadmeNamingParserTest {
     private val templatePath = Path.of("/.")
+
     @Test
     @Throws(IOException::class)
     fun testBuildReadmeSamePath() {
         val path = Path.of("/.")
         val inputStream = ReadmeNamingParser(
             templateLocation = templatePath,
-            fileFilterChain = FileFilterChain.createDefaultChain())
+            fileFilterChain = FileFilterChain.createDefaultChain()
+        )
             .buildReadmeStream(path)
-        Assertions.assertThat(inputStream).isNull()
+        inputStream.shouldBeNull()
     }
 
     @Test
     @Throws(URISyntaxException::class, IOException::class)
     fun testBuildReadmeStreamNothing() {
-        val path = Path.of(javaClass.getResource("/directory2NoReadme/noProject2").toURI())
-        val inputStream = ReadmeNamingParser(templateLocation(templatePath)
-            .fileFilterChain(FileFilterChain.Companion.createDefaultChain()).build().buildReadmeStream(path)
-        Assertions.assertThat(inputStream).isNull()
+        val noProject = javaClass.getResource("/directory2NoReadme/noProject2")
+        noProject.shouldNotBeNull()
+        val path = Path.of(noProject.toURI())
+        val inputStream = ReadmeNamingParser(
+            templateLocation = templatePath,
+            fileFilterChain = FileFilterChain.createDefaultChain()
+        ).buildReadmeStream(path)
+        inputStream.shouldBeNull()
     }
 
     @Test
     @Throws(URISyntaxException::class, IOException::class)
     fun testBuildReadmeStreamMixMavenAndNPMFlagOn() {
-        val path = Path.of(javaClass.getResource("/directory2NoReadme/project3MavenAndNPM").toURI())
-        val inputStream = ReadmeNamingParser.builder().isNoEmpty(true).templateLocation(templatePath)
-            .fileFilterChain(FileFilterChain.Companion.createDefaultChain()).build().buildReadmeStream(path)
-        Assertions.assertThat(inputStream).isNull()
+        val projectMavenAndNpm = javaClass.getResource("/directory2NoReadme/project3MavenAndNPM")
+        projectMavenAndNpm.shouldNotBeNull()
+        val path = Path.of(projectMavenAndNpm.toURI())
+        val inputStream = ReadmeNamingParser(
+            isNoEmpty = true,
+            templateLocation = templatePath,
+            fileFilterChain = FileFilterChain.createDefaultChain()
+        ).buildReadmeStream(path)
+        inputStream.shouldBeNull()
     }
 
     @Test
     @Throws(URISyntaxException::class, IOException::class)
     fun testBuildReadmeStreamMixMavenAndNPM() {
-        val path = Path.of(javaClass.getResource("/directory2NoReadme/project3MavenAndNPM").toURI())
-        val inputStream = ReadmeNamingParser.builder().templateLocation(templatePath)
-            .fileFilterChain(FileFilterChain.Companion.createDefaultChain()).build().buildReadmeStream(path)
-        Assertions.assertThat(inputStream).isNotNull
-        val result = IOUtils.toString(inputStream, Charset.defaultCharset())
-        Assertions.assertThat(result).isEqualTo("# This is a test project")
+        val projectMavenAndNpm = javaClass.getResource("/directory2NoReadme/project3MavenAndNPM")
+        projectMavenAndNpm.shouldNotBeNull()
+        val path = Path.of(projectMavenAndNpm.toURI())
+        val inputStream = ReadmeNamingParser(
+            templateLocation = templatePath,
+            fileFilterChain = FileFilterChain.createDefaultChain()
+        ).buildReadmeStream(path)
+        inputStream.shouldNotBeNull()
+        val result = IOUtils.toString(inputStream, defaultCharset())
+        result shouldBe "# This is a test project"
     }
 
     @Test
     @Throws(URISyntaxException::class, IOException::class)
     fun testBuildReadmeStreamMavenName() {
-        val path = Path.of(javaClass.getResource("/directory2NoReadme/project1Maven").toURI())
-        val inputStream = ReadmeNamingParser.builder().templateLocation(templatePath)
-            .fileFilterChain(FileFilterChain.Companion.createDefaultChain()).build().buildReadmeStream(path)
-        Assertions.assertThat(inputStream).isNotNull
-        val result = IOUtils.toString(inputStream, Charset.defaultCharset())
-        Assertions.assertThat(result).isEqualTo("# This is a test project")
+        val projectMaven = javaClass.getResource("/directory2NoReadme/project1Maven")
+        projectMaven.shouldNotBeNull()
+        val path = Path.of(projectMaven.toURI())
+        val inputStream = ReadmeNamingParser(
+            templateLocation = templatePath,
+            fileFilterChain = FileFilterChain.createDefaultChain()
+        ).buildReadmeStream(path)
+        inputStream.shouldNotBeNull()
+        val result = IOUtils.toString(inputStream, defaultCharset())
+        result shouldBe "# This is a test project"
     }
 
     @Test
     @Throws(URISyntaxException::class, IOException::class)
     fun testBuildReadmeStreamMavenNoName() {
-        val path = Path.of(javaClass.getResource("/directory2NoReadme/project1MavenNoName").toURI())
-        val inputStream = ReadmeNamingParser.builder().templateLocation(templatePath)
-            .fileFilterChain(FileFilterChain.Companion.createDefaultChain()).build().buildReadmeStream(path)
-        Assertions.assertThat(inputStream).isNotNull
-        val result = IOUtils.toString(inputStream, Charset.defaultCharset())
-        Assertions.assertThat(result).isEqualTo("# ProjectMavenArtifact")
+        val projectMavenNoName = javaClass.getResource("/directory2NoReadme/project1MavenNoName")
+        val path = Path.of(projectMavenNoName.toURI())
+        val inputStream = ReadmeNamingParser(
+            templateLocation = templatePath,
+            fileFilterChain = FileFilterChain.createDefaultChain()
+        ).buildReadmeStream(path)
+        inputStream.shouldNotBeNull()
+        val result = IOUtils.toString(inputStream, defaultCharset())
+        result shouldBe "# ProjectMavenArtifact"
     }
 
     @Test
     @Throws(URISyntaxException::class, IOException::class)
     fun testBuildReadmeStreamNPM() {
-        val path = Path.of(javaClass.getResource("/directory2NoReadme/project2NPM").toURI())
-        val inputStream = ReadmeNamingParser.builder().templateLocation(templatePath)
-            .fileFilterChain(FileFilterChain.Companion.createDefaultChain()).build().buildReadmeStream(path)
-        Assertions.assertThat(inputStream).isNotNull
-        val result = IOUtils.toString(inputStream, Charset.defaultCharset())
-        Assertions.assertThat(result).isEqualTo("# npm-project")
+        val projectNpm = javaClass.getResource("/directory2NoReadme/project2NPM")
+        projectNpm.shouldNotBeNull()
+        val path = Path.of(projectNpm.toURI())
+        val inputStream = ReadmeNamingParser(
+            templateLocation = templatePath,
+            fileFilterChain = FileFilterChain.Companion.createDefaultChain()
+        ).buildReadmeStream(path)
+        inputStream.shouldNotBeNull()
+        val result = IOUtils.toString(inputStream, defaultCharset())
+        result shouldBe "# npm-project"
     }
 
     @Test
     @Throws(URISyntaxException::class, IOException::class)
     fun testBuildReadmeStreamGradle() {
-        val path = Path.of(javaClass.getResource("/directory2NoReadme/project4Gradle").toURI())
-        val inputStream = ReadmeNamingParser.builder().templateLocation(templatePath)
-            .fileFilterChain(FileFilterChain.Companion.createDefaultChain()).build().buildReadmeStream(path)
-        Assertions.assertThat(inputStream).isNotNull
-        val result = IOUtils.toString(inputStream, Charset.defaultCharset())
-        Assertions.assertThat(result).isEqualTo("# project4Gradle")
+        val projectGradle = javaClass.getResource("/directory2NoReadme/project4Gradle")
+        projectGradle.shouldNotBeNull()
+        val path = Path.of(projectGradle.toURI())
+        val inputStream = ReadmeNamingParser(
+            templateLocation = templatePath,
+            fileFilterChain = FileFilterChain.createDefaultChain()
+        ).buildReadmeStream(path)
+        inputStream.shouldNotBeNull()
+        val result = IOUtils.toString(inputStream, defaultCharset())
+        result shouldBe "# project4Gradle"
     }
 
     @Test
     @Throws(URISyntaxException::class, IOException::class)
     fun testBuildReadmeStreamSBT() {
-        val path = Path.of(javaClass.getResource("/directory2NoReadme/project5Sbt").toURI())
-        val inputStream = ReadmeNamingParser.builder().templateLocation(templatePath)
-            .fileFilterChain(FileFilterChain.Companion.createDefaultChain()).build().buildReadmeStream(path)
-        Assertions.assertThat(inputStream).isNotNull
-        val result = IOUtils.toString(inputStream, Charset.defaultCharset())
-        Assertions.assertThat(result).isEqualTo("# sbt-project")
+        val projectSbt = javaClass.getResource("/directory2NoReadme/project5Sbt")
+        projectSbt.shouldNotBeNull()
+        val path = Path.of(projectSbt.toURI())
+        val inputStream = ReadmeNamingParser(
+            templateLocation = templatePath,
+            fileFilterChain = FileFilterChain.createDefaultChain()
+        ).buildReadmeStream(path)
+        inputStream.shouldNotBeNull()
+        val result = IOUtils.toString(inputStream, defaultCharset())
+        result shouldBe "# sbt-project"
     }
 }
