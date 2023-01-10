@@ -4,6 +4,6 @@ import java.util.regex.Pattern
 
 class BadgePattern(
     var title: String? = null,
-    var pattern: Pattern? = null,
+    var pattern: Pattern,
     var linkPrefix: String? = null
 )

@@ -6,12 +6,7 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import java.io.IOException
 import java.util.*
-import java.util.function.BiConsumer
-import java.util.function.Function
-import java.util.function.Supplier
 import java.util.regex.Pattern
-import java.util.stream.Collectors
-import kotlin.collections.HashMap
 import kotlin.system.exitProcess
 
 object BadgeParser {
@@ -24,100 +19,76 @@ object BadgeParser {
     private val NOT_ACCEPTED_REGEX = Pattern.compile("color=(?!(informational)).")
     val badgeTypes = parseBadgeTypes()
     val logger: Logger = LoggerFactory.getLogger(BadgeParser::class.java)
-    private fun parseBadgeTypes(): Map<String, BadgeType>? = try {
+    private fun parseBadgeTypes(): Map<String, BadgeType> = try {
         objectMapper.readValue(
             BadgeParser::class.java.getResourceAsStream("/jeorg.badges.types.json"),
             Array<BadgeType>::class.java
         ).associateBy { it.type }
     } catch (e: IOException) {
-            logger.error("Error!", e)
-            exitProcess(1)
-        }
+        logger.error("Error!", e)
+        exitProcess(1)
+    }
 
     val badgeSettingGroups = parseSettings()
-    fun parse(readmeText: String?): Map<BadgeType, BadgeGroup> {
-        return badgeSettingGroups
-            .values
-            .filterNotNull()
-            .groupByTo(HashMap(),{ obj: BadgeSettingGroup -> obj.badgeType },
-                 { badgeSettingGroup: BadgeSettingGroup ->
-                    val allBadges = badgeSettingGroup
-                        .badgeSettingList
-                        .collect(
-                            Supplier<HashMap<Pattern, Badge>> { HashMap() },
-                            BiConsumer<HashMap<Pattern?, Badge?>, BadgePattern> { map: HashMap<Pattern?, Badge?>, badgeSetting: BadgePattern ->
-                                val matcher = badgeSetting.pattern.matcher(readmeText)
-                                if (matcher.find()) {
-                                    val badgeText = matcher.group(0)
-                                    val matcher1 = NOT_ACCEPTED_REGEX.matcher(badgeText)
-                                    val linkPrefix = badgeSetting.linkPrefix
-                                    if (matcher1.find() || linkPrefix != null && !badgeText.contains(linkPrefix)) {
-                                        map[badgeSetting.pattern] = null
-                                    } else {
-                                        map[badgeSetting.pattern] = Badge.builder()
-                                            .badgeText(badgeText)
-                                            .title(badgeSetting.title)
-                                            .build()
-                                    }
-                                } else {
-                                    map[badgeSetting.pattern] = null
-                                }
-                            },
-                            BiConsumer<HashMap<Pattern?, Badge?>, HashMap<Pattern?, Badge?>> { obj: HashMap<Pattern?, Badge?>, m: HashMap<Pattern?, Badge?>? ->
-                                obj.putAll(
-                                    m!!
+
+    fun parse(readmeText: String): Map<BadgeType, BadgeGroup> {
+        return badgeSettingGroups.values
+            .filterNotNull().associate { badgeSettingGroup ->
+                val allBadges = badgeSettingGroup.badgeSettingList.associate { badgePattern ->
+                    badgePattern.pattern to run {
+                        val matcher = badgePattern.pattern.matcher(readmeText)
+                        if (matcher.find()) {
+                            val badgeText = matcher.group(0)
+                            val matcher1 = NOT_ACCEPTED_REGEX.matcher(badgeText)
+                            val linkPrefix = badgePattern.linkPrefix
+                            if (matcher1.find() || linkPrefix != null && !badgeText.contains(linkPrefix)) {
+                                null
+                            } else {
+                                Badge(
+                                    badgeText = badgeText,
+                                    title = badgePattern.title
                                 )
-                            })
-                    BadgeGroup(
-                        badgeType = badgeSettingGroup.badgeType,
-                        badgeHashMap = allBadges
-                    )
+                            }
+                        } else {
+                            null
+                        }
+                    }
                 }
-            ))
+                badgeSettingGroup.badgeType to BadgeGroup(
+                    badgeType = badgeSettingGroup.badgeType,
+                    badgeHashMap = allBadges
+                )
+            }
     }
 
-    fun parseSettings(): Map<BadgeType, BadgeSettingGroup?> {
-        return badgeTypes!!.values.stream()
-            .collect(
-                Collectors.toMap(
-                    Function { badgeType: BadgeType -> badgeType },
-                    Function<BadgeType, BadgeSettingGroup?> { badgeType: BadgeType ->
-                        try {
-                            val badgeSettingList = Arrays.stream(
-                                objectMapper.readValue(
-                                    BadgeParser::class.java.getResourceAsStream("/" + badgeType.badgeFile),
-                                    Array<BadgeSetting>::class.java
+    fun parseSettings(): Map<BadgeType, BadgeSettingGroup?> =
+        badgeTypes.values.associateWith { badgeType ->
+            try {
+                val badgeSettingList = objectMapper.readValue(
+                    BadgeParser::class.java.getResourceAsStream("/" + badgeType.badgeFile),
+                    Array<BadgeSetting>::class.java
+                )
+                BadgeSettingGroup(
+                    badgeType = badgeType,
+                    badgeSettingList = badgeSettingList.map { badgeSetting ->
+                        BadgePattern(
+                            title = badgeSetting.title,
+                            pattern = Pattern.compile(
+                                String.format(
+                                    BADGE_REGEX,
+                                    badgeSetting.badge,
+                                    badgeSetting.codePrefix
+                                        .replace(".", "\\.")
+                                        .replace("/", "\\/")
                                 )
-                            ).collect(Collectors.toList())
-                            return@toMap BadgeSettingGroup.builder()
-                                .badgeType(badgeType)
-                                .badgeSettingList(
-                                    badgeSettingList
-                                        .stream().map { badgeSetting: BadgeSetting ->
-                                            BadgePattern.builder()
-                                                .title(badgeSetting.title)
-                                                .pattern(
-                                                    Pattern.compile(
-                                                        String.format(
-                                                            BADGE_REGEX,
-                                                            badgeSetting.badge,
-                                                            badgeSetting.codePrefix
-                                                                .replace(".", "\\.")
-                                                                .replace("/", "\\/")
-                                                        )
-                                                    )
-                                                )
-                                                .linkPrefix(badgeSetting.linkPrefix)
-                                                .build()
-                                        }
-                                        .collect(Collectors.toList())
-                                )
-                                .build()
-                        } catch (e: IOException) {
-                            BadgeParser.log.error("Error", e)
-                        }
-                        null
-                    })
-            )
-    }
+                            ),
+                            linkPrefix = badgeSetting.linkPrefix
+                        )
+                    }
+                )
+            } catch (e: IOException) {
+                logger.error("Error", e)
+                null
+            }
+        }
 }

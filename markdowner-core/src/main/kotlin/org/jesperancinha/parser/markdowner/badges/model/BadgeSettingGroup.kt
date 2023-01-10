@@ -1,6 +1,6 @@
 package org.jesperancinha.parser.markdowner.badges.model
 
 class BadgeSettingGroup(
-    var badgeType: BadgeType? = null,
+    var badgeType: BadgeType,
     var badgeSettingList: List<BadgePattern>
 )
