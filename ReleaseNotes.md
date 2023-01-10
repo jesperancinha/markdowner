@@ -1,5 +1,8 @@
 # Markdowner Release notes
 
+## Release 4.0.0 - 2023/01/10 (to be released..)
+
+- Kotlin Version
 
 ## Release 3.0.7 - 2022/02/03
 
