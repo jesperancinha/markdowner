@@ -9,7 +9,6 @@ import java.nio.charset.Charset
 
 class BadgeParser2Test {
     @Test
-    @Throws(IOException::class)
     fun testBadgeParser() {
         val badgeGroups = BadgeParser.parse(
             IOUtils.resourceToString("/badges/README2.md", Charset.defaultCharset())
@@ -18,7 +17,7 @@ class BadgeParser2Test {
     }
 
     @Test
-    fun testBadgeSettingsParserr() {
+    fun `should parse badge setting groups`() {
         val badgeSettingGroups = BadgeParser.parseSettings()
         badgeSettingGroups.shouldNotBeNull()
         badgeSettingGroups.shouldHaveSize(8)

@@ -212,6 +212,11 @@
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <useSystemClassLoader>false</useSystemClassLoader>
+                    <includes>
+                        <include>**/*IT</include>
+                        <include>**/*Test</include>
+                        <include>**/*Tests</include>
+                    </includes>
                 </configuration>
             </plugin>
             <plugin>
