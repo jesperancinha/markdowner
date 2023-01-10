@@ -27,7 +27,7 @@
         <connection>scm:git:git://github.com:jesperancinha/markdowner.git</connection>
         <developerConnection>scm:git:git://github.com:jesperancinha/markdowner.git</developerConnection>
         <url>https://github.com/jesperancinha/markdowner</url>
-        <tag>3.0.5</tag>
+        <tag>4.0.0</tag>
     </scm>
     <distributionManagement>
         <snapshotRepository>

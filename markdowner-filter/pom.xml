@@ -30,7 +30,7 @@
         <connection>git@github.com:jesperancinha/markdowner.git</connection>
         <developerConnection>git@github.com:jesperancinha/markdowner.git</developerConnection>
         <url>https://github.com/jesperancinha/markdowner/tree/master/markdowner-filter</url>
-        <tag>3.0.5</tag>
+        <tag>4.0.0</tag>
     </scm>
     <distributionManagement>
         <snapshotRepository>
