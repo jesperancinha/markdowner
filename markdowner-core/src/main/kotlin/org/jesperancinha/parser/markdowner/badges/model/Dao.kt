@@ -19,7 +19,7 @@ data class BadgeGroup (
 
 data class BadgePattern(
     @JsonProperty("title")
-    var title: String? = null,
+    var title: String,
     @JsonProperty("pattern")
     var pattern: Pattern,
     @JsonProperty("linkPrefix")
@@ -28,7 +28,7 @@ data class BadgePattern(
 
 data class BadgeSetting (
     @JsonProperty("title")
-    var title: String? = null,
+    var title: String,
     @JsonProperty("badge")
     var badge: String? = null,
     @JsonProperty("codePrefix")
