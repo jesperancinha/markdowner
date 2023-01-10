@@ -128,9 +128,9 @@ class BadgeParserKtTest {
         val parse = BadgeParser.parse(testText)
 
         val parseStatusBadges = parse.entries.flatMap { entry ->
-            entry.value.badgeHashMap?.filter {
+            entry.value.badgeHashMap.filter {
                 it.key.pattern().contains("Status badge")
-            }?.values ?: emptyList()
+            }.values
         }
         parseStatusBadges.shouldHaveSize(1)
         parseStatusBadges.first().shouldBeNull()
@@ -143,7 +143,7 @@ class BadgeParserKtTest {
         val parse = BadgeParser.parse(testText)
 
         val parseStatusBadges = parse.entries.flatMap { entry ->
-            entry.value.badgeHashMap?.filter {
+            entry.value.badgeHashMap.filter {
                 it.key.pattern().contains("Status badge")
             }?.values ?: emptyList()
         }
