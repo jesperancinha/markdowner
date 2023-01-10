@@ -1,4 +1,4 @@
-name: markdowner
+name: MD Build
 
 on:
   push:
