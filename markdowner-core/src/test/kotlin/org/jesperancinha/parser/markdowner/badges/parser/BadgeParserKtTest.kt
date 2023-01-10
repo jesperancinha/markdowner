@@ -145,7 +145,7 @@ class BadgeParserKtTest {
         val parseStatusBadges = parse.entries.flatMap { entry ->
             entry.value.badgeHashMap.filter {
                 it.key.pattern().contains("Status badge")
-            }?.values ?: emptyList()
+            }.values
         }
         parseStatusBadges.shouldHaveSize(1)
         parseStatusBadges.first().shouldNotBeNull()

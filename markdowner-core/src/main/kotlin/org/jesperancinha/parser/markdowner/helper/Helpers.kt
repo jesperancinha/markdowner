@@ -37,10 +37,10 @@ object ReadmeParserHelper {
      * @throws IOException Any IO Exception thrown
      */
     @Throws(IOException::class)
-    fun readDataSprippedOfTags(readmeInputStream: InputStream?, vararg tags: String?): String {
+    fun readDataSprippedOfTags(readmeInputStream: InputStream, vararg tags: String?): String {
         val sb = StringBuilder()
         BufferedReader(InputStreamReader(readmeInputStream)).use { br ->
-            val allTags = Arrays.asList(*tags)
+            val allTags = listOf(*tags)
             var line: String
             var currentMinHashTags = 0
             while (br.readLine().also { line = it } != null) {
@@ -66,25 +66,19 @@ object ReadmeParserHelper {
         return newMinHashTagsCount
     }
 
-    private fun getNewMinHashTagsCountAfterNoMatch(line: String, newMinHashTagsCount: Int): Int {
-        var newMinHashTagsCount = newMinHashTagsCount
-        val hashCount = TagHelper.counHashTags(line)
-        if (hashCount <= newMinHashTagsCount) {
-            newMinHashTagsCount = 0
-        }
-        return newMinHashTagsCount
-    }
+    private fun getNewMinHashTagsCountAfterNoMatch(line: String, newMinHashTagsCount: Int) =
+        TagHelper.counHashTags(line)
+            .let { hashCount ->
+                if (hashCount <= newMinHashTagsCount) 0 else newMinHashTagsCount
+            }
 
-    private fun getNewMinHashTagsCountAfterMatch(line: String, currentHashTagsCount: Int): Int {
-        var currentHashTagsCount = currentHashTagsCount
-        val hashCount = TagHelper.counHashTags(line)
-        currentHashTagsCount = if (hashCount < currentHashTagsCount) {
-            0
-        } else {
-            hashCount
-        }
-        return currentHashTagsCount
-    }
+    private fun getNewMinHashTagsCountAfterMatch(line: String, currentHashTagsCount: Int) =
+        TagHelper.counHashTags(line)
+            .let { hashCount ->
+                if (hashCount < currentHashTagsCount) 0 else hashCount
+            }
+
+
 }
 
 object TagHelper {
