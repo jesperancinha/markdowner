@@ -3,7 +3,6 @@ package org.jesperancinha.parser.markdowner.badges.parser
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.nulls.shouldBeNull
 import io.kotest.matchers.nulls.shouldNotBeNull
-import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldHaveLength
 import org.junit.jupiter.api.Test
 
@@ -146,7 +145,7 @@ class BadgeParserKtTest {
         val parseStatusBadges = parse.entries.flatMap { entry ->
             entry.value.badgeHashMap.filter {
                 it.key.pattern().contains("Status badge")
-            }.values
+            }?.values ?: emptyList()
         }
         parseStatusBadges.shouldHaveSize(1)
         parseStatusBadges.first().shouldNotBeNull()
