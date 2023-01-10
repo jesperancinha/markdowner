@@ -6,7 +6,7 @@
     <parent>
         <artifactId>markdowner</artifactId>
         <groupId>org.jesperancinha.parser</groupId>
-        <version>3.0.7</version>
+        <version>3.0.8</version>
     </parent>
     <artifactId>markdowner-core</artifactId>
     <name>Markdowner core</name>
@@ -17,11 +17,6 @@
             <url>https://opensource.org/licenses/Apache-2.0</url>
         </license>
     </licenses>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <kotlin.version>1.8.0</kotlin.version>
-        <kotest.version>5.5.4</kotest.version>
-    </properties>
     <developers>
         <developer>
             <name>João Filipe Sabino Esperancinha</name>
