@@ -1,7 +1,8 @@
 package org.jesperancinha.parser.markdowner.filter
 
-import lombok.extern.slf4j.Slf4j
 import org.apache.logging.log4j.util.Strings
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.w3c.dom.Document
 import org.w3c.dom.NodeList
 import org.xml.sax.InputSource
@@ -18,16 +19,15 @@ import javax.xml.xpath.XPathFactory
 /**
  * Filter to check if folder contains a Maven project and keeps the project name in memory
  */
-@Slf4j
-class MavenFilter : ProjectFilter<Path?>() {
-    override fun test(path: Path?): Boolean {
+class MavenFilter : ProjectFilter<Path>() {
+    override fun test(path: Path): Boolean {
         val maybeMavenBuild = path.getFileName().toString() == POM_XML
         try {
             if (maybeMavenBuild) {
                 return checkIfPomProjectFileHasName(path)
             }
         } catch (e: Exception) {
-            MavenFilter.log.trace("Not a valid Maven file", e)
+            logger.trace("Not a valid Maven file", e)
         }
         return false
     }
@@ -38,10 +38,10 @@ class MavenFilter : ProjectFilter<Path?>() {
         IOException::class,
         XPathExpressionException::class
     )
-    private fun checkIfPomProjectFileHasName(path: Path?): Boolean {
+    private fun checkIfPomProjectFileHasName(path: Path): Boolean {
         val documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder()
         val xmlDocument = documentBuilder.parse(InputSource(FileReader(path.toFile())))
-        MavenFilter.log.trace("Message is valid XML.")
+        logger.trace("Message is valid XML.")
         var textContent = getString(xmlDocument, "/project/name")
         if (Strings.isEmpty(textContent)) {
             textContent = getString(xmlDocument, "/project/artifactId")
@@ -64,6 +64,7 @@ class MavenFilter : ProjectFilter<Path?>() {
     }
 
     companion object {
-        private val POM_XML: String? = "pom.xml"
+        private val POM_XML: String = "pom.xml"
+        val logger: Logger = LoggerFactory.getLogger(MavenFilter::class.java)
     }
 }

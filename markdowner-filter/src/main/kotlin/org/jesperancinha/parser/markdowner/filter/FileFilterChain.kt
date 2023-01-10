@@ -1,7 +1,5 @@
 package org.jesperancinha.parser.markdowner.filter
 
-import lombok.Builder
-import lombok.extern.slf4j.Slf4j
 import java.nio.file.Path
 import java.util.*
 
@@ -22,12 +20,10 @@ import java.util.*
  *
  * See [FileFilterChain.findHighest] for more info.
  */
-@Slf4j
-@Builder
-class FileFilterChain {
-    private val nextFileFilterChain: FileFilterChain? = null
-    private val projectFilter: ProjectFilter<Path?>? = null
-
+class FileFilterChain(
+    private val nextFileFilterChain: FileFilterChain?,
+    private val projectFilter: ProjectFilter<Path>
+) {
     /**
      * Finds the highest element in the hierarchy found in the specified folder.
      * The deepness of the search will be limited by an element of [PackageInfo] given as an argument
@@ -36,15 +32,18 @@ class FileFilterChain {
      * @param path        Folder [Path] to classify the new to formed readme file
      * @return The package info found [PackageInfo]. Null if unknown.
      */
-    fun findHighest(packageInfo: PackageInfo?, path: Path?): PackageInfo? {
-        if (Objects.nonNull(packageInfo) && packageInfo.getFileFilterChain() === this) {
+    fun findHighest(packageInfo: PackageInfo?, path: Path): PackageInfo? {
+        if (Objects.nonNull(packageInfo) && packageInfo?.fileFilterChain === this) {
             return packageInfo
         }
         if (projectFilter.test(path)) {
-            return PackageInfo.builder().projectName(projectFilter.lastProjectName()).fileFilterChain(this).build()
+            return PackageInfo(
+                projectName = projectFilter.lastProjectName(),
+                fileFilterChain = this
+            )
         }
         return if (Objects.nonNull(nextFileFilterChain)) {
-            nextFileFilterChain.findHighest(packageInfo, path)
+            nextFileFilterChain?.findHighest(packageInfo, path)
         } else packageInfo
     }
 
@@ -54,31 +53,27 @@ class FileFilterChain {
          *
          * @return A filter chain [FileFilterChain]
          */
-        fun createDefaultChain(): FileFilterChain? {
-            return FileFilterChain.builder().projectFilter(MavenFilter())
-                .nextFileFilterChain(
-                    createNPMChain()
-                ).build()
-        }
+        fun createDefaultChain(): FileFilterChain = FileFilterChain(
+            projectFilter = MavenFilter(),
+            nextFileFilterChain = createNPMChain()
+        )
 
-        private fun createNPMChain(): FileFilterChain? {
-            return FileFilterChain.builder().projectFilter(NPMFilter())
-                .nextFileFilterChain(
-                    createGradleChain()
-                ).build()
-        }
 
-        private fun createGradleChain(): FileFilterChain? {
-            return FileFilterChain.builder().projectFilter(GradleFilter())
-                .nextFileFilterChain(
-                    createSBTChain()
-                ).build()
-        }
+        private fun createNPMChain(): FileFilterChain = FileFilterChain(
+            projectFilter = NPMFilter(),
+            nextFileFilterChain = createGradleChain()
+        )
 
-        private fun createSBTChain(): FileFilterChain? {
-            return FileFilterChain.builder().projectFilter(SBTFilter())
-                .nextFileFilterChain(null)
-                .build()
-        }
+
+        private fun createGradleChain(): FileFilterChain = FileFilterChain(
+            projectFilter = GradleFilter(),
+            nextFileFilterChain = createSBTChain()
+        )
+
+        private fun createSBTChain(): FileFilterChain = FileFilterChain(
+            projectFilter = SBTFilter(),
+            nextFileFilterChain = null
+        )
+
     }
 }

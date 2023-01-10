@@ -14,8 +14,10 @@ class ReadmeNamingParserTest {
     @Throws(IOException::class)
     fun testBuildReadmeSamePath() {
         val path = Path.of("/.")
-        val inputStream = ReadmeNamingParser.builder().templateLocation(templatePath)
-            .fileFilterChain(FileFilterChain.Companion.createDefaultChain()).build().buildReadmeStream(path)
+        val inputStream = ReadmeNamingParser(
+            templateLocation = templatePath,
+            fileFilterChain = FileFilterChain.createDefaultChain())
+            .buildReadmeStream(path)
         Assertions.assertThat(inputStream).isNull()
     }
 
@@ -23,7 +25,7 @@ class ReadmeNamingParserTest {
     @Throws(URISyntaxException::class, IOException::class)
     fun testBuildReadmeStreamNothing() {
         val path = Path.of(javaClass.getResource("/directory2NoReadme/noProject2").toURI())
-        val inputStream = ReadmeNamingParser.builder().templateLocation(templatePath)
+        val inputStream = ReadmeNamingParser(templateLocation(templatePath)
             .fileFilterChain(FileFilterChain.Companion.createDefaultChain()).build().buildReadmeStream(path)
         Assertions.assertThat(inputStream).isNull()
     }

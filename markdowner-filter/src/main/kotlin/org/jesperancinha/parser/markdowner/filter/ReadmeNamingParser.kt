@@ -1,20 +1,16 @@
 package org.jesperancinha.parser.markdowner.filter
 
-import lombok.AllArgsConstructor
-import lombok.Builder
 import java.io.*
 import java.nio.file.DirectoryStream
 import java.nio.file.Files
 import java.nio.file.Path
 import java.util.*
 
-@Builder
-@AllArgsConstructor
-class ReadmeNamingParser {
-    private val fileFilterChain: FileFilterChain? = null
-    private val templateLocation: Path? = null
-    private val isNoEmpty = false
-
+class ReadmeNamingParser(
+    private val fileFilterChain: FileFilterChain? = null,
+    private val templateLocation: Path,
+    private val isNoEmpty: Boolean = false
+) {
     /**
      * Builds a stream of a Readme marked down texts taking a [Path] as a reference.
      * If a Readme.md file already exists, it will return a Stream with it's content.
@@ -28,18 +24,18 @@ class ReadmeNamingParser {
      * @throws IOException Any IO Exception that may occur
      */
     @Throws(IOException::class)
-    fun buildReadmeStream(path: Path?): InputStream? {
+    fun buildReadmeStream(path: Path): InputStream? {
         if (isItATemplatePath(path)) {
             return null
         }
         val readmeFile = getReadmePath(path)
-        if (readmeFile.exists()) {
+        if (readmeFile?.exists() == true) {
             return FileInputStream(readmeFile)
         }
         val packageInfo = findPackageInfo(path)
         return if (noPackageInfo(packageInfo) || isNoEmpty) {
             null
-        } else ByteArrayInputStream("# " + packageInfo.getProjectName().toByteArray())
+        } else ByteArrayInputStream(("# " + packageInfo?.projectName).toByteArray())
     }
 
     /**
@@ -58,7 +54,7 @@ class ReadmeNamingParser {
      * @param path The directory path
      * @return The directory path with the added Readme.md file
      */
-    private fun getReadmePath(path: Path?): File? {
+    private fun getReadmePath(path: Path): File? {
         val readmePath = path.resolve("Readme.md")
         return readmePath.toFile()
     }
@@ -69,7 +65,7 @@ class ReadmeNamingParser {
      * @param path The path to test
      * @return true if the template path matches the given path, otherwise false
      */
-    private fun isItATemplatePath(path: Path?): Boolean {
+    private fun isItATemplatePath(path: Path): Boolean {
         return (path.toAbsolutePath().toString()
                 == templateLocation.toAbsolutePath().toString())
     }
@@ -83,7 +79,7 @@ class ReadmeNamingParser {
      * @throws IOException If an input/output exception has occurred
      */
     @Throws(IOException::class)
-    private fun findPackageInfo(path: Path?): PackageInfo? {
+    private fun findPackageInfo(path: Path): PackageInfo? {
         var highestLevel: PackageInfo?
         Files.newDirectoryStream(path).use { stream -> highestLevel = iterateAllPathsInDirectoryStream(stream) }
         return highestLevel
@@ -95,11 +91,11 @@ class ReadmeNamingParser {
      * @param stream Directory stream [DirectoryStream]
      * @return The created package info with the project name and the automated packaging system type [PackageInfo]
      */
-    private fun iterateAllPathsInDirectoryStream(stream: DirectoryStream<Path?>?): PackageInfo? {
+    private fun iterateAllPathsInDirectoryStream(stream: DirectoryStream<Path>): PackageInfo? {
         var highestLevel: PackageInfo? = null
         for (newPath in stream) {
             if (!Files.isDirectory(newPath)) {
-                highestLevel = fileFilterChain.findHighest(highestLevel, newPath)
+                highestLevel = fileFilterChain?.findHighest(highestLevel, newPath)
             }
         }
         return highestLevel
