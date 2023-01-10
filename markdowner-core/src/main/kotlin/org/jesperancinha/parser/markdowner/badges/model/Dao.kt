@@ -52,5 +52,5 @@ data class BadgeType (
     @JsonProperty("badgeFile")
     var badgeFile: String,
     @JsonProperty("destinationFile")
-    var destinationFile: String? = null
+    var destinationFile: String
 )
