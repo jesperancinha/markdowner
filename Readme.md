@@ -50,7 +50,7 @@ Check all the release notes [here](./ReleaseNotes.md).
 <dependency>
   <groupId>org.jesperancinha.parser</groupId>
   <artifactId>markdowner</artifactId>
-  <version>3.0.2</version>
+  <version>4.0.0</version>
   <type>pom</type>
 </dependency>
 ```
