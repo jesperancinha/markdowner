@@ -21,7 +21,7 @@ object TagHelper {
                 finalSize++
             }
         }
-        return kotlin.String(Arrays.copyOfRange(charBuff.array(), 0, finalSize)).trim { it <= ' ' }
+        return String(Arrays.copyOfRange(charBuff.array(), 0, finalSize)).trim { it <= ' ' }
     }
 
     private fun removeStartingHashTags(tag: String?): String {

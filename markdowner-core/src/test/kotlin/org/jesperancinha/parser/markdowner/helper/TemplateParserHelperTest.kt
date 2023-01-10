@@ -1,6 +1,7 @@
 package org.jesperancinha.parser.markdowner.helper
 
-import org.assertj.core.api.Assertions
+import io.kotest.matchers.nulls.shouldNotBeNull
+import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 import java.io.IOException
 
@@ -9,51 +10,54 @@ class TemplateParserHelperTest {
     @Throws(IOException::class)
     fun testFindAllParagraphs() {
         val resourceAsStream = javaClass.getResourceAsStream("/Readme.md")
+        resourceAsStream.shouldNotBeNull()
         val allParagraphs = TemplateParserHelper.findAllParagraphs(resourceAsStream)
-        Assertions.assertThat(allParagraphs.paragraphCount).isEqualTo(2)
+        allParagraphs.shouldNotBeNull()
+        allParagraphs.getParagraphCount() shouldBe 2
         val license = allParagraphs.getParagraphByTag("License")
         val aboutMe = allParagraphs.getParagraphByTag("About me")
-        Assertions.assertThat(license).isNotNull
-        Assertions.assertThat(aboutMe).isNotNull
-        Assertions.assertThat(license.tag).isEqualTo(LICENSE_TAG)
-        Assertions.assertThat(aboutMe.tag).isEqualTo(ABOUT_ME_TAG)
-        Assertions.assertThat(license.text).isEqualTo("This is one\nOne")
-        Assertions.assertThat(aboutMe.text).isEqualTo("This is two\nTwo")
-        Assertions.assertThat(allParagraphs.paragraphCount).isEqualTo(2)
+        license.shouldNotBeNull()
+        aboutMe.shouldNotBeNull()
+        license.tag shouldBe LICENSE_TAG
+        aboutMe.tag shouldBe ABOUT_ME_TAG
+        license.text shouldBe "This is one\nOne"
+        aboutMe.text shouldBe "This is two\nTwo"
     }
 
     @Test
     @Throws(IOException::class)
     fun testFindAllParagraphsEmojis() {
         val resourceAsStream = javaClass.getResourceAsStream("/ReameEmojis.md")
+        resourceAsStream.shouldNotBeNull()
         val allParagraphs = TemplateParserHelper.findAllParagraphs(resourceAsStream)
-        Assertions.assertThat(allParagraphs.paragraphCount).isEqualTo(2)
+        allParagraphs.shouldNotBeNull()
+        allParagraphs.getParagraphCount() shouldBe 2
         val license = allParagraphs.getParagraphByTag("License")
         val aboutMe = allParagraphs.getParagraphByTag("About me")
-        Assertions.assertThat(license).isNotNull
-        Assertions.assertThat(aboutMe).isNotNull
-        Assertions.assertThat(license.tag).isEqualTo(LICENSE_TAG)
-        //        assertThat(aboutMe.getTag()).isEqualTo("## About me \uD83D\uDC68\uD83C\uDFFD\u200D\uD83D\uDCBB\uD83D\uDE80");
-        Assertions.assertThat(license.text).isEqualTo("This is one\nOne")
-        Assertions.assertThat(aboutMe.text).isEqualTo("This is two\nTwo")
-        Assertions.assertThat(allParagraphs.paragraphCount).isEqualTo(2)
+        license.shouldNotBeNull()
+        aboutMe.shouldNotBeNull()
+        license.tag shouldBe LICENSE_TAG
+        aboutMe.tag shouldBe ABOUT_ME_TAG
+        license.text shouldBe "This is one\nOne"
+        aboutMe.text shouldBe "This is two\nTwo"
     }
 
     @Test
     @Throws(IOException::class)
     fun testFindAllParagraphsInnerParagraphs() {
         val resourceAsStream = javaClass.getResourceAsStream("/Readme-inner-paragraphs.md")
+        resourceAsStream.shouldNotBeNull()
         val allParagraphs = TemplateParserHelper.findAllParagraphs(resourceAsStream)
-        Assertions.assertThat(allParagraphs.paragraphCount).isEqualTo(2)
+        allParagraphs.shouldNotBeNull()
+        allParagraphs.getParagraphCount() shouldBe 2
         val license = allParagraphs.getParagraphByTag("License")
         val aboutMe = allParagraphs.getParagraphByTag("About me")
-        Assertions.assertThat(license).isNotNull
-        Assertions.assertThat(aboutMe).isNotNull
-        Assertions.assertThat(license.tag).isEqualTo(LICENSE_TAG)
-        Assertions.assertThat(aboutMe.tag).isEqualTo(ABOUT_ME_TAG)
-        Assertions.assertThat(license.text).isEqualTo("This is one\nOne\n### Inner text\nThis is inner text")
-        Assertions.assertThat(aboutMe.text).isEqualTo("This is two\nTwo")
-        Assertions.assertThat(allParagraphs.paragraphCount).isEqualTo(2)
+        license.shouldNotBeNull()
+        aboutMe.shouldNotBeNull()
+        license.tag shouldBe LICENSE_TAG
+        aboutMe.tag shouldBe ABOUT_ME_TAG
+        license.text shouldBe "This is one\nOne\n### Inner text\nThis is inner text"
+        aboutMe.text shouldBe "This is two\nTwo"
     }
 
     companion object {

@@ -1,24 +1,25 @@
 package org.jesperancinha.parser.markdowner.helper
 
-import org.assertj.core.api.Assertions
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.string.shouldBeEmpty
 import org.junit.jupiter.api.Test
 
 class TagHelperTest {
     @Test
-    fun testSanitizeTag() {
+    fun `should sanitize tag`() {
         val result = TagHelper.sanitizeTag("### Title1 ##")
-        Assertions.assertThat(result).isEqualTo("Title1 ##")
+        result shouldBe "Title1 ##"
     }
 
     @Test
-    fun testSanitizeTagAllHashes() {
+    fun `should sanitize all hashes to empty`() {
         val result = TagHelper.sanitizeTag("#####")
-        Assertions.assertThat(result).isEmpty()
+        result.shouldBeEmpty()
     }
 
     @Test
-    fun testCounHashTags() {
+    fun `should count hashtags correctly 3`() {
         val result = TagHelper.counHashTags("### okoko #")
-        Assertions.assertThat(result).isEqualTo(3)
+        result shouldBe 3
     }
 }

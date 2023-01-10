@@ -1,7 +1,8 @@
 package org.jesperancinha.parser.markdowner.badges.parser
 
+import io.kotest.matchers.maps.shouldHaveSize
+import io.kotest.matchers.nulls.shouldNotBeNull
 import org.apache.commons.io.IOUtils
-import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 import java.io.IOException
 import java.nio.charset.Charset
@@ -13,12 +14,13 @@ class BadgeParser2Test {
         val badgeGroups = BadgeParser.parse(
             IOUtils.resourceToString("/badges/README2.md", Charset.defaultCharset())
         )
-        Assertions.assertThat(badgeGroups).isNotNull
+      badgeGroups.shouldNotBeNull()
     }
 
     @Test
     fun testBadgeSettingsParserr() {
         val badgeSettingGroups = BadgeParser.parseSettings()
-        Assertions.assertThat(badgeSettingGroups).hasSize(8)
+        badgeSettingGroups.shouldNotBeNull()
+        badgeSettingGroups.shouldHaveSize(8)
     }
 }

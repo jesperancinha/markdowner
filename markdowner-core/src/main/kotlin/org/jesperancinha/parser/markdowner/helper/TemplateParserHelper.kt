@@ -1,7 +1,6 @@
 package org.jesperancinha.parser.markdowner.helper
 
 import org.jesperancinha.parser.markdowner.model.Paragraphs
-import org.jesperancinha.parser.markdowner.model.Paragraphs.ParagraphsBuilder
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStream
@@ -10,32 +9,32 @@ import java.util.*
 
 object TemplateParserHelper {
     /**
-     * Receives an input markdown text stream nd parses its content to a Paragraphs object see [Paragraphs]
+     * Receives an input Markdown text stream nd parses its content to a Paragraphs object see [Paragraphs]
      *
-     * @param templateInputStream An input markdown text stream
+     * @param templateInputStream An input Markdown text stream
      * @return A [Paragraphs] parsed object
      * @throws IOException Any kind of IO Exception
      */
     @Throws(IOException::class)
-    fun findAllParagraphs(templateInputStream: InputStream?): Paragraphs? {
-        val paragraphsBuilder = ParagraphsBuilder()
+    fun findAllParagraphs(templateInputStream: InputStream): Paragraphs? {
+        val paragraphs = Paragraphs()
         BufferedReader(InputStreamReader(templateInputStream)).use { br ->
             val sb = StringBuilder()
             val paragraphCounter = ParagraphCounter()
             while (br.readLine().also { paragraphCounter.line = it } != null) {
                 if (reachedEndOfParagrah(paragraphCounter.line, paragraphCounter.currentHashCount)) {
-                    createParagraphAndUpdateCounters(paragraphsBuilder, sb, paragraphCounter)
+                    createParagraphAndUpdateCounters(paragraphs, sb, paragraphCounter)
                 } else {
                     sb.append(paragraphCounter.line).append(System.lineSeparator())
                 }
             }
-            createParagraphLine(paragraphsBuilder, paragraphCounter.currentTag, sb)
+            createParagraphLine(paragraphs, paragraphCounter.currentTag, sb)
         }
-        return paragraphsBuilder.build()
+        return paragraphs
     }
 
     private fun createParagraphAndUpdateCounters(
-        paragraphsBuilder: ParagraphsBuilder,
+        paragraphsBuilder: Paragraphs,
         sb: StringBuilder,
         paragraphCounter: ParagraphCounter
     ) {
@@ -48,7 +47,7 @@ object TemplateParserHelper {
         return line!!.startsWith("#") && (currentHashCount >= TagHelper.counHashTags(line) || currentHashCount == 0)
     }
 
-    private fun createParagraphLine(paragraphsBuilder: ParagraphsBuilder, currentTag: String?, sb: StringBuilder) {
+    private fun createParagraphLine(paragraphsBuilder: Paragraphs, currentTag: String?, sb: StringBuilder) {
         if (Objects.nonNull(currentTag)) {
             paragraphsBuilder.withTagParagraph(currentTag, sb.toString().stripTrailing())
         }

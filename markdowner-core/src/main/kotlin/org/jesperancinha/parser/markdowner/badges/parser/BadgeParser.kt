@@ -1,8 +1,9 @@
 package org.jesperancinha.parser.markdowner.badges.parser
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import lombok.extern.slf4j.Slf4j
 import org.jesperancinha.parser.markdowner.badges.model.*
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import java.io.IOException
 import java.util.*
 import java.util.function.BiConsumer
@@ -10,8 +11,9 @@ import java.util.function.Function
 import java.util.function.Supplier
 import java.util.regex.Pattern
 import java.util.stream.Collectors
+import kotlin.collections.HashMap
+import kotlin.system.exitProcess
 
-@Slf4j
 object BadgeParser {
     private val objectMapper = ObjectMapper()
     private const val GENERIC_REGEX = "a-zA-Z0-9\\/\\.\\]\\?\\=\\-\\&\\%%\\;\\_\\#\\:\\@\\\"\\ "
@@ -21,37 +23,26 @@ object BadgeParser {
         "(\\[!\\[%s]\\(http[s]*:\\/\\/%s[" + GENERIC_REGEX + "]*" + EMOJI_REGEX + "[" + GENERIC_REGEX + "]*" + "\\)]\\((http[s]*:\\/\\/)*[" + GENERIC_REGEX + "]*\\))"
     private val NOT_ACCEPTED_REGEX = Pattern.compile("color=(?!(informational)).")
     val badgeTypes = parseBadgeTypes()
-    private fun parseBadgeTypes(): Map<String, BadgeType>? {
-        try {
-            return Arrays.stream(
-                objectMapper.readValue(
-                    BadgeParser::class.java.getResourceAsStream("/jeorg.badges.types.json"),
-                    Array<BadgeType>::class.java
-                )
-            )
-                .collect(Collectors.toMap(
-                    Function { obj: BadgeType -> obj.type }, Function { badgeType: BadgeType -> badgeType })
-                )
-        } catch (e: IOException) {
-            BadgeParser.log.error("Error!", e)
-            System.exit(1)
+    val logger: Logger = LoggerFactory.getLogger(BadgeParser::class.java)
+    private fun parseBadgeTypes(): Map<String, BadgeType>? = try {
+        objectMapper.readValue(
+            BadgeParser::class.java.getResourceAsStream("/jeorg.badges.types.json"),
+            Array<BadgeType>::class.java
+        ).associateBy { it.type }
+    } catch (e: IOException) {
+            logger.error("Error!", e)
+            exitProcess(1)
         }
-        return null
-    }
 
     val badgeSettingGroups = parseSettings()
     fun parse(readmeText: String?): Map<BadgeType, BadgeGroup> {
         return badgeSettingGroups
             .values
-            .stream()
-            .filter { obj: BadgeSettingGroup? -> Objects.nonNull(obj) }
-            .collect(Collectors.toMap(
-                Function { obj: BadgeSettingGroup? -> obj.getBadgeType() },
-                Function { badgeSettingGroup: BadgeSettingGroup? ->
-                    val allBadges: Map<Pattern, Badge> = badgeSettingGroup
-                        .getBadgeSettingList()
-                        .stream()
-                        .filter { obj: BadgePattern? -> Objects.nonNull(obj) }
+            .filterNotNull()
+            .groupByTo(HashMap(),{ obj: BadgeSettingGroup -> obj.badgeType },
+                 { badgeSettingGroup: BadgeSettingGroup ->
+                    val allBadges = badgeSettingGroup
+                        .badgeSettingList
                         .collect(
                             Supplier<HashMap<Pattern, Badge>> { HashMap() },
                             BiConsumer<HashMap<Pattern?, Badge?>, BadgePattern> { map: HashMap<Pattern?, Badge?>, badgeSetting: BadgePattern ->
@@ -77,10 +68,10 @@ object BadgeParser {
                                     m!!
                                 )
                             })
-                    BadgeGroup.builder()
-                        .badgeType(badgeSettingGroup.getBadgeType())
-                        .badgeHashMap(allBadges)
-                        .build()
+                    BadgeGroup(
+                        badgeType = badgeSettingGroup.badgeType,
+                        badgeHashMap = allBadges
+                    )
                 }
             ))
     }
