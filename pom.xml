@@ -59,7 +59,7 @@
 
         <junit-jupiter.version>5.9.2</junit-jupiter.version>
         <kotest.version>5.5.4</kotest.version>
-        <picocli.version>4.7.0</picocli.version>
+        <picocli.version>4.7.1</picocli.version>
 
         <mockito-junit-jupiter.version>5.1.0</mockito-junit-jupiter.version>
         <commons-io.version>2.11.0</commons-io.version>
