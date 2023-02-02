@@ -55,7 +55,7 @@
         <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
         <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
         <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
-        <kotlin.version>1.8.0</kotlin.version>
+        <kotlin.version>1.8.10</kotlin.version>
 
         <junit-jupiter.version>5.9.2</junit-jupiter.version>
         <kotest.version>5.5.4</kotest.version>
