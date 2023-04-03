@@ -29,12 +29,7 @@
 
 ## Technologies used
 
----
-
-[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/kotlin-50.png "Kotlin")](https://kotlinlang.org/)
-[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/kotest-50.png "Kotest")](https://kotest.io/)
-
----
+Please check the [TechStack.md](TechStack.md) file for details.
 
 ## Description
 
