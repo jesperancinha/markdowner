@@ -71,7 +71,7 @@
         <jackson-annotations.version>2.15.1</jackson-annotations.version>
         <jackson-databind.version>2.15.1</jackson-databind.version>
         <jackson-core.version>2.15.1</jackson-core.version>
-        <spring-boot-starter-parent.version>3.0.6</spring-boot-starter-parent.version>
+        <spring-boot-starter-parent.version>3.0.7</spring-boot-starter-parent.version>
         <omni-coveragereporter-maven-plugin.version>0.4.3</omni-coveragereporter-maven-plugin.version>
         <kotlinx-coroutines-debug.version>1.7.1</kotlinx-coroutines-debug.version>
         <junit-jupiter-api.version>5.9.3</junit-jupiter-api.version>
