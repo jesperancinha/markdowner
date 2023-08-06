@@ -57,11 +57,9 @@
         <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
         <kotlin.version>1.9.0</kotlin.version>
 
-        <junit-jupiter.version>5.9.3</junit-jupiter.version>
         <kotest.version>5.6.2</kotest.version>
         <picocli.version>4.7.4</picocli.version>
 
-        <mockito-junit-jupiter.version>5.4.0</mockito-junit-jupiter.version>
         <commons-io.version>2.13.0</commons-io.version>
         <gson.version>2.10.1</gson.version>
         <mapstruct-processor.version>1.5.5.Final</mapstruct-processor.version>
@@ -74,7 +72,6 @@
         <spring-boot-starter-parent.version>3.1.2</spring-boot-starter-parent.version>
         <omni-coveragereporter-maven-plugin.version>0.4.3</omni-coveragereporter-maven-plugin.version>
         <kotlinx-coroutines-debug.version>1.7.3</kotlinx-coroutines-debug.version>
-        <junit-jupiter-api.version>5.9.3</junit-jupiter-api.version>
     </properties>
 
     <packaging>pom</packaging>
@@ -143,33 +140,9 @@
                 <version>${jackson-databind.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-api</artifactId>
-                <version>${junit-jupiter-api.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-core</artifactId>
                 <version>${jackson-core.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter</artifactId>
-                <version>${junit-jupiter.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-engine</artifactId>
-                <version>${junit-jupiter.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.mockito</groupId>
-                <artifactId>mockito-junit-jupiter</artifactId>
-                <version>${mockito-junit-jupiter.version}</version>
-                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>commons-io</groupId>
