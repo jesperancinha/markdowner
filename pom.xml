@@ -57,7 +57,7 @@
         <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
         <kotlin.version>1.9.10</kotlin.version>
 
-        <kotest.version>5.7.1</kotest.version>
+        <kotest.version>5.7.2</kotest.version>
         <picocli.version>4.7.5</picocli.version>
 
         <commons-io.version>2.13.0</commons-io.version>
