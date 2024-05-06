@@ -68,7 +68,7 @@
         <jaxb-api.version>2.3.1</jaxb-api.version>
         <jackson-annotations.version>2.17.1</jackson-annotations.version>
         <jackson-databind.version>2.17.1</jackson-databind.version>
-        <jackson-core.version>2.17.0</jackson-core.version>
+        <jackson-core.version>2.17.1</jackson-core.version>
         <spring-boot-starter-parent.version>3.2.5</spring-boot-starter-parent.version>
         <omni-coveragereporter-maven-plugin.version>0.4.3</omni-coveragereporter-maven-plugin.version>
         <kotlinx-coroutines-debug.version>1.8.0</kotlinx-coroutines-debug.version>
