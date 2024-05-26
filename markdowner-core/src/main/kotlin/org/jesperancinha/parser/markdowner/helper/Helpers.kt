@@ -53,7 +53,7 @@ object ReadmeParserHelper {
                 }
             }
         }
-        return sb.toString().stripTrailing()
+        return sb.toString().trim()
     }
 
     private fun calculateCurrentMinHashTags(line: String, currentMinHashTags: Int, allTags: List<String?>): Int {
