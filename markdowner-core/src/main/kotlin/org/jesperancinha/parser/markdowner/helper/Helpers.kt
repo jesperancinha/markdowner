@@ -174,7 +174,7 @@ object TemplateParserHelper {
 
     private fun createParagraphLine(paragraphsBuilder: Paragraphs, currentTag: String?, sb: StringBuilder) {
         if (Objects.nonNull(currentTag)) {
-            paragraphsBuilder.withTagParagraph(currentTag, sb.toString().stripTrailing())
+            paragraphsBuilder.withTagParagraph(currentTag, sb.toString().trim())
         }
         sb.delete(0, sb.length)
     }
