@@ -69,7 +69,7 @@
         <jackson-annotations.version>2.18.1</jackson-annotations.version>
         <jackson-databind.version>2.18.1</jackson-databind.version>
         <jackson-core.version>2.18.1</jackson-core.version>
-        <spring-boot-starter-parent.version>3.3.5</spring-boot-starter-parent.version>
+        <spring-boot-starter-parent.version>3.4.0</spring-boot-starter-parent.version>
         <omni-coveragereporter-maven-plugin.version>0.4.4</omni-coveragereporter-maven-plugin.version>
         <kotlinx-coroutines-debug.version>1.9.0</kotlinx-coroutines-debug.version>
     </properties>
