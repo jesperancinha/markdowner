@@ -66,7 +66,7 @@
         <markdowner.version>4.0.0</markdowner.version>
         <jacoco-maven-plugin.version>0.8.13</jacoco-maven-plugin.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
-        <spring-boot-starter-parent.version>3.5.2</spring-boot-starter-parent.version>
+        <spring-boot-starter-parent.version>3.5.3</spring-boot-starter-parent.version>
         <omni-coveragereporter-maven-plugin.version>0.4.5</omni-coveragereporter-maven-plugin.version>
         <kotlinx-coroutines-debug.version>1.10.2</kotlinx-coroutines-debug.version>
     </properties>
