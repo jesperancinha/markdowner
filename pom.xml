@@ -60,7 +60,7 @@
         <kotest.version>5.9.1</kotest.version>
         <picocli.version>4.7.7</picocli.version>
 
-        <commons-io.version>2.19.0</commons-io.version>
+        <commons-io.version>2.20.0</commons-io.version>
         <gson.version>2.13.1</gson.version>
         <mapstruct-processor.version>1.6.3</mapstruct-processor.version>
         <markdowner.version>4.0.0</markdowner.version>
